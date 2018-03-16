@@ -1,22 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
-import { Login, Signup } from './components'
+import { withRouter, Route, Switch } from 'react-router-dom'
+import { Home, About, GetInvolved, Blog, Feedback, Support } from './components'
 
-/**
- * COMPONENT
- */
-class Routes extends Component {
-  render () {
-    return (
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route component={Login} />
-      </Switch>
-    )
-  }
-}
+const Routes = () => (
+  <Switch>
+    <Route path="/home" component={Home} />
+    <Route path="/about" component={About} />
+    <Route path="/get-involved" component={GetInvolved} />
+    <Route path="/blog" component={Blog} />
+    <Route path="/feedback" component={Feedback} />
+    <Route path="/support" component={Support} />
+    <Route component={Home} />
+  </Switch>
+)
 
 
 // The `withRouter` wrapper makes sure that updates are not blocked
