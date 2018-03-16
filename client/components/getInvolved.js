@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 const GetInvolved = () => (
   <div>
-    <h1>GetInvolved</h1>
+    <h1>Get Involved</h1>
   </div>
 )
 
