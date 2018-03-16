@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "ora-prayer-network",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Ora strengthens people's faith and devotional lives",
   "engines": {
     "node": ">= 7.0.0"
   },
