@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 const Navbar = () => (
   <div>
     <nav>
-      <div>
-        <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/get-involved">Get Involved</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/feedback">Feedback</Link>
-        <Link to="/support">Support</Link>
+      <div className="displayFlex flexAllCenter vh10">
+        <Link to="/home">HOME</Link>
+        <Link to="/about">ABOUT</Link>
+        <Link to="/get-involved">GET INVOLVED</Link>
+        <Link to="/blog">BLOG</Link>
+        <Link to="/feedback">FEEDBACK</Link>
+        <Link to="/support">SUPPORT</Link>
       </div>
     </nav>
   </div>

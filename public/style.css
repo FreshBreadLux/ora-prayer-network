@@ -1,21 +1,121 @@
+@font-face {
+  font-family: 'raleway';
+  src: url(fonts/Raleway-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'ebgaramond';
+  src: url(fonts/EBGaramond-Regular.ttf);
+}
+
+* {
+  border: 1px white solid;
+  margin: 0;
+}
+
+html {
+  background: url(images/mountains.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 body {
-  font-family: sans-serif;
+  color: #fff;
 }
 
 a {
   text-decoration: none;
-}
-
-label {
-  display: block;
+  color: #fff;
 }
 
 nav a {
   display: inline-block;
+  font-family: 'raleway';
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+.heightPercent100 {
+  height: 100%;
+}
+
+.vh100 {
+  height: 100vh;
+}
+
+.vh90 {
+  height: 90vh;
+}
+
+.vh10 {
+  height: 10vh;
+}
+
+.vw40 {
+  width: 40vw;
+}
+
+.vw25 {
+  width: 25vw;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flex1 {
+  display: flex;
+  flex: 1;
+}
+
+.flexAllCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+.flexAlignStart {
+  align-items: flex-start;
+}
+
+.flexAlignCenter {
+  align-items: center;
+}
+
+.flexAlignEnd {
+  align-items: flex-end;
+}
+
+.flexJustifyCenter {
+  justify-content: center;
+}
+
+.padding1em {
+  padding: 1em;
+}
+
+.paddingHalfem {
+  padding: 0.5em;
+}
+
+.raleway {
+  font-family: 'raleway';
+}
+
+.ebgaramond {
+  font-family: 'ebgaramond';
+}
+
+.gospelText {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2em;
+}
+
+.font100 {
+  font-size: 100px;
+}
+
+.centerText {
+  text-align: center;
 }
