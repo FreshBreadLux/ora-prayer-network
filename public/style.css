@@ -9,12 +9,13 @@
 }
 
 * {
+  box-sizing: border-box;
   border: 1px white solid;
   margin: 0;
 }
 
 html {
-  background: url(images/mountains.jpeg) no-repeat center center fixed;
+  background: url(images/mountains-purple.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -45,8 +46,36 @@ nav a {
   height: 90vh;
 }
 
+.vh80 {
+  height: 80vh;
+}
+
+.vh70 {
+  height: 70vh;
+}
+
+.vh60 {
+  height: 60vh;
+}
+
+.vh40 {
+  height: 40vh;
+}
+
+.vh20 {
+  height: 20vh;
+}
+
 .vh10 {
   height: 10vh;
+}
+
+.vw70 {
+  width: 70vw;
+}
+
+.vw60 {
+  width: 60vw;
 }
 
 .vw40 {
@@ -68,6 +97,16 @@ nav a {
 .flex1 {
   display: flex;
   flex: 1;
+}
+
+.flex2 {
+  display: flex;
+  flex: 2;
+}
+
+.flex3 {
+  display: flex;
+  flex: 3;
 }
 
 .flexAllCenter {
@@ -99,6 +138,10 @@ nav a {
   padding: 0.5em;
 }
 
+.bottomMargin1em {
+  margin-bottom: 1em;
+}
+
 .raleway {
   font-family: 'raleway';
 }
@@ -107,8 +150,8 @@ nav a {
   font-family: 'ebgaramond';
 }
 
-.gospelText {
-  background-color: rgba(255, 255, 255, 0.2);
+.textOpacityPadding {
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 2em;
 }
 
@@ -116,6 +159,23 @@ nav a {
   font-size: 100px;
 }
 
+.font20 {
+  font-size: 20px;
+}
+
+.font12 {
+  font-size: 12px;
+}
+
 .centerText {
   text-align: center;
+}
+
+.blackText {
+  color: #000;
+}
+
+.screenshot {
+  height: 100%;
+  width: auto;
 }
