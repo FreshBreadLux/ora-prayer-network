@@ -12,6 +12,8 @@ const app = express()
 const socketio = require('socket.io')
 module.exports = app
 
+if (process.env.NODE_ENV !== 'production') require('../secrets')
+
 const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))

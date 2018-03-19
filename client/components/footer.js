@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => (
   <div className="displayFlex flexColumn flexAlignCenter padding1em">
-    <text className="raleway bottomMargin1em">ORA PRAYER NETWORK | LET TECH SERVE FAITH</text>
+    <p className="raleway bottomMargin1em">ORA PRAYER NETWORK | LET TECH SERVE FAITH</p>
     <Link className="raleway font12" to="/privacy-policy">Privacy Policy</Link>
   </div>
 )

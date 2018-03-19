@@ -28,8 +28,17 @@ class Support extends React.Component {
       subject: this.state.subject,
       body: this.state.body
     })
-    .then(confirmation => this.setState({confirmation}))
-    .catch(error => this.setState({error}))
+    .then(confirmation => this.setState({
+      name: '',
+      email: '',
+      subject: '',
+      body: '',
+      confirmation: confirmation.data
+    }))
+    .catch(error => {
+      console.log(error)
+      this.setState({error})
+    })
   }
 
   handleName(event) {
@@ -51,14 +60,51 @@ class Support extends React.Component {
   render() {
     return (
       <div className="displayFlex flexColumn flexAllCenter">
-        <text className="raleway font20">Got questions?</text>
-        <text className="raleway font20">Need to tell us about a bug?</text>
-        <text className="raleway font20">Want to share your story?</text>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.name} onChange={this.handleName} />
-          <input type="text" value={this.state.email} onChange={this.handleEmail} />
-          <input type="text" value={this.state.subject} onChange={this.handleSubject} />
-          <input type="text" value={this.subject.body} onChange={this.handleBody} />
+        <div className="padding1em displayFlex flexColumn flexAllCenter">
+          <p className="raleway font20">Got questions?</p>
+          <p className="raleway font20">Need to tell us about a bug?</p>
+          <p className="raleway font20">Want to share your story?</p>
+        </div>
+        <div>
+          {this.state.confirmation
+          ? <p className="raleway font20 padding1em">{this.state.confirmation}</p>
+          : <div>
+              {this.state.error
+              ? <p className="raleway font20 padding1em">{this.state.error}</p>
+              : null
+              }
+            </div>
+          }
+        </div>
+        <form className="displayFlex flexColumn vw40 flexAllCenter" onSubmit={this.handleSubmit}>
+          <input
+            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            placeholder="Name"
+            type="text"
+            value={this.state.name}
+            onChange={this.handleName} />
+          <input
+            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            placeholder="Email"
+            type="text"
+            value={this.state.email}
+            onChange={this.handleEmail} />
+          <input
+            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            placeholder="Subject"
+            type="text"
+            value={this.state.subject}
+            onChange={this.handleSubject} />
+          <input
+            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            placeholder="Body"
+            type="text"
+            value={this.state.body}
+            onChange={this.handleBody} />
+          <input
+            className="raleway vw25 font20"
+            type="submit"
+            value="HIT US UP" />
         </form>
       </div>
     )
