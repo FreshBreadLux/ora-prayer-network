@@ -88,9 +88,10 @@ class Support extends React.Component {
           <input
             className="vw40 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Email"
-            type="text"
+            type="email"
             value={this.state.email}
-            onChange={this.handleEmail} />
+            onChange={this.handleEmail}
+            required />
           <input
             className="vw40 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Subject"

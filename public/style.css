@@ -28,10 +28,33 @@ a {
   color: #fff;
 }
 
-nav a {
-  display: inline-block;
+.menuButtonDiv {
+  padding: 0.5em;
+}
+
+@keyframes revealNavbar {
+  from {max-height: 0px; background-color: rgba(255, 255, 255, 0.75)}
+  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.25)}
+}
+.revealedNavbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  max-height: 600px;
+  overflow-y: hidden;
+  background-color: rgba(255, 255, 255, 0.25);
+  animation-name: revealNavbar;
+  animation-duration: 0.75s;
+}
+.revealedNavbar a {
   font-family: 'raleway';
-  margin: 1em;
+  margin: 0.75em;
+}
+
+.hiddenNavbar {
+  display: none;
 }
 
 .heightPercent100 {
@@ -212,10 +235,35 @@ nav a {
   from {height: 0vh}
   to {height: 10vh}
 }
-
 .messageFade {
   height: 0vh;
   animation-name: fadeInMessage;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+}
+
+@media (min-width: 600px) {
+  .menuButtonDiv {
+    display: none;
+  }
+
+  .hiddenNavbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hiddenNavbar a {
+    font-family: 'raleway';
+    margin: 0.75em;
+  }
+
+  .revealedNavbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .revealedNavbar a {
+    font-family: 'raleway';
+    margin: 0.75em;
+  }
 }
