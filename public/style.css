@@ -14,12 +14,13 @@
   margin: 0;
 }
 
-html {
+html, body {
   background: url(images/mountains-purple.jpg) no-repeat center center fixed;
   background-size: cover;
-}
-
-body {
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   color: #fff;
 }
 
@@ -55,6 +56,41 @@ a {
 
 .hiddenNavbar {
   display: none;
+}
+
+.mainHomeDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeScriptureDiv {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.homeScriptureQuote {
+  font-family: 'ebgaramond';
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2em;
+  max-width: 90vw;
+}
+
+.aboutMainBlurbDiv {
+  padding: 1em;
+}
+
+.aboutBlurbDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutSubBlurbDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
 }
 
 .heightPercent100 {
@@ -99,6 +135,10 @@ a {
 
 .vh10 {
   height: 10vh;
+}
+
+.minHeightvh100 {
+  min-height: 100vh;
 }
 
 .vw70 {
@@ -227,8 +267,9 @@ a {
 }
 
 .screenshot {
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 @keyframes fadeInMessage {
@@ -265,5 +306,23 @@ a {
   .revealedNavbar a {
     font-family: 'raleway';
     margin: 0.75em;
+  }
+
+  .mainHomeDiv {
+    display: flex;
+    flex: 1;
+  }
+
+  .homeScriptureDiv {
+    flex: 1;
+  }
+
+  .homeScriptureQuote {
+    max-width: 50vw;
+  }
+
+  .aboutMainBlurbDiv {
+    padding: 1em;
+    max-width: 60vw;
   }
 }
