@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 class Support extends React.Component {
   constructor(props) {
@@ -8,7 +9,9 @@ class Support extends React.Component {
       name: '',
       email: '',
       subject: '',
-      body: ''
+      body: '',
+      confirmation: null,
+      error: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleName = this.handleName.bind(this)
@@ -19,17 +22,28 @@ class Support extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    axios.post('api/support', {
+      name: this.state.name,
+      email: this.state.email,
+      subject: this.state.subject,
+      body: this.state.body
+    })
+    .then(confirmation => this.setState({confirmation}))
+    .catch(error => this.setState({error}))
   }
 
   handleName(event) {
     this.setState({ name: event.target.value })
   }
+
   handleEmail(event) {
     this.setState({ email: event.target.value })
   }
+
   handleSubject(event) {
     this.setState({ subject: event.target.value })
   }
+
   handleBody(event) {
     this.setState({ body: event.target.value })
   }
