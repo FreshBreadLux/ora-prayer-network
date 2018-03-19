@@ -62,6 +62,14 @@ nav a {
   height: 40vh;
 }
 
+.vh33 {
+  height: 33vh;
+}
+
+.vh25 {
+  height: 25vh;
+}
+
 .vh20 {
   height: 20vh;
 }
@@ -163,8 +171,16 @@ nav a {
   font-size: 100px;
 }
 
+.font24 {
+  font-size: 24px;
+}
+
 .font20 {
   font-size: 20px;
+}
+
+.font16 {
+  font-size: 16px;
 }
 
 .font12 {
@@ -179,7 +195,27 @@ nav a {
   color: #000;
 }
 
+.transparentWhiteBackground {
+  background-color: rgba(255, 255, 255, 0.75)
+}
+
+.buttonBorderRadius {
+  border-radius: 0.25em;
+}
+
 .screenshot {
   height: 100%;
   width: auto;
+}
+
+@keyframes fadeInMessage {
+  from {height: 0vh}
+  to {height: 10vh}
+}
+
+.messageFade {
+  height: 0vh;
+  animation-name: fadeInMessage;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }

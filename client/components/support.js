@@ -61,48 +61,50 @@ class Support extends React.Component {
     return (
       <div className="displayFlex flexColumn flexAllCenter">
         <div className="padding1em displayFlex flexColumn flexAllCenter">
-          <p className="raleway font20">Got questions?</p>
-          <p className="raleway font20">Need to tell us about a bug?</p>
-          <p className="raleway font20">Want to share your story?</p>
+          <p className="raleway font24">Got questions?</p>
+          <p className="raleway font24">Need to tell us about a bug?</p>
+          <p className="raleway font24">Want to share your story?</p>
         </div>
-        <div>
-          {this.state.confirmation
-          ? <p className="raleway font20 padding1em">{this.state.confirmation}</p>
-          : <div>
-              {this.state.error
-              ? <p className="raleway font20 padding1em">{this.state.error}</p>
-              : null
-              }
-            </div>
-          }
-        </div>
+        {this.state.confirmation
+        ? <div className="messageFade">
+            <p className="raleway font20 padding1em">{this.state.confirmation}</p>
+          </div>
+        : <div>
+            {this.state.error
+            ? <div className="messageFade">
+                <p className="raleway font20 padding1em">{this.state.error}</p>
+              </div>
+            : null
+            }
+          </div>
+        }
         <form className="displayFlex flexColumn vw40 flexAllCenter" onSubmit={this.handleSubmit}>
           <input
-            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            className="vw40 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Name"
             type="text"
             value={this.state.name}
             onChange={this.handleName} />
           <input
-            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            className="vw40 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Email"
             type="text"
             value={this.state.email}
             onChange={this.handleEmail} />
           <input
-            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+            className="vw40 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Subject"
             type="text"
             value={this.state.subject}
             onChange={this.handleSubject} />
-          <input
-            className="vw40 font20 paddingHalfem raleway bottomMargin1em"
+          <textarea
+            className="vw40 vh25 font16 transparentWhiteBackground paddingHalfem raleway bottomMargin1em"
             placeholder="Body"
             type="text"
             value={this.state.body}
             onChange={this.handleBody} />
           <input
-            className="raleway vw25 font20"
+            className="raleway font20 paddingHalfem buttonBorderRadius"
             type="submit"
             value="HIT US UP" />
         </form>

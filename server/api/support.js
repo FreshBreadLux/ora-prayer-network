@@ -12,8 +12,6 @@ const smtpTransport = nodemailer.createTransport({
 })
 
 router.post('/', (req, res, next) => {
-  console.log(process.env.NODEMAILER_USER)
-  console.log(process.env.NODEMAILER_PASS)
   smtpTransport.sendMail({
     from: req.body.email,
     to: process.env.NODEMAILER_USER,
