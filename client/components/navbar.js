@@ -9,10 +9,15 @@ class Navbar extends React.Component {
       revealedNavbar: false
     }
     this.toggleNavbar = this.toggleNavbar.bind(this)
+    this.hideNavbar = this.hideNavbar.bind(this)
   }
 
   toggleNavbar() {
     this.setState({revealedNavbar: !this.state.revealedNavbar})
+  }
+
+  hideNavbar() {
+    this.setState({revealedNavbar: false})
   }
 
   render() {
@@ -23,10 +28,10 @@ class Navbar extends React.Component {
             <a className="raleway" href="#" onClick={this.toggleNavbar}>MENU</a>
           </div>
           <div className={this.state.revealedNavbar ? 'revealedNavbar' : 'hiddenNavbar'}>
-            <Link to="/home">HOME</Link>
-            <Link to="/about">ABOUT</Link>
-            <Link to="/get-involved">GET INVOLVED</Link>
-            <Link to="/support">SUPPORT</Link>
+            <Link to="/home" onClick={this.hideNavbar}>HOME</Link>
+            <Link to="/about" onClick={this.hideNavbar}>ABOUT</Link>
+            <Link to="/get-involved" onClick={this.hideNavbar}>GET INVOLVED</Link>
+            <Link to="/support" onClick={this.hideNavbar}>SUPPORT</Link>
           </div>
         </nav>
       </div>

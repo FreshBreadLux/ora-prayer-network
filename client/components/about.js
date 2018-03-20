@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Footer from './footer'
 
 const About = () => (
-  <div className="displayFlex flexColumn flex1">
+  <div className="displayFlex flexColumn flex1 flexAlignCenter">
     <img src="images/screenshot-home-screen.png" className="screenshot" />
     <h2 className="raleway centerText padding1em">ORA STRENGTHENS PEOPLE'S FAITH AND DEVOTIONAL LIVES</h2>
     <img src="images/download-on-the-app-store.svg" />
@@ -32,7 +32,7 @@ const About = () => (
         <br /><br />
         Draw closer to your Lord through the intentions of others. Accepting the prayers of others is a selfless act that can help us deepen our relationship with God. Develop a habit of reflective prayer and a spirit of true empathy.</p>
       </div>
-      <img src="images/screenshot-accept-screen.png" className="screenshot" />
+      <img src="images/screenshot-accept-screen.png" className="extraScreenshot" />
     </div>
     <div className="aboutBlurbDiv">
       <img src="images/screenshot-follow-screen.png" className="screenshot" />
@@ -50,7 +50,7 @@ const About = () => (
         <br /><br />
         Set daily reminders to accept new prayers from the Ora Prayer Network, to pray for prayers you have followed, or to pray for your personal intentions. Only in God can we find true peace, and Ora wants to help you develop the habit of turning to Him every day.</p>
       </div>
-      <img src="images/screenshot-reminder-screen.png" className="screenshot" />
+      <img src="images/screenshot-reminder-screen.png" className="extraScreenshot" />
     </div>
     <div>
       <Footer />

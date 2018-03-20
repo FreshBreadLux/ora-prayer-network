@@ -141,6 +141,10 @@ a {
   min-height: 100vh;
 }
 
+.vw80 {
+  width: 80vw;
+}
+
 .vw70 {
   width: 70vw;
 }
@@ -262,14 +266,43 @@ a {
   background-color: rgba(255, 255, 255, 0.75)
 }
 
-.buttonBorderRadius {
-  border-radius: 0.25em;
-}
-
 .screenshot {
   height: auto;
   width: 100%;
   max-width: 100%;
+}
+
+.extraScreenshot {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  order: -1;
+}
+
+.supportForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+}
+
+.supportFormInput {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0.5em;
+  font-family: 'raleway';
+  margin-bottom: 1em;
+  width: 90vw;
+}
+
+.supportFormButton {
+  font-size: 20px;
+  font-family: 'raleway';
+  padding: 0.5em;
+  border-radius: 0.25em;
+  background-color: #fff;
+  margin-bottom: 1em;
 }
 
 @keyframes fadeInMessage {
@@ -324,5 +357,30 @@ a {
   .aboutMainBlurbDiv {
     padding: 1em;
     max-width: 60vw;
+  }
+
+  .aboutBlurbDiv {
+    flex-direction: row;
+    max-width: 80vw;
+  }
+
+  .screenshot {
+    height: 60vh;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .extraScreenshot {
+    height: 60vh;
+    width: auto;
+    order: 2;
+  }
+
+  .supportForm {
+    width: 50vw;
+  }
+
+  .supportFormInput {
+    width: 50vw;
   }
 }
