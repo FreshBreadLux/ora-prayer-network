@@ -69,12 +69,12 @@ class Support extends React.Component {
           </div>
           {this.state.confirmation
           ? <div className="messageFade">
-              <p className="raleway font20 padding1em">{this.state.confirmation}</p>
+              <p className="raleway font20 padding1em centerText">{this.state.confirmation}</p>
             </div>
           : <div>
               {this.state.error
               ? <div className="messageFade">
-                  <p className="raleway font20 padding1em">{this.state.error}</p>
+                  <p className="raleway font20 padding1em centerText">{this.state.error}</p>
                 </div>
               : null
               }

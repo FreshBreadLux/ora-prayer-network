@@ -217,6 +217,10 @@ a {
   padding: 0.5em;
 }
 
+.topMargin1em {
+  margin-top: 1em;
+}
+
 .bottomMargin1em {
   margin-bottom: 1em;
 }
@@ -236,6 +240,10 @@ a {
 
 .font100 {
   font-size: 100px;
+}
+
+.font30 {
+  font-size: 30px;
 }
 
 .font24 {
@@ -305,12 +313,28 @@ a {
   margin-bottom: 1em;
 }
 
+.getInvolvedButton {
+  font-size: 20px;
+  font-family: 'raleway';
+  padding: 0.5em;
+  border-radius: 0.25em;
+  background-color: #fff;
+  color: #000;
+  margin-bottom: 2em;
+}
+
+.getInvolvedDivider {
+  width: 50vw;
+}
+
 @keyframes fadeInMessage {
   from {height: 0vh}
-  to {height: 10vh}
+  to {height: 20vh}
 }
 .messageFade {
   height: 0vh;
+  display: flex;
+  align-items: center;
   animation-name: fadeInMessage;
   animation-duration: 1s;
   animation-fill-mode: forwards;
