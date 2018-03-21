@@ -333,10 +333,42 @@ a {
 
 .stripeForm {
   background-color: #fff;
+  padding: 0.5em;
+}
+
+.stripeFormSectionHeader {
+  font-family: 'raleway';
+  font-size: 16px;
+  color: #000;
+  padding: 0.5em;
+  border-bottom: 1px #0c2461 solid;
 }
 
 .radioButtonDiv {
   display: flex;
+}
+
+@keyframes revealCustomAmountDiv {
+  from {transform: scaleY(0)}
+  to {transform: scaleY(1)}
+}
+.revealedCustomAmountDiv {
+  padding: 0.5em;
+  transform-origin: top;
+  transform: scaleY(1);
+  animation: revealCustomAmountDiv;
+  animation-duration: 0.2s;
+}
+@keyframes hideCustomAmountDiv {
+  from {transform: scaleY(1)}
+  to {transform: scaleY(0)}
+}
+.hiddenCustomAmountDiv {
+  padding: 0.5em;
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: hideCustomAmountDiv;
+  animation-duration: 0.2s;
 }
 
 input[type="radio"] {
@@ -369,6 +401,12 @@ input[type="radio"]:checked + label span {
   border-radius: 1em;
   background-color: #0c2461;
   margin-right: 0.5em;
+}
+
+.stripeCardElement {
+  font-family: 'raleway';
+  font-size: 16px;
+  padding: 0.5em;
 }
 
 @keyframes fadeInMessage {

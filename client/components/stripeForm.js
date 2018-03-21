@@ -6,7 +6,7 @@ class StripeForm extends React.Component {
     super(props)
     this.state = {
       selectedOption: '',
-      customAmount: '',
+      customAmount: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleOptionChange = this.handleOptionChange.bind(this)
@@ -28,6 +28,7 @@ class StripeForm extends React.Component {
     return (
       <div className="vw90">
         <form onSubmit={this.handleSubmit} className="stripeForm">
+          <p className="stripeFormSectionHeader">SUPPORT INFORMATION</p>
           <div className="selectAmountDiv">
             <div className="radioButtonDiv">
               <input
@@ -37,7 +38,7 @@ class StripeForm extends React.Component {
                 onChange={this.handleOptionChange}
                 checked={this.state.selectedOption === '25'} />
               <label htmlFor="25">
-                <span />$25</label>
+                <span />$25 per month</label>
             </div>
             <div className="radioButtonDiv">
               <input
@@ -47,7 +48,7 @@ class StripeForm extends React.Component {
                 onChange={this.handleOptionChange}
                 checked={this.state.selectedOption === '50'} />
               <label htmlFor="50">
-                <span />$50</label>
+                <span />$50 per month</label>
             </div>
             <div className="radioButtonDiv">
               <input
@@ -57,20 +58,24 @@ class StripeForm extends React.Component {
                 onChange={this.handleOptionChange}
                 checked={this.state.selectedOption === '100'} />
               <label htmlFor="100">
-                <span />$100</label>
+                <span />$100 per month</label>
             </div>
             <div className="radioButtonDiv">
               <input
                 type="radio"
                 id="Other"
-                value={this.state.customAmount}
+                value="Other"
                 onChange={this.handleOptionChange}
-                checked={this.state.selectedOption === this.state.customAmount} />
+                checked={this.state.selectedOption === 'Other'} />
               <label htmlFor="Other">
-                <span />Other Amount</label>
+                <span />Other Monthly Amount</label>
+            </div>
+            <div className={this.state.selectedOption === 'Other'
+              ? 'revealedCustomAmountDiv' : 'hiddenCustomAmountDiv'}>
+              <input className="raleway blackText font16" placeholder="Custom Amount" />
             </div>
           </div>
-          <CardElement style={{base: {fontSize: '16px'}}} />
+          <CardElement className="stripeCardElement" />
         </form>
       </div>
     )
