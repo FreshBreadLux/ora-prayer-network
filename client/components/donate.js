@@ -4,7 +4,7 @@ import { Elements } from 'react-stripe-elements'
 import StripeForm from './stripeForm'
 
 const Donate = () => (
-  <div className="displayFlex flexColumn flex1 flexAllCenter">
+  <div className="displayFlex flexColumn flex1 flexAlignCenter">
     <p className="raleway font30 centerText">DONATE</p>
     <Elements>
       <StripeForm />

@@ -317,6 +317,19 @@ a {
   margin-bottom: 1em;
 }
 
+@keyframes fadeInMessage {
+  from {height: 0vh}
+  to {height: 20vh}
+}
+.messageFade {
+  height: 0vh;
+  display: flex;
+  align-items: center;
+  animation-name: fadeInMessage;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
 .getInvolvedButton {
   font-size: 20px;
   font-family: 'raleway';
@@ -329,6 +342,11 @@ a {
 
 .getInvolvedDivider {
   width: 50vw;
+}
+
+.selectAmountDiv {
+  display: flex;
+  flex-direction: column;
 }
 
 .stripeForm {
@@ -349,26 +367,25 @@ a {
 }
 
 @keyframes revealCustomAmountDiv {
-  from {transform: scaleY(0)}
-  to {transform: scaleY(1)}
+  from {max-height: 0px; margin: 0}
+  to {max-height: 50px; margin: 0.5em}
 }
 .revealedCustomAmountDiv {
-  padding: 0.5em;
-  transform-origin: top;
-  transform: scaleY(1);
-  animation: revealCustomAmountDiv;
-  animation-duration: 0.2s;
+  margin: 0.5em;
+  height: auto;
+  max-height: 0px;
+  overflow-y: hidden;
+  animation: revealCustomAmountDiv 0.3s forwards;
 }
 @keyframes hideCustomAmountDiv {
-  from {transform: scaleY(1)}
-  to {transform: scaleY(0)}
+  from {max-height: 50px; margin: 0.5em}
+  to {max-height: 0px; margin: 0em}
 }
 .hiddenCustomAmountDiv {
-  padding: 0.5em;
-  transform-origin: top;
-  transform: scaleY(0);
-  animation: hideCustomAmountDiv;
-  animation-duration: 0.2s;
+  height: auto;
+  max-height: 50px;
+  overflow-y: hidden;
+  animation: hideCustomAmountDiv 0.3s forwards;
 }
 
 input[type="radio"] {
@@ -394,6 +411,10 @@ input[type="radio"] + label span {
   margin-right: 0.5em;
 }
 
+@keyframes fadeInRadioButton {
+  from {background-color: #ccc}
+  to {background-color: #0c2461}
+}
 input[type="radio"]:checked + label span {
   display: flex;
   width: 1em;
@@ -401,25 +422,81 @@ input[type="radio"]:checked + label span {
   border-radius: 1em;
   background-color: #0c2461;
   margin-right: 0.5em;
+  animation-name: fadeInRadioButton;
+  animation-duration: 0.3s;
+}
+
+.whatAboutOneTime {
+  font-family: 'raleway';
+  font-size: 10px;
+  color: #555;
+  padding: 8px;
+}
+
+@keyframes showOneTimeDonationDiv {
+  from {max-height: 0; margin: 0px}
+  to {max-height: 150px; margin: 8px}
+}
+.showOneTimeDonationDiv {
+  height: auto;
+  max-height: 0;
+  overflow-y: hidden;
+  animation: showOneTimeDonationDiv 0.3s forwards;
+}
+@keyframes hideOneTimeDonationDiv {
+  from {max-height: 150px; margin: 8px}
+  to {max-height: 0; margin: 0px}
+}
+.hideOneTimeDonationDiv {
+  height: auto;
+  max-height: 0;
+  overflow-y: hidden;
+  animation: hideOneTimeDonationDiv 0.3s forwards;
+}
+
+.oneTimeDonationBlurb {
+  font-family: 'raleway';
+  font-size: 10px;
+  color: #555;
+}
+
+#OneTimeLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'raleway';
+  font-size: 12px;
+  color: #000;
+  padding: 8px 0px;
+}
+
+@keyframes revealOneTimeCustomAmountDiv {
+  from {max-height: 0px; margin-top: 0}
+  to {max-height: 50px; margin-top: 0.5em}
+}
+.revealedOneTimeCustomAmountDiv {
+  margin-top: 0.5em;
+  height: auto;
+  max-height: 0px;
+  overflow-y: hidden;
+  animation: revealOneTimeCustomAmountDiv 0.3s forwards;
+}
+@keyframes hideOneTimeCustomAmountDiv {
+  from {max-height: 50px; margin-top: 0.5em}
+  to {max-height: 0px; margin-top: 0em}
+}
+.hiddenOneTimeCustomAmountDiv {
+  height: auto;
+  max-height: 50px;
+  overflow-y: hidden;
+  animation: hideOneTimeCustomAmountDiv 0.3s forwards;
 }
 
 .stripeCardElement {
   font-family: 'raleway';
   font-size: 16px;
   padding: 0.5em;
-}
-
-@keyframes fadeInMessage {
-  from {height: 0vh}
-  to {height: 20vh}
-}
-.messageFade {
-  height: 0vh;
-  display: flex;
-  align-items: center;
-  animation-name: fadeInMessage;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  border-bottom: 1px solid #0c2461;
 }
 
 @media (min-width: 600px) {
