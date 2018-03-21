@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Elements } from 'react-stripe-elements'
+import StripeForm from './stripeForm'
 
-class Donate extends React.Component {
-  render() {
-    return (
-      <div className="displayFlex flexColumn flex1">
-        <h1>DONATE</h1>
-      </div>
-    )
-  }
-}
+const Donate = () => (
+  <div className="displayFlex flexColumn flex1 flexAllCenter">
+    <p className="raleway font30 centerText">DONATE</p>
+    <Elements>
+      <StripeForm />
+    </Elements>
+  </div>
+)
 
 export default connect()(Donate)

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Footer from './footer'
 import axios from 'axios'
+import { ROOT_URL } from '../../secrets'
 
 class Support extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class Support extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    axios.post('api/support', {
+    console.log('ROOT_URL: ', ROOT_URL)
+    axios.post(`${ROOT_URL}/api/support`, {
       name: this.state.name,
       email: this.state.email,
       subject: this.state.subject,

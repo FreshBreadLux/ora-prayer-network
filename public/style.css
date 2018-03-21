@@ -10,7 +10,7 @@
 
 * {
   box-sizing: border-box;
-  border: 1px white solid;
+  border: 1px #888 solid;
   margin: 0;
 }
 
@@ -139,6 +139,10 @@ a {
 
 .minHeightvh100 {
   min-height: 100vh;
+}
+
+.vw90 {
+  width: 90vw;
 }
 
 .vw80 {
@@ -325,6 +329,46 @@ a {
 
 .getInvolvedDivider {
   width: 50vw;
+}
+
+.stripeForm {
+  background-color: #fff;
+}
+
+.radioButtonDiv {
+  display: flex;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'raleway';
+  font-size: 16px;
+  color: #000;
+  padding: 0.5em;
+}
+
+input[type="radio"] + label span {
+  display: flex;
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  background-color: #ccc;
+  margin-right: 0.5em;
+}
+
+input[type="radio"]:checked + label span {
+  display: flex;
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  background-color: #0c2461;
+  margin-right: 0.5em;
 }
 
 @keyframes fadeInMessage {
