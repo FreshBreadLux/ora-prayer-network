@@ -10,7 +10,6 @@
 
 * {
   box-sizing: border-box;
-  border: 1px #888 solid;
   margin: 0;
 }
 
@@ -141,6 +140,18 @@ a {
   min-height: 100vh;
 }
 
+.widthPercent100 {
+  width: 100%;
+}
+
+.widthPercent50 {
+  width: 50%;
+}
+
+.widthPercent33 {
+  width: 33%;
+}
+
 .vw90 {
   width: 90vw;
 }
@@ -221,6 +232,10 @@ a {
   padding: 0.5em;
 }
 
+.paddingQuarterem {
+  padding: 0.25em;
+}
+
 .topMargin1em {
   margin-top: 1em;
 }
@@ -274,8 +289,16 @@ a {
   color: #000;
 }
 
+.greyText {
+  color: #555;
+}
+
 .transparentWhiteBackground {
   background-color: rgba(255, 255, 255, 0.75)
+}
+
+.blueBottomBorder {
+  border-bottom: 1px #0c2461 solid;
 }
 
 .screenshot {
@@ -347,10 +370,11 @@ a {
 .selectAmountDiv {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1em;
 }
 
 .stripeForm {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 0.5em;
 }
 
@@ -426,6 +450,18 @@ input[type="radio"]:checked + label span {
   animation-duration: 0.3s;
 }
 
+.donateInputLine {
+  font-family: 'raleway';
+  font-size: 14px;
+  color: #000;
+  padding: 8px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px #0c2461 solid;
+  background-color: transparent;
+}
+
 .whatAboutOneTime {
   font-family: 'raleway';
   font-size: 10px;
@@ -492,11 +528,29 @@ input[type="radio"]:checked + label span {
   animation: hideOneTimeCustomAmountDiv 0.3s forwards;
 }
 
+.paymentInfoDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.lineItemDiv {
+  display: flex;
+  flex-direction: column;
+}
+
 .stripeCardElement {
   font-family: 'raleway';
   font-size: 16px;
   padding: 0.5em;
   border-bottom: 1px solid #0c2461;
+}
+
+.reviewDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
 }
 
 @media (min-width: 600px) {

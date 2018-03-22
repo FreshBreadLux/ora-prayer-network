@@ -78,7 +78,7 @@ class StripeForm extends React.Component {
             </div>
             <div className={this.state.selectedOption === 'Other'
               ? 'revealedCustomAmountDiv' : 'hiddenCustomAmountDiv'}>
-              <input className="raleway blackText font16" placeholder="Custom Amount" />
+              <input className="donateInputLine  widthPercent100" placeholder="Custom Amount" />
             </div>
             <a href="#" onClick={this.toggleOneTimeDonation} className="whatAboutOneTime">What about one-time donations?</a>
             <div className={this.state.oneTimeDonation ? 'showOneTimeDonationDiv' : 'hideOneTimeDonationDiv'}>
@@ -95,11 +95,46 @@ class StripeForm extends React.Component {
               </div>
               <div className={this.state.selectedOption === 'OneTime'
                 ? 'revealedOneTimeCustomAmountDiv' : 'hiddenOneTimeCustomAmountDiv'}>
-                <input className="raleway blackText font12" placeholder="One-Time Amount" />
+                <input className="raleway blackText font12 blueBottomBorder widthPercent100" placeholder="One-Time Amount" />
               </div>
             </div>
           </div>
-          <CardElement className="stripeCardElement" />
+          <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
+          <div className="paymentInfoDiv">
+            <div className="lineItemDiv bottomMargin1em">
+              <label className="raleway greyText font12">NAME</label>
+              <div className="displayFlex flexJustifyCenter">
+                <input className="donateInputLine widthPercent50" placeholder="First Name" />
+                <input className="donateInputLine widthPercent50" placeholder="Last Name" />
+              </div>
+            </div>
+            <div className="lineItemDiv bottomMargin1em">
+              <label className="raleway greyText font12">EMAIL</label>
+              <div className="displayFlex">
+                <input className="donateInputLine widthPercent100" placeholder="Email" />
+              </div>
+            </div>
+            <div className="lineItemDiv bottomMargin1em">
+              <label className="raleway greyText font12">ADDRESS</label>
+              <div className="displayFlex">
+                <input className="donateInputLine widthPercent100" placeholder="Address" />
+              </div>
+            </div>
+            <div className="lineItemDiv bottomMargin1em">
+              <label className="raleway greyText font12">CITY | STATE | ZIP</label>
+              <div className="displayFlex flexJustifyCenter">
+                <input className="donateInputLine widthPercent33" placeholder="City" />
+                <input className="donateInputLine widthPercent33" placeholder="State" />
+                <input className="donateInputLine widthPercent33" placeholder="Zip" />
+              </div>
+            </div>
+            <label className="raleway greyText font12">CARD INFORMATION</label>
+            <CardElement className="stripeCardElement" />
+          </div>
+          <p className="stripeFormSectionHeader">REVIEW</p>
+          <div className="reviewDiv">
+            <p className="raleway blackText font16">AMOUNT</p>
+          </div>
         </form>
       </div>
     )
