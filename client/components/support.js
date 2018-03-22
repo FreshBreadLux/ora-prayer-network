@@ -63,7 +63,7 @@ class Support extends React.Component {
       <div className="displayFlex flexColumn flex1">
         <div className="displayFlex flexColumn flex1 flexAllCenter">
           <div className="padding1em displayFlex flexColumn flexAllCenter">
-            <p className="raleway font24 centerText">Got questions?</p>
+            <p className="raleway font24 centerText">Have questions?</p>
             <p className="raleway font24 centerText">Need to tell us about a bug?</p>
             <p className="raleway font24 centerText">Want to share your story?</p>
           </div>

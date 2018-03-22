@@ -7,7 +7,7 @@ import StripeForm from './stripeForm'
 const Donate = () => (
   <div className="displayFlex flexColumn flex1">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
-      <p className="raleway font30 centerText paddingQuarterem">DONATE</p>
+      <p className="raleway font30 centerText paddingHalfem">DONATE</p>
       <Elements>
         <StripeForm />
       </Elements>
