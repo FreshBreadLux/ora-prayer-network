@@ -18,17 +18,6 @@ const FormSupportSection = ({ handleInputChange, toggleOneTimeDonation, selected
       <div className="radioButtonDiv">
         <input
           type="radio"
-          id="50"
-          name="selectedOption"
-          value="50"
-          onChange={handleInputChange}
-          checked={selectedOption === '50'} />
-        <label htmlFor="50">
-          <span />$50 per month</label>
-      </div>
-      <div className="radioButtonDiv">
-        <input
-          type="radio"
           id="100"
           name="selectedOption"
           value="100"
@@ -36,6 +25,17 @@ const FormSupportSection = ({ handleInputChange, toggleOneTimeDonation, selected
           checked={selectedOption === '100'} />
         <label htmlFor="100">
           <span />$100 per month</label>
+      </div>
+      <div className="radioButtonDiv">
+        <input
+          type="radio"
+          id="200"
+          name="selectedOption"
+          value="200"
+          onChange={handleInputChange}
+          checked={selectedOption === '200'} />
+        <label htmlFor="200">
+          <span />$200 per month</label>
       </div>
       <div className="radioButtonDiv">
         <input

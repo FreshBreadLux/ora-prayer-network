@@ -28,6 +28,8 @@ class StripeForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.toggleOneTimeDonation = this.toggleOneTimeDonation.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
+    this.setAddressFieldRef = this.setAddressFieldRef.bind(this)
+    this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
   }
 
   async handleSubmit(event) {
@@ -48,8 +50,6 @@ class StripeForm extends React.Component {
 
   handleInputChange(event) {
     const { name, value } = event.target
-    console.log('name: ', name)
-    console.log('value: ', value)
     this.setState({ [name]: value })
   }
 
@@ -67,14 +67,24 @@ class StripeForm extends React.Component {
           checkEmailReturned: true,
           userExists: true
         })
+        this.addressField.focus()
       } else {
         this.setState({
           checkEmailReturned: true,
           userExists: false
         })
+        this.passwordField.focus()
       }
     })
     .catch(console.error)
+  }
+
+  setAddressFieldRef(ref) {
+    this.addressField = ref
+  }
+
+  setPasswordFieldRef(ref) {
+    this.passwordField = ref
   }
 
   render() {
@@ -91,6 +101,8 @@ class StripeForm extends React.Component {
             checkEmail={this.checkEmail}
             userExists={this.state.userExists}
             handleInputChange={this.handleInputChange}
+            setAddressFieldRef={this.setAddressFieldRef}
+            setPasswordFieldRef={this.setPasswordFieldRef}
             checkEmailReturned={this.state.checkEmailReturned} />
           <div className="paddingHalfem bottomMargin1em">
             <label className="raleway greyText font12">CARD INFORMATION</label>
@@ -98,7 +110,10 @@ class StripeForm extends React.Component {
               onChange={event => this.setState({zip: event.value.postalCode})}
               className="stripeCardElement" />
           </div>
-          <FormReviewSection selectedOption={this.state.selectedOption} />
+          <FormReviewSection
+            customAmount={this.state.customAmount}
+            oneTimeAmount={this.state.oneTimeAmount}
+            selectedOption={this.state.selectedOption} />
         </form>
       </div>
     )

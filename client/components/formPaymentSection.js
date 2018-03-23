@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists }) => (
+const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setAddressFieldRef, setPasswordFieldRef }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -42,6 +42,7 @@ const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned,
       <div className={checkEmailReturned && !userExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
         <p className="raleway greyText font10">WELCOME! YOU'LL NEED TO SET A PASSWORD TO USE IN THE ORA APP AND TO MANAGE YOUR DONATIONS</p>
         <input
+          ref={setPasswordFieldRef}
           type="text"
           name="password"
           inputMode="text"
@@ -53,6 +54,7 @@ const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned,
         <label className="raleway greyText font12">ADDRESS</label>
         <div className="displayFlex">
           <input
+            ref={setAddressFieldRef}
             type="text"
             name="address"
             inputMode="text"

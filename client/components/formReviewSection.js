@@ -18,11 +18,11 @@ class FormReviewSection extends React.Component {
           </p>
         </div>
       )
-    } else if (this.props.selectedOption === 'Other') {
+    } else if (this.props.selectedOption === 'Custom') {
       return (
         <div>
           <p className="raleway blackText font20 rightText">
-            {`$${this.props.otherAmount} `}
+            {`$${this.props.customAmount} `}
           </p>
           <p className="raleway blackText font16 rightText">
             monthly donation
