@@ -40,8 +40,7 @@ class StripeForm extends React.Component {
     } else {
       console.log('token: ', token)
       axios.post(`https://ora-pro-nobis.herokuapp.com/api/donations/oneTime`, {
-        token: token,
-        zip: this.state.zip
+        token: token
       })
       .then(charge => console.log('Charge confirmed: ', charge))
       .catch(console.error)
@@ -58,10 +57,8 @@ class StripeForm extends React.Component {
   }
 
   checkEmail() {
-    console.log('sending email for verification...')
     axios.get(`https://ora-pro-nobis.herokuapp.com/api/users/byEmail/${this.state.email}`)
     .then(response => {
-      console.log('checkEmail response: ', response)
       if (response.data.id) {
         this.setState({
           checkEmailReturned: true,
