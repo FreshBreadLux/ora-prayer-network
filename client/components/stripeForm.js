@@ -124,8 +124,6 @@ class StripeForm extends React.Component {
   }
 
   render() {
-    console.log('this.state: ', this.state)
-    console.log('this.props: ', this.props)
     return (
       <div className="vw90 displayFlex flexJustifyCenter">
         <form onSubmit={this.handleSubmit} className="stripeForm">

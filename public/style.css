@@ -228,6 +228,10 @@ textarea, input {
   justify-content: center;
 }
 
+.flexJustifyBetween {
+  justify-content: space-between;
+}
+
 .padding1em {
   padding: 1em;
 }
@@ -240,12 +244,28 @@ textarea, input {
   padding: 0.25em;
 }
 
+.paddingTop2em {
+  padding-top: 2em;
+}
+
+.paddingBottom2em {
+  padding-bottom: 2em;
+}
+
 .topMargin1em {
   margin-top: 1em;
 }
 
+.topMargin3em {
+  margin-top: 3em;
+}
+
 .bottomMargin1em {
   margin-bottom: 1em;
+}
+
+.bottomMargin3em {
+  margin-bottom: 3em;
 }
 
 .raleway {
@@ -604,6 +624,16 @@ input[type="radio"]:checked + label span {
   padding: 0.5em;
 }
 
+.thankYouPageButton {
+  font-size: 14px;
+  font-family: 'raleway';
+  padding: 0.5em;
+  border-radius: 0.25em;
+  background-color: #fff;
+  color: #000;
+  min-width: 80vw;
+}
+
 @media (min-width: 600px) {
   .menuButtonDiv {
     display: none;
@@ -674,5 +704,10 @@ input[type="radio"]:checked + label span {
 
   .stripeForm {
     max-width: 50vw;
+  }
+
+  .thankYouPageButton {
+    min-width: 270px;
+    max-width: 350px;
   }
 }
