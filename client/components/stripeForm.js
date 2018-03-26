@@ -35,7 +35,7 @@ class StripeForm extends React.Component {
     this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
     this.createUserWithStripeCustomerID = this.createUserWithStripeCustomerID.bind(this)
     this.createStripeCustomer = this.createStripeCustomer.bind(this)
-    this.subscribeOrChage = this.subscribeOrChage.bind(this)
+    this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
   }
 
   async handleSubmit(event) {
@@ -57,7 +57,7 @@ class StripeForm extends React.Component {
       token,
       userInfo: { firstName, lastName, email, password, address, city, state, zip }
     })
-    .then(createdUser => this.subscribeOrChage(createdUser))
+    .then(createdUser => this.subscribeOrCharge(createdUser))
     .catch(console.error)
   }
 
@@ -67,11 +67,11 @@ class StripeForm extends React.Component {
       token,
       userInfo: { firstName, lastName, email, password, address, city, state, zip }
     })
-    .then(updatedUser => this.subscribeOrChage(updatedUser))
+    .then(updatedUser => this.subscribeOrCharge(updatedUser))
     .catch(console.error)
   }
 
-  subscribeOrChage(user) {
+  subscribeOrCharge(user) {
     const { selectedOption } = this.state
     const oneTimeAmount = +this.state.oneTimeAmount * 100
     const customAmount = +this.state.customAmount * 100
