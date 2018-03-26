@@ -77,15 +77,15 @@ class StripeForm extends React.Component {
     const customAmount = +this.state.customAmount * 100
     if (selectedOption === 'OneTime') {
       axios.post(`${ROOT_URL}/api/donations/oneTime`, { user, oneTimeAmount })
-      .then(charge => console.log('charge: ', charge))
+      .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else if (selectedOption === 'Custom') {
       axios.post(`${ROOT_URL}/api/donations/customSubscription`, { user, customAmount })
-      .then(subscription => console.log('custom subscription: ', subscription))
+      .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
       axios.post(`${ROOT_URL}/api/donations/existingSubscription`, { user, selectedOption })
-      .then(subscription => console.log('subscription: ', subscription))
+      .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
   }

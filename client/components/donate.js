@@ -4,12 +4,12 @@ import Footer from './footer'
 import { Elements } from 'react-stripe-elements'
 import StripeForm from './stripeForm'
 
-const Donate = () => (
+const Donate = props => (
   <div className="displayFlex flexColumn flex1">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
       <p className="raleway font30 centerText paddingHalfem">DONATE</p>
       <Elements>
-        <StripeForm />
+        <StripeForm {...props} />
       </Elements>
     </div>
     <Footer />
