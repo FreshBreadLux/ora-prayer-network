@@ -5,6 +5,8 @@ import FormPaymentSection from './formPaymentSection'
 import FormReviewSection from './formReviewSection'
 import axios from 'axios'
 
+const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+
 class StripeForm extends React.Component {
   constructor(props) {
     super(props)
@@ -51,7 +53,7 @@ class StripeForm extends React.Component {
 
   createUserWithStripeCustomerID(token) {
     const { firstName, lastName, email, password, address, city, state, zip } = this.state
-    axios.post(`https://ora-pro-nobis.herokuapp.com/api/users/donor`, {
+    axios.post(`${ROOT_URL}/api/users/donor`, {
       token,
       userInfo: { firstName, lastName, email, password, address, city, state, zip }
     })
@@ -61,7 +63,7 @@ class StripeForm extends React.Component {
 
   createStripeCustomer(token) {
     const { firstName, lastName, email, password, address, city, state, zip } = this.state
-    axios.post(`https://ora-pro-nobis.herokuapp.com/api/users/stripeCustomer`, {
+    axios.post(`${ROOT_URL}/api/users/stripeCustomer`, {
       token,
       userInfo: { firstName, lastName, email, password, address, city, state, zip }
     })
@@ -70,20 +72,18 @@ class StripeForm extends React.Component {
   }
 
   subscribeOrChage(user) {
-
-  }
-
-  handleInputChange(event) {
-    const { name, value } = event.target
-    this.setState({ [name]: value })
-  }
-
-  toggleOneTimeDonationDivOpen() {
-    this.setState({oneTimeDonationDivOpen: !this.state.oneTimeDonationDivOpen})
+    const { selectedOption, customAmount, oneTimeAmount } = this.state
+    if (selectedOption === 'OneTime') {
+      axios.post(`${ROOT_URL}/api/donations/oneTime`, { user, oneTimeAmount })
+    } else if (selectedOption === 'Custom') {
+      axios.post(`${ROOT_URL}/api/donations/customSubscription`, { user, customAmount })
+    } else {
+      axios.post(`${ROOT_URL}/api/donations/existingSubscription`, { user, selectedOption })
+    }
   }
 
   checkEmail() {
-    axios.get(`https://ora-pro-nobis.herokuapp.com/api/users/byEmail/${this.state.email}`)
+    axios.get(`${ROOT_URL}/api/users/byEmail/${this.state.email}`)
     .then(response => {
       if (response.data.id && response.data.stripeCustomerId) {
         this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
@@ -96,6 +96,15 @@ class StripeForm extends React.Component {
       }
     })
     .catch(console.error)
+  }
+
+  handleInputChange(event) {
+    const { name, value } = event.target
+    this.setState({ [name]: value })
+  }
+
+  toggleOneTimeDonationDivOpen() {
+    this.setState({oneTimeDonationDivOpen: !this.state.oneTimeDonationDivOpen})
   }
 
   setAddressFieldRef(ref) {
