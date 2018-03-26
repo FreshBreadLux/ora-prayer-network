@@ -83,6 +83,8 @@ class StripeForm extends React.Component {
       axios.post(`${ROOT_URL}/api/donations/customSubscription`, { user, customAmount })
     } else {
       axios.post(`${ROOT_URL}/api/donations/existingSubscription`, { user, selectedOption })
+      .then(subscription => console.log('subscription: ', subscription))
+      .catch(console.error)
     }
   }
 
