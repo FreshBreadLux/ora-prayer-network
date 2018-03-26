@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setAddressFieldRef, setPasswordFieldRef }) => (
+const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setAddressFieldRef, setPasswordFieldRef, stripeCustomerExists }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -36,14 +36,17 @@ const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned,
             placeholder="Email" />
         </div>
       </div>
-      <div className={checkEmailReturned && userExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
+      <div className={checkEmailReturned && userExists && stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
+        <p className="raleway greyText font10 bottomMargin1em">YOU ALREADY HAVE A DONATION PROFILE. PLEASE GO TO 'MANAGE MY DONATIONS'</p>
+      </div>
+      <div className={checkEmailReturned && userExists && !stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
         <p className="raleway greenText font10 bottomMargin1em">VERIFIED! YOU'LL USE THE SAME PASSWORD YOU USE FOR THE APP TO MANAGE YOUR DONATIONS</p>
       </div>
       <div className={checkEmailReturned && !userExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
         <p className="raleway greyText font10">WELCOME! YOU'LL NEED TO SET A PASSWORD TO USE IN THE ORA APP AND TO MANAGE YOUR DONATIONS</p>
         <input
           ref={setPasswordFieldRef}
-          type="text"
+          type="password"
           name="password"
           inputMode="text"
           onChange={handleInputChange}

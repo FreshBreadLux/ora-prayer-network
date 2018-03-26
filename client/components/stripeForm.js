@@ -11,7 +11,7 @@ class StripeForm extends React.Component {
     this.state = {
       selectedOption: '',
       customAmount: '',
-      oneTimeDonation: false,
+      oneTimeDonationDivOpen: false,
       oneTimeAmount: '',
       firstName: '',
       lastName: '',
@@ -19,6 +19,7 @@ class StripeForm extends React.Component {
       password: '',
       checkEmailReturned: false,
       userExists: false,
+      stripeCustomerExists: false,
       address: '',
       city: '',
       state: '',
@@ -26,25 +27,50 @@ class StripeForm extends React.Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.toggleOneTimeDonation = this.toggleOneTimeDonation.bind(this)
+    this.toggleOneTimeDonationDivOpen = this.toggleOneTimeDonationDivOpen.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
     this.setAddressFieldRef = this.setAddressFieldRef.bind(this)
     this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
+    this.createUserWithStripeCustomerID = this.createUserWithStripeCustomerID.bind(this)
+    this.createStripeCustomer = this.createStripeCustomer.bind(this)
+    this.subscribeOrChage = this.subscribeOrChage.bind(this)
   }
 
   async handleSubmit(event) {
     event.preventDefault()
-    const {token, error} = await this.props.stripe.createToken()
+    const { token, error } = await this.props.stripe.createToken()
     if (error) {
       console.error('Error: ', error.message)
     } else {
       console.log('token: ', token)
-      axios.post(`https://ora-pro-nobis.herokuapp.com/api/donations/oneTime`, {
-        token: token
-      })
-      .then(charge => console.log('Charge confirmed: ', charge))
-      .catch(console.error)
+      const { userExists, stripeCustomerExists } = this.state
+      if (!userExists) this.createUserWithStripeCustomerID(token)
+      else if (userExists && !stripeCustomerExists) this.createStripeCustomer(token)
     }
+  }
+
+  createUserWithStripeCustomerID(token) {
+    const { firstName, lastName, email, password, address, city, state, zip } = this.state
+    axios.post(`https://ora-pro-nobis.herokuapp.com/api/users/donor`, {
+      token,
+      userInfo: { firstName, lastName, email, password, address, city, state, zip }
+    })
+    .then(createdUser => this.subscribeOrChage(createdUser))
+    .catch(console.error)
+  }
+
+  createStripeCustomer(token) {
+    const { firstName, lastName, email, password, address, city, state, zip } = this.state
+    axios.post(`https://ora-pro-nobis.herokuapp.com/api/users/stripeCustomer`, {
+      token,
+      userInfo: { firstName, lastName, email, password, address, city, state, zip }
+    })
+    .then(updatedUser => this.subscribeOrChage(updatedUser))
+    .catch(console.error)
+  }
+
+  subscribeOrChage(user) {
+
   }
 
   handleInputChange(event) {
@@ -52,24 +78,20 @@ class StripeForm extends React.Component {
     this.setState({ [name]: value })
   }
 
-  toggleOneTimeDonation() {
-    this.setState({oneTimeDonation: !this.state.oneTimeDonation})
+  toggleOneTimeDonationDivOpen() {
+    this.setState({oneTimeDonationDivOpen: !this.state.oneTimeDonationDivOpen})
   }
 
   checkEmail() {
     axios.get(`https://ora-pro-nobis.herokuapp.com/api/users/byEmail/${this.state.email}`)
     .then(response => {
-      if (response.data.id) {
-        this.setState({
-          checkEmailReturned: true,
-          userExists: true
-        })
+      if (response.data.id && response.data.stripeCustomerId) {
+        this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
+      } else if (response.data.id) {
+        this.setState({ checkEmailReturned: true, userExists: true })
         this.addressField.focus()
       } else {
-        this.setState({
-          checkEmailReturned: true,
-          userExists: false
-        })
+        this.setState({ checkEmailReturned: true, userExists: false })
         this.passwordField.focus()
       }
     })
@@ -92,15 +114,16 @@ class StripeForm extends React.Component {
           <FormSupportSection
             handleInputChange={this.handleInputChange}
             selectedOption={this.state.selectedOption}
-            oneTimeDonation={this.state.oneTimeDonation}
-            toggleOneTimeDonation={this.toggleOneTimeDonation} />
+            oneTimeDonationDivOpen={this.state.oneTimeDonationDivOpen}
+            toggleOneTimeDonationDivOpen={this.toggleOneTimeDonationDivOpen} />
           <FormPaymentSection
             checkEmail={this.checkEmail}
             userExists={this.state.userExists}
             handleInputChange={this.handleInputChange}
             setAddressFieldRef={this.setAddressFieldRef}
             setPasswordFieldRef={this.setPasswordFieldRef}
-            checkEmailReturned={this.state.checkEmailReturned} />
+            checkEmailReturned={this.state.checkEmailReturned}
+            stripeCustomerExists={this.state.stripeCustomerExists} />
           <div className="paddingHalfem bottomMargin1em">
             <label className="raleway greyText font12">CARD INFORMATION</label>
             <CardElement

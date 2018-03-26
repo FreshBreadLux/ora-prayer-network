@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormSupportSection = ({ handleInputChange, toggleOneTimeDonation, selectedOption, oneTimeDonation }) => (
+const FormSupportSection = ({ handleInputChange, toggleOneTimeDonationDivOpen, selectedOption, oneTimeDonationDivOpen }) => (
   <div>
     <p className="stripeFormSectionHeader">SUPPORT INFORMATION</p>
     <div className="selectAmountDiv">
@@ -58,8 +58,8 @@ const FormSupportSection = ({ handleInputChange, toggleOneTimeDonation, selected
           className="donateInputLine widthPercent100"
           placeholder="Custom Amount" />
       </div>
-      <a href="#" onClick={toggleOneTimeDonation} className="whatAboutOneTime">What about one-time donations?</a>
-      <div className={oneTimeDonation ? 'showOneTimeDonationDiv' : 'hideOneTimeDonationDiv'}>
+      <a href="#" onClick={toggleOneTimeDonationDivOpen} className="whatAboutOneTime">What about one-time donations?</a>
+      <div className={oneTimeDonationDivOpen ? 'showOneTimeDonationDiv' : 'hideOneTimeDonationDiv'}>
         <p className="oneTimeDonationBlurb">We prefer recurring donations because we want to build relationships with our Angel Investors. However, if you'd like to make a one-time donation you can use the option below.</p>
         <div className="radioButtonDiv">
           <input
