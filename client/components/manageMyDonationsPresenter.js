@@ -1,38 +1,44 @@
 import React from 'react'
+import SupportPlanButtonsSection from './supportPlanButtonsSection'
 
-const ManageMyDonationsPresenter = ({ plan, created, logout, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription }) => (
+const ManageMyDonationsPresenter = ({ plan, created, logout, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription, charges }) => (
   <div className="displayFlex flexColumn flex1 padding1em">
     <p className="raleway font24 bottomMarginHalfem">ANGEL INVESTOR</p>
     <div className="supportPlanDiv">
       <p className="bottomMarginHalfem">SUPPORT PLAN</p>
       <p className="font12 bottomMargin3em">
-        {`STARTED: ${new Date(created * 1000)
-        .toDateString()
-        .slice(3)
-        .toUpperCase()}`}</p>
+        {created === 'CANCELED'
+        ? created
+        : `STARTED: ${new Date(created * 1000).toDateString().slice(3)
+        .toUpperCase()}`}
+      </p>
       <div className="displayFlex flexJustifyBetween">
-        <div className="displayFlex flexColumn flexAlignStart">
-          <button
-            onClick={toggleCustomInput}
-            className="supportPlanButton">
-            EDIT MONTHLY AMOUNT
-          </button>
-          <div className={customInputRevealed ? 'revealedCustomInputDiv' : 'hiddenCustomInputDiv'}>
-            <div className="displayFlex flexColumn">
-              <input
-                name="updatePlanAmount"
-                className="donateInputLine"
-                onChange={handleInputChange} />
-              <button
-                onClick={updateSubscription}
-                className="confirmSupportPlanButton">UPDATE</button>
-            </div>
-          </div>
-          <button className="supportPlanButton">CANCEL SUPPORT PLAN</button>
+        <SupportPlanButtonsSection
+          created={created}
+          toggleCustomInput={toggleCustomInput}
+          handleInputChange={handleInputChange}
+          updateSubscription={updateSubscription}
+          toggleCancelButton={toggleCancelButton}
+          cancelSubscription={cancelSubscription}
+          toggleStartNewPlan={toggleStartNewPlan}
+          startNewPlanRevealed={startNewPlanRevealed}
+          startNewSubscription={startNewSubscription}
+          customInputRevealed={customInputRevealed}
+          cancelButtonRevealed={cancelButtonRevealed} />
+        <div className="displayFlex flexColumn flexAlignCenter alignSelfEnd widthPercent35">
+          <p className="font24">{`$${plan.amount / 100}`}</p>
+          <p className="font12">{`per ${plan.interval}`}</p>
         </div>
-        <p className="font18 alignSelfEnd">{`$${plan.amount / 100} / ${plan.interval}`}</p>
       </div>
     </div>
+    <p className="raleway font24 bottomMarginHalfem topMargin1em">HISTORY</p>
+    {charges.map(charge => (
+      <div
+        key={charge.id}
+        className="supportPlanDiv bottomMarginHalfem">
+        <p>{`Charge amount: $${charge.amount / 100}`}</p>
+      </div>
+    ))}
     <button onClick={logout}>LOGOUT</button>
   </div>
 )
