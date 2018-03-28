@@ -30,8 +30,10 @@ class Navbar extends React.Component {
           <div className={this.state.revealedNavbar ? 'revealedNavbar' : 'hiddenNavbar'}>
             <Link to="/home" onClick={this.hideNavbar}>HOME</Link>
             <Link to="/about" onClick={this.hideNavbar}>ABOUT</Link>
+            <Link to="/donate" onClick={this.hideNavbar}>DONATE</Link>
             <Link to="/get-involved" onClick={this.hideNavbar}>GET INVOLVED</Link>
             <Link to="/support" onClick={this.hideNavbar}>SUPPORT</Link>
+            <Link to="/manage-my-donations" onClick={this.hideNavbar}>MANAGE MY DONATIONS</Link>
           </div>
         </nav>
       </div>

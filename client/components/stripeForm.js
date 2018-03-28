@@ -62,10 +62,10 @@ class StripeForm extends React.Component {
   }
 
   createStripeCustomer(token) {
-    const { firstName, lastName, email, password, address, city, state, zip } = this.state
+    const { firstName, lastName, email, address, city, state, zip } = this.state
     axios.post(`${ROOT_URL}/api/users/stripeCustomer`, {
       token,
-      userInfo: { firstName, lastName, email, password, address, city, state, zip }
+      userInfo: { firstName, lastName, email, address, city, state, zip }
     })
     .then(updatedUser => this.subscribeOrCharge(updatedUser))
     .catch(console.error)

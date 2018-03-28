@@ -224,12 +224,20 @@ textarea, input {
   align-items: flex-end;
 }
 
+.flexJustifyStart {
+  justify-content: flex-start;
+}
+
 .flexJustifyCenter {
   justify-content: center;
 }
 
 .flexJustifyBetween {
   justify-content: space-between;
+}
+
+.alignSelfEnd {
+  align-self: flex-end;
 }
 
 .padding1em {
@@ -258,6 +266,10 @@ textarea, input {
 
 .topMargin3em {
   margin-top: 3em;
+}
+
+.bottomMarginHalfem {
+  margin-bottom: 0.5em;
 }
 
 .bottomMargin1em {
@@ -295,6 +307,10 @@ textarea, input {
 
 .font20 {
   font-size: 20px;
+}
+
+.font18 {
+  font-size: 18px;
 }
 
 .font16 {
@@ -632,6 +648,52 @@ input[type="radio"]:checked + label span {
   background-color: #fff;
   color: #000;
   min-width: 80vw;
+}
+
+.supportPlanDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5em;
+  color: #000;
+  font-family: 'raleway';
+}
+
+.supportPlanButton {
+  padding: 5px 0;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+@keyframes revealCustomInputDiv {
+  from {max-height: 0px; margin: 0 0}
+  to {max-height: 100px; margin: 0.25em 0}
+}
+.revealedCustomInputDiv {
+  margin: 0.25em 0;
+  height: auto;
+  max-height: 0px;
+  overflow-y: hidden;
+  animation: revealCustomInputDiv 0.3s forwards;
+}
+@keyframes hideCustomInputDiv {
+  from {max-height: 100px; margin: 0.25em 0}
+  to {max-height: 0px; margin: 0 0}
+}
+.hiddenCustomInputDiv {
+  height: auto;
+  max-height: 100px;
+  overflow-y: hidden;
+  animation: hideCustomInputDiv 0.3s forwards;
+}
+
+.confirmSupportPlanButton {
+  padding: 5px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
 }
 
 @media (min-width: 600px) {
