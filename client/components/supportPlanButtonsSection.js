@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription }) => (
+const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription, startNewPlanAmount, updatePlanAmount }) => (
   <div className="displayFlex flexColumn flexAlignStart widthPercent65">
     {created === 'CANCELED'
     ? <div>
@@ -11,6 +11,7 @@ const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputReve
           <div className="displayFlex flexColumn">
             <input
               name="startNewPlanAmount"
+              value={startNewPlanAmount}
               className="donateInputLine"
               onChange={handleInputChange} />
             <button
@@ -27,6 +28,7 @@ const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputReve
           <div className="displayFlex flexColumn">
             <input
               name="updatePlanAmount"
+              value={updatePlanAmount}
               className="donateInputLine"
               onChange={handleInputChange} />
             <button

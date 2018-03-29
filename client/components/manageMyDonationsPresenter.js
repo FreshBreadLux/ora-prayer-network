@@ -26,7 +26,7 @@ const ManageMyDonationsPresenter = ({ plan, created, logout, toggleCustomInput, 
           customInputRevealed={customInputRevealed}
           cancelButtonRevealed={cancelButtonRevealed} />
         <div className="displayFlex flexColumn flexAlignCenter alignSelfEnd widthPercent35">
-          <p className="font24">{`$${plan.amount / 100}`}</p>
+          <p className="font30">{`$${plan.amount / 100}`}</p>
           <p className="font12">{`per ${plan.interval}`}</p>
         </div>
       </div>
@@ -36,7 +36,9 @@ const ManageMyDonationsPresenter = ({ plan, created, logout, toggleCustomInput, 
       <div
         key={charge.id}
         className="supportPlanDiv bottomMarginHalfem">
-        <p>{`Charge amount: $${charge.amount / 100}`}</p>
+        <p>{`Donation amount: $${charge.amount / 100}`}</p>
+        <p>{`Date: ${new Date(charge.created * 1000).toDateString().slice(3)
+          .toUpperCase()}`}</p>
       </div>
     ))}
     <button onClick={logout}>LOGOUT</button>

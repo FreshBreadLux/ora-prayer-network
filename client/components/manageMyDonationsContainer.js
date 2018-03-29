@@ -1,5 +1,4 @@
 import React from 'react'
-import LoginPage from './loginPage'
 import Footer from './footer'
 import axios from 'axios'
 import ManageMyDonationsPresenter from './manageMyDonationsPresenter'
@@ -10,9 +9,6 @@ class ManageMyDonationsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoggedIn: false,
-      userId: null,
-      jwToken: null,
       subscriptionInfo: {plan: {amount: 0, interval: 'month'}},
       customInputRevealed: false,
       updatePlanAmount: '',
@@ -21,8 +17,6 @@ class ManageMyDonationsContainer extends React.Component {
       startNewPlanAmount: '',
       charges: [],
     }
-    this.logout = this.logout.bind(this)
-    this.verifyLogin = this.verifyLogin.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.toggleCustomInput = this.toggleCustomInput.bind(this)
     this.toggleCancelButton = this.toggleCancelButton.bind(this)
@@ -35,28 +29,16 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.verifyLogin()
+    const { userId, jwToken } = this.props
+    this.fetchSubscriptions(userId, jwToken)
+    .then(() => this.fetchChargeHistory(userId, jwToken))
+    .catch(console.error)
   }
 
-  verifyLogin() {
-    const oraAuth = localStorage.getItem('oraAuth')
-    const oraAuthJson = JSON.parse(oraAuth)
-    if (oraAuthJson) {
-      this.fetchSubscriptions(oraAuthJson.userId)
-      .then(() => this.fetchChargeHistory(oraAuthJson.userId))
-      .then(() => {
-        this.setState({
-          isLoggedIn: true,
-          userId: oraAuthJson.userId,
-          jwToken: oraAuthJson.jwToken
-        })
-      })
-      .catch(console.error)
-    }
-  }
-
-  fetchSubscriptions(userId) {
-    return axios.get(`${ROOT_URL}/api/donations/subscription/forUser/${userId}`)
+  fetchSubscriptions(userId, jwToken) {
+    return axios.get(`${ROOT_URL}/api/donations/subscription/forUser/${userId}`, {
+      headers: {token: jwToken}
+    })
     .then(subscriptions => {
       if (subscriptions.data.data[0]) {
         this.setState({ subscriptionInfo: subscriptions.data.data[0] })
@@ -71,11 +53,11 @@ class ManageMyDonationsContainer extends React.Component {
     })
   }
 
-  fetchChargeHistory(userId) {
-    return axios.get(`${ROOT_URL}/api/donations/chargeHistory/forUser/${userId}`)
-    .then(charges => {
-      this.setState({ charges: charges.data.data })
+  fetchChargeHistory(userId, jwToken) {
+    return axios.get(`${ROOT_URL}/api/donations/chargeHistory/forUser/${userId}`, {
+      headers: {token: jwToken}
     })
+    .then(charges => this.setState({ charges: charges.data.data }))
   }
 
   toggleCustomInput() {
@@ -96,68 +78,88 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   updateSubscription() {
-    const { userId, updatePlanAmount, subscriptionInfo } = this.state
+    const { userId, jwToken } = this.props
+    const { updatePlanAmount, subscriptionInfo } = this.state
     axios.post(`${ROOT_URL}/api/donations/updateSubscription/forUser/${userId}`, {
       updatePlanAmount: +updatePlanAmount * 100,
       subscriptionId: subscriptionInfo.id
+    }, {
+      headers: {token: jwToken}
     })
-    .then(subscription => this.setState({ subscriptionInfo: subscription.data }))
+    .then(subscription => this.setState({
+      subscriptionInfo: subscription.data,
+      customInputRevealed: false,
+      updatePlanAmount: '',
+      cancelButtonRevealed: false,
+      startNewPlanRevealed: false,
+      startNewPlanAmount: '',
+    }))
+    .then(() => this.fetchChargeHistory(userId, jwToken))
     .catch(console.error)
   }
 
   cancelSubscription() {
+    const { jwToken } = this.props
     const { subscriptionInfo } = this.state
-    axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`)
+    axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`, {
+      headers: {token: jwToken}
+    })
     .then(() => {
       this.setState({ subscriptionInfo: {
         plan: { amount: 0, interval: 'month' },
-        created: 'CANCELED'
+        created: 'CANCELED',
+        customInputRevealed: false,
+        updatePlanAmount: '',
+        cancelButtonRevealed: false,
+        startNewPlanRevealed: false,
+        startNewPlanAmount: '',
       }})
     })
     .catch(console.error)
   }
 
   startNewSubscription() {
-    const { userId, startNewPlanAmount } = this.state
+    const { userId, jwToken } = this.props
+    const { startNewPlanAmount } = this.state
     axios.post(`${ROOT_URL}/api/donations/subscription`, {
       userId,
       amount: +startNewPlanAmount * 100
+    }, {
+      headers: {token: jwToken}
     })
-    .then(subscription => this.setState({ subscriptionInfo: subscription.data }))
+    .then(subscription => this.setState({
+      subscriptionInfo: subscription.data,
+      customInputRevealed: false,
+      updatePlanAmount: '',
+      cancelButtonRevealed: false,
+      startNewPlanRevealed: false,
+      startNewPlanAmount: '',
+    }))
+    .then(() => this.fetchChargeHistory(userId, jwToken))
     .catch(console.error)
-  }
-
-  logout(){
-    localStorage.removeItem('oraAuth')
-    this.setState({
-      isLoggedIn: false,
-      userId: null,
-      jwToken: null
-    })
   }
 
   render() {
     console.log('state: ', this.state)
     return (
       <div className="displayFlex flexColumn flex1">
-        {!this.state.isLoggedIn
-        ? <LoginPage verifyLogin={this.verifyLogin} />
-        : <ManageMyDonationsPresenter
-            logout={this.logout}
-            charges={this.state.charges}
-            plan={this.state.subscriptionInfo && this.state.subscriptionInfo.plan}
-            toggleCustomInput={this.toggleCustomInput}
-            handleInputChange={this.handleInputChange}
-            toggleCancelButton={this.toggleCancelButton}
-            updateSubscription={this.updateSubscription}
-            cancelSubscription={this.cancelSubscription}
-            created={this.state.subscriptionInfo && this.state.subscriptionInfo.created}
-            startNewPlanRevealed={this.state.startNewPlanRevealed}
-            toggleStartNewPlan={this.toggleStartNewPlan}
-            startNewSubscription={this.startNewSubscription}
-            customInputRevealed={this.state.customInputRevealed}
-            cancelButtonRevealed={this.state.cancelButtonRevealed} />
-        }
+        <ManageMyDonationsPresenter
+          logout={this.logout}
+          charges={this.state.charges}
+          plan={this.state.subscriptionInfo && this.state.subscriptionInfo.plan}
+          toggleCustomInput={this.toggleCustomInput}
+          handleInputChange={this.handleInputChange}
+          toggleCancelButton={this.toggleCancelButton}
+          updateSubscription={this.updateSubscription}
+          updatePlanAmount={this.state.updatePlanAmount}
+          cancelSubscription={this.cancelSubscription}
+          created={this.state.subscriptionInfo && this.state.subscriptionInfo.created}
+          startNewPlanRevealed={this.state.startNewPlanRevealed}
+          toggleStartNewPlan={this.toggleStartNewPlan}
+          startNewSubscription={this.startNewSubscription}
+          startNewPlanAmount={this.state.startNewPlanAmount}
+          customInputRevealed={this.state.customInputRevealed}
+          cancelButtonRevealed={this.state.cancelButtonRevealed} />
         <Footer />
       </div>
     )
