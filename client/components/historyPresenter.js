@@ -2,7 +2,7 @@ import React from 'react'
 
 const HistoryPresenter = ({ charges }) => (
   <div>
-    <p className="raleway font24 bottomMarginHalfem topMargin1em">HISTORY</p>
+    <p className="raleway font20 bottomMarginHalfem topMargin1em">HISTORY</p>
     {charges.map(charge => (
       <div
         key={charge.id}

@@ -12,7 +12,9 @@ class ManageMyDonationsContainer extends React.Component {
     this.state = {
       subscriptionInfo: {plan: {amount: 0, interval: 'month'}},
       charges: [],
+      userName: {first: 'Support', last: 'Team Member'}
     }
+    this.fetchUserName = this.fetchUserName.bind(this)
     this.fetchSubscriptions = this.fetchSubscriptions.bind(this)
     this.fetchChargeHistory = this.fetchChargeHistory.bind(this)
     this.setSubscriptionInfo = this.setSubscriptionInfo.bind(this)
@@ -20,9 +22,17 @@ class ManageMyDonationsContainer extends React.Component {
 
   componentDidMount() {
     const { userId, jwToken } = this.props
-    this.fetchSubscriptions(userId, jwToken)
+    this.fetchUserName(userId)
+    .then(() => this.fetchSubscriptions(userId, jwToken))
     .then(() => this.fetchChargeHistory(userId, jwToken))
     .catch(console.error)
+  }
+
+  fetchUserName(userId) {
+    return axios.get(`${ROOT_URL}/api/users/${userId}`)
+    .then(user => this.setState({
+      userName: {first: user.data.firstName, last: user.data.lastName}
+    }))
   }
 
   fetchSubscriptions(userId, jwToken) {
@@ -55,12 +65,13 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state)
+    console.log('manageDonations state: ', this.state)
     return (
       <div className="displayFlex flexColumn flex1 paddingHalfem">
         <SupportPlanContainer
           userId={this.props.userId}
           jwToken={this.props.jwToken}
+          userName={this.state.userName}
           fetchChargeHistory={this.fetchChargeHistory}
           setSubscriptionInfo={this.setSubscriptionInfo}
           subscriptionInfo={this.state.subscriptionInfo} />
