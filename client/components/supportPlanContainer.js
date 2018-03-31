@@ -108,6 +108,7 @@ class SupportPlanContainer extends React.Component {
     console.log('supportPlan state: ', this.state)
     return (
       <SupportPlanPresenter
+        charges={this.props.charges}
         userName={this.props.userName}
         toggleCustomInput={this.toggleCustomInput}
         handleInputChange={this.handleInputChange}

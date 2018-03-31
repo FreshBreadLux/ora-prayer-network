@@ -1,10 +1,16 @@
 import React from 'react'
 import SupportPlanButtonsSection from './supportPlanButtonsSection'
 
-const SupportPlanPresenter = ({ userName, created, toggleCustomInput, handleInputChange, updateSubscription, toggleCancelButton, cancelSubscription, toggleStartNewPlan, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount }) => (
+const SupportPlanPresenter = ({ charges, userName, created, toggleCustomInput, handleInputChange, updateSubscription, toggleCancelButton, cancelSubscription, toggleStartNewPlan, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount }) => (
   <div>
-    <p className="raleway font24 bottomMarginHalfem">{`${userName.first} ${userName.last}`}</p>
-    <p className="raleway font20 bottomMarginHalfem">ANGEL INVESTOR</p>
+    <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
+      <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
+      <p className="raleway font30">{`$${charges.reduce((acc, cur) => acc + cur.amount, 0) / 100}`}</p>
+    </div>
+    <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
+      <p className="raleway font20">ANGEL INVESTOR</p>
+      <p className="raleway font12 rightText">INVESTMENT<br />TOTAL</p>
+    </div>
     <div className="supportPlanDiv">
       <p className="bottomMarginHalfem">SUPPORT PLAN</p>
       <p className="font12 bottomMargin3em">

@@ -12,7 +12,7 @@ class ManageMyDonationsContainer extends React.Component {
     this.state = {
       subscriptionInfo: {plan: {amount: 0, interval: 'month'}},
       charges: [],
-      userName: {first: 'Support', last: 'Team Member'}
+      userName: {first: 'Support', last: 'Team'}
     }
     this.fetchUserName = this.fetchUserName.bind(this)
     this.fetchSubscriptions = this.fetchSubscriptions.bind(this)
@@ -71,6 +71,7 @@ class ManageMyDonationsContainer extends React.Component {
         <SupportPlanContainer
           userId={this.props.userId}
           jwToken={this.props.jwToken}
+          charges={this.state.charges}
           userName={this.state.userName}
           fetchChargeHistory={this.fetchChargeHistory}
           setSubscriptionInfo={this.setSubscriptionInfo}
