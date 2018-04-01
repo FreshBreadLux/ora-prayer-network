@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
+import Loader from 'react-loader-spinner'
 
-const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription, startNewPlanAmount, updatePlanAmount }) => (
+const SupportPlanButtonsSection = ({ isLoading, created, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription, startNewPlanAmount, updatePlanAmount }) => (
   <div className="displayFlex flexColumn widthPercent65 flexAllCenter">
     {created === 'CANCELED'
     ? <div>
@@ -18,9 +19,12 @@ const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputReve
             <button
               onClick={startNewSubscription}
               className="supportPlanUpdateButton">
-              <span className="emojiSpan">
-              {ReactEmoji.emojify(':tada:', {attributes: {width: '18px', height: '18px', className: 'rightMarginHalfem'}})}{`UPDATE`}
-              </span>
+              {isLoading
+              ? <Loader type="Bars" height={12} width={12} color="#555" />
+              : <span className="emojiSpan">
+                  {ReactEmoji.emojify(':tada:', {attributes: {width: '18px', height: '18px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+                </span>
+              }
             </button>
           </div>
         </div>
@@ -40,9 +44,12 @@ const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputReve
             <button
               onClick={updateSubscription}
               className="supportPlanUpdateButton">
-              <span className="emojiSpan">
-                {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
-              </span>
+              {isLoading
+              ? <Loader type="Bars" height={12} width={12} color="#555" />
+              : <span className="emojiSpan">
+                  {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+                </span>
+              }
             </button>
           </div>
         </div>
@@ -55,9 +62,12 @@ const SupportPlanButtonsSection = ({ created, toggleCustomInput, customInputReve
             <button
               onClick={cancelSubscription}
               className="supportPlanCancelButton">
-              <span className="emojiSpan">
-                {ReactEmoji.emojify(':x:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`CANCEL`}
-              </span>
+              {isLoading
+              ? <Loader type="Bars" height={12} width={12} color="#555" />
+              : <span className="emojiSpan">
+                  {ReactEmoji.emojify(':x:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`CANCEL`}
+                </span>
+              }
             </button>
           </div>
         </div>

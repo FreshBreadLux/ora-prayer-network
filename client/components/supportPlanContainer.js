@@ -13,6 +13,7 @@ class SupportPlanContainer extends React.Component {
       cancelButtonRevealed: false,
       startNewPlanRevealed: false,
       startNewPlanAmount: '',
+      isLoading: false,
     }
     this.updateSubscription = this.updateSubscription.bind(this)
     this.cancelSubscription = this.cancelSubscription.bind(this)
@@ -41,6 +42,7 @@ class SupportPlanContainer extends React.Component {
   }
 
   updateSubscription() {
+    this.setState({ isLoading: true })
     const { userId, jwToken, subscriptionInfo } = this.props
     const { updatePlanAmount } = this.state
     axios.post(`${ROOT_URL}/api/donations/updateSubscription/forUser/${userId}`, {
@@ -57,6 +59,7 @@ class SupportPlanContainer extends React.Component {
         cancelButtonRevealed: false,
         startNewPlanRevealed: false,
         startNewPlanAmount: '',
+        isLoading: false,
       })
     })
     .then(() => this.props.fetchChargeHistory(userId, jwToken))
@@ -64,6 +67,7 @@ class SupportPlanContainer extends React.Component {
   }
 
   cancelSubscription() {
+    this.setState({ isLoading: true })
     const { jwToken, subscriptionInfo } = this.props
     axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`, {
       headers: {token: jwToken}
@@ -76,12 +80,14 @@ class SupportPlanContainer extends React.Component {
         cancelButtonRevealed: false,
         startNewPlanRevealed: false,
         startNewPlanAmount: '',
+        isLoading: false,
       })
     })
     .catch(console.error)
   }
 
   startNewSubscription() {
+    this.setState({ isLoading: true })
     const { userId, jwToken } = this.props
     const { startNewPlanAmount } = this.state
     axios.post(`${ROOT_URL}/api/donations/subscription`, {
@@ -98,6 +104,7 @@ class SupportPlanContainer extends React.Component {
         cancelButtonRevealed: false,
         startNewPlanRevealed: false,
         startNewPlanAmount: '',
+        isLoading: false,
       })
     })
     .then(() => this.props.fetchChargeHistory(userId, jwToken))
@@ -110,6 +117,7 @@ class SupportPlanContainer extends React.Component {
       <SupportPlanPresenter
         charges={this.props.charges}
         userName={this.props.userName}
+        isLoading={this.state.isLoading}
         toggleCustomInput={this.toggleCustomInput}
         handleInputChange={this.handleInputChange}
         toggleCancelButton={this.toggleCancelButton}
