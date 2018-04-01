@@ -82,7 +82,7 @@ class ManageMyDonationsContainer extends React.Component {
           jwToken={this.props.jwToken}
           fetchChargeHistory={this.fetchChargeHistory} />
         <HistoryPresenter charges={this.state.charges} />
-        <button onClick={this.logout}>LOGOUT</button>
+        <button onClick={this.props.logout}>LOGOUT</button>
         <Footer />
       </div>
     )

@@ -53,6 +53,7 @@ class CheckLoggedInContainer extends React.Component {
           {!this.state.isLoggedIn
           ? <LoginPage verifyLogin={this.verifyLogin} />
           : <ManageMyDonationsContainer
+              logout={this.logout}
               userId={this.state.userId}
               jwToken={this.state.jwToken} />
           }
