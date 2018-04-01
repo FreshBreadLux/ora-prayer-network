@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from './footer'
 import axios from 'axios'
 import SupportPlanContainer from './supportPlanContainer'
+import CupOfJoeContainer from './cupOfJoeContainer'
 import HistoryPresenter from './historyPresenter'
 
 const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
@@ -76,6 +77,10 @@ class ManageMyDonationsContainer extends React.Component {
           fetchChargeHistory={this.fetchChargeHistory}
           setSubscriptionInfo={this.setSubscriptionInfo}
           subscriptionInfo={this.state.subscriptionInfo} />
+        <CupOfJoeContainer
+          userId={this.props.userId}
+          jwToken={this.props.jwToken}
+          fetchChargeHistory={this.fetchChargeHistory} />
         <HistoryPresenter charges={this.state.charges} />
         <button onClick={this.logout}>LOGOUT</button>
         <Footer />

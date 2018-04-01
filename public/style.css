@@ -11,6 +11,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html, body {
@@ -240,8 +241,16 @@ textarea, input {
   justify-content: center;
 }
 
+.flexJustifyEnd {
+  justify-content: flex-end;
+}
+
 .flexJustifyBetween {
   justify-content: space-between;
+}
+
+.alignSelfCenter {
+  align-self: center;
 }
 
 .alignSelfEnd {
@@ -286,6 +295,14 @@ textarea, input {
 
 .bottomMargin3em {
   margin-bottom: 3em;
+}
+
+.rightMarginHalfem {
+  margin-right: 0.5em;
+}
+
+.leftMarginHalfem {
+  margin-left: 0.5em;
 }
 
 .raleway {
@@ -672,15 +689,41 @@ input[type="radio"]:checked + label span {
 }
 
 .supportPlanButton {
-  padding: 5px 0;
+  width: 100%;
+  padding: 7px;
+  background-color: white;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.supportPlanUpdateButton {
+  width: 100%;
+  padding: 10px;
   background-color: transparent;
   border: 0;
+  border-radius: 5px;
   outline: none;
+}
+
+.supportPlanCancelButton {
+  width: 100%;
+  padding: 10px 10px 5px 10px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.emojiSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes revealSupportPlanDiv {
   from {max-height: 0px; margin: 0 0}
-  to {max-height: 100px; margin: 0.25em 0}
+  to {max-height: 120px; margin: 0.25em 0}
 }
 .revealedSupportPlanDiv {
   margin: 0.25em 0;
@@ -690,22 +733,23 @@ input[type="radio"]:checked + label span {
   animation: revealSupportPlanDiv 0.3s forwards;
 }
 @keyframes hideSupportPlanDiv {
-  from {max-height: 100px; margin: 0.25em 0}
+  from {max-height: 120px; margin: 0.25em 0}
   to {max-height: 0px; margin: 0 0}
 }
 .hiddenSupportPlanDiv {
   height: auto;
-  max-height: 100px;
+  max-height: 120px;
   overflow-y: hidden;
   animation: hideSupportPlanDiv 0.3s forwards;
 }
 
-.confirmSupportPlanButton {
-  padding: 5px;
-  background-color: #fff;
-  border: 0;
-  border-radius: 5px;
-  outline: none;
+.cupOfJoeDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5em;
+  color: #000;
+  font-family: 'raleway';
 }
 
 @media (min-width: 600px) {
