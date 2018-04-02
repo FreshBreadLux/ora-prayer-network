@@ -4,12 +4,21 @@ import axios from 'axios'
 
 const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
 
+function calculateBillingDate(day) {
+  const now = Date.now()
+  let billingDate = new Date(now.getFullYear(), now.getMonth(), +day)
+  if (now - billingDate > 0) billingDate.setMonth(now.getMonth() + 1)
+  return billingDate
+}
+
 class SupportPlanContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       customInputRevealed: false,
       updatePlanAmount: '',
+      changeBillingRevealed: false,
+      selectedBillingOption: '',
       cancelButtonRevealed: false,
       startNewPlanRevealed: false,
       startNewPlanAmount: '',
@@ -19,21 +28,11 @@ class SupportPlanContainer extends React.Component {
     this.cancelSubscription = this.cancelSubscription.bind(this)
     this.startNewSubscription = this.startNewSubscription.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.toggleCustomInput = this.toggleCustomInput.bind(this)
-    this.toggleCancelButton = this.toggleCancelButton.bind(this)
-    this.toggleStartNewPlan = this.toggleStartNewPlan.bind(this)
+    this.toggleStateField = this.toggleStateField.bind(this)
   }
 
-  toggleCustomInput() {
-    this.setState({ customInputRevealed: !this.state.customInputRevealed })
-  }
-
-  toggleCancelButton() {
-    this.setState({ cancelButtonRevealed: !this.state.cancelButtonRevealed })
-  }
-
-  toggleStartNewPlan() {
-    this.setState({ startNewPlanRevealed: !this.state.startNewPlanRevealed })
+  toggleStateField(field) {
+    this.setState({ [field]: !this.state[field] })
   }
 
   handleInputChange(event) {
@@ -52,6 +51,7 @@ class SupportPlanContainer extends React.Component {
       headers: {token: jwToken}
     })
     .then(subscription => {
+      this.props.incrementInvestmentTotal(updatePlanAmount * 100)
       this.props.setSubscriptionInfo(subscription.data)
       this.setState({
         customInputRevealed: false,
@@ -63,6 +63,16 @@ class SupportPlanContainer extends React.Component {
       })
     })
     .then(() => this.props.fetchChargeHistory(userId, jwToken))
+    .catch(console.error)
+  }
+
+  changeBillingDate() {
+    const { id } = this.props.subscriptionInfo
+    const billingDate = calculateBillingDate(this.state.selectedBillingOption)
+    axios.put(`${ROOT_URL}/api/donations/subscription/${id}/billingCycle`, {
+      billingDate,
+    })
+    .then(subscription => this.props.setSubscriptionInfo(subscription.data))
     .catch(console.error)
   }
 
@@ -97,6 +107,7 @@ class SupportPlanContainer extends React.Component {
       headers: {token: jwToken}
     })
     .then(subscription => {
+      this.props.incrementInvestmentTotal(startNewPlanAmount * 100)
       this.props.setSubscriptionInfo(subscription.data)
       this.setState({
         customInputRevealed: false,
@@ -115,21 +126,21 @@ class SupportPlanContainer extends React.Component {
     console.log('supportPlan state: ', this.state)
     return (
       <SupportPlanPresenter
-        charges={this.props.charges}
         userName={this.props.userName}
         isLoading={this.state.isLoading}
-        toggleCustomInput={this.toggleCustomInput}
+        toggleStateField={this.toggleStateField}
         handleInputChange={this.handleInputChange}
-        toggleCancelButton={this.toggleCancelButton}
+        investmentTotal={this.props.investmentTotal}
         updateSubscription={this.updateSubscription}
-        updatePlanAmount={this.state.updatePlanAmount}
         cancelSubscription={this.cancelSubscription}
-        startNewPlanRevealed={this.state.startNewPlanRevealed}
-        toggleStartNewPlan={this.toggleStartNewPlan}
+        updatePlanAmount={this.state.updatePlanAmount}
         startNewSubscription={this.startNewSubscription}
         startNewPlanAmount={this.state.startNewPlanAmount}
         customInputRevealed={this.state.customInputRevealed}
         cancelButtonRevealed={this.state.cancelButtonRevealed}
+        startNewPlanRevealed={this.state.startNewPlanRevealed}
+        changeBillingRevealed={this.state.changeBillingRevealed}
+        selectedBillingOption={this.state.selectedBillingOption}
         plan={this.props.subscriptionInfo && this.props.subscriptionInfo.plan}
         created={this.props.subscriptionInfo && this.props.subscriptionInfo.created} />
     )

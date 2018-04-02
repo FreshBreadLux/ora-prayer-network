@@ -2,12 +2,12 @@ import React from 'react'
 import ReactEmoji from 'react-emoji'
 import Loader from 'react-loader-spinner'
 
-const SupportPlanButtonsSection = ({ isLoading, created, toggleCustomInput, customInputRevealed, handleInputChange, updateSubscription, toggleCancelButton, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, toggleStartNewPlan, startNewSubscription, startNewPlanAmount, updatePlanAmount }) => (
+const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, customInputRevealed, handleInputChange, updateSubscription, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, startNewSubscription, startNewPlanAmount, updatePlanAmount, changeBillingRevealed, selectedBillingOption, changeBillingDate }) => (
   <div className="displayFlex flexColumn widthPercent65 flexAllCenter">
     {created === 'CANCELED'
     ? <div>
         <button
-          onClick={toggleStartNewPlan}
+          onClick={() => toggleStateField('startNewPlanRevealed')}
           className="supportPlanButton">START NEW PLAN</button>
         <div className={startNewPlanRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
           <div className="displayFlex flexColumn">
@@ -31,7 +31,7 @@ const SupportPlanButtonsSection = ({ isLoading, created, toggleCustomInput, cust
       </div>
     : <div>
         <button
-          onClick={toggleCustomInput}
+          onClick={() => toggleStateField('customInputRevealed')}
           className="supportPlanButton bottomMarginHalfem">EDIT MONTHLY AMOUNT</button>
         <div className={customInputRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
           <div className="displayFlex flexColumn">
@@ -54,7 +54,47 @@ const SupportPlanButtonsSection = ({ isLoading, created, toggleCustomInput, cust
           </div>
         </div>
         <button
-          onClick={toggleCancelButton}
+          onClick={() => toggleStateField('changeBillingRevealed')}
+          className="supportPlanButton bottomMarginHalfem">CHANGE BILLING DATE</button>
+        <div className={changeBillingRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
+          <div className="displayFlex flexColumn">
+            <p className="font12">Which day of the month would you like to be billed on?</p>
+            <div className="radioButtonDiv topMarginHalfem">
+              <input
+                type="radio"
+                id="1"
+                name="selectedBillingOption"
+                value="1"
+                onChange={handleInputChange}
+                checked={selectedBillingOption === '1'} />
+              <label htmlFor="1" className="font12">
+                <span />1st of the month</label>
+            </div>
+            <div className="radioButtonDiv">
+              <input
+                type="radio"
+                id="15"
+                name="selectedBillingOption"
+                value="15"
+                onChange={handleInputChange}
+                checked={selectedBillingOption === '15'} />
+              <label htmlFor="15" className="font12">
+                <span />15th of the month</label>
+            </div>
+            <button
+              onClick={changeBillingDate}
+              className="supportPlanUpdateButton">
+              {isLoading
+              ? <Loader type="Bars" height={12} width={12} color="#555" />
+              : <span className="emojiSpan">
+                  {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+                </span>
+              }
+            </button>
+          </div>
+        </div>
+        <button
+          onClick={() => toggleStateField('cancelButtonRevealed')}
           className="supportPlanButton">CANCEL SUPPORT PLAN</button>
         <div className={cancelButtonRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
           <div className="displayFlex flexColumn">

@@ -2,11 +2,11 @@ import React from 'react'
 import ReactEmoji from 'react-emoji'
 import SupportPlanButtonsSection from './supportPlanButtonsSection'
 
-const SupportPlanPresenter = ({ isLoading, charges, userName, created, toggleCustomInput, handleInputChange, updateSubscription, toggleCancelButton, cancelSubscription, toggleStartNewPlan, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount }) => (
+const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, selectedBillingOption }) => (
   <div>
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
-      <p className="raleway font30">{`$${charges.reduce((acc, cur) => acc + cur.amount, 0) / 100}`}</p>
+      <p className="raleway font30">{`$${investmentTotal / 100}`}</p>
     </div>
     <div className="displayFlex flexJustifyBetween flexAlignEnd bottomMarginHalfem">
       <p className="raleway font20">ANGEL INVESTOR</p>
@@ -44,18 +44,18 @@ const SupportPlanPresenter = ({ isLoading, charges, userName, created, toggleCus
         <SupportPlanButtonsSection
           created={created}
           isLoading={isLoading}
-          toggleCustomInput={toggleCustomInput}
+          updatePlanAmount={updatePlanAmount}
+          toggleStateField={toggleStateField}
           handleInputChange={handleInputChange}
           updateSubscription={updateSubscription}
-          toggleCancelButton={toggleCancelButton}
           cancelSubscription={cancelSubscription}
-          toggleStartNewPlan={toggleStartNewPlan}
-          startNewPlanRevealed={startNewPlanRevealed}
           startNewPlanAmount={startNewPlanAmount}
-          updatePlanAmount={updatePlanAmount}
-          startNewSubscription={startNewSubscription}
           customInputRevealed={customInputRevealed}
-          cancelButtonRevealed={cancelButtonRevealed} />
+          startNewPlanRevealed={startNewPlanRevealed}
+          startNewSubscription={startNewSubscription}
+          cancelButtonRevealed={cancelButtonRevealed}
+          changeBillingRevealed={changeBillingRevealed}
+          selectedBillingOption={selectedBillingOption} />
       </div>
     </div>
   </div>

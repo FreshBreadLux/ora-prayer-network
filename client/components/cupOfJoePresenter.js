@@ -9,11 +9,7 @@ const CupOfJoePresenter = ({ buyCoffee, coffeeStatus }) => (
     </div>
     <div className="cupOfJoeDiv">
       <div className="displayFlex flexJustifyStart">
-        <p className="font16 bottomMarginHalfem">
-          <span className="emojiSpan">
-            {`We love coffee`}{ReactEmoji.emojify(':blush:', {attributes: {width: '14px', height: '14px', className: 'leftMarginHalfem'}})}
-          </span>
-        </p>
+        <p className="font16 bottomMarginHalfem">We love coffee.</p>
       </div>
       <p className="font14 bottomMargin1em">We're probably working in a coffee shop right now...</p>
       <div className="displayFlex widthPercent65 alignSelfCenter">

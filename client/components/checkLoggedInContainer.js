@@ -30,13 +30,15 @@ class CheckLoggedInContainer extends React.Component {
         userId: oraAuthJson.userId,
         jwToken: oraAuthJson.jwToken
       })
+    } else {
+      this.setState({ isLoading: false })
     }
   }
 
   logout(){
     localStorage.removeItem('oraAuth')
     this.setState({
-      isLoading: true,
+      isLoading: false,
       isLoggedIn: false,
       userId: null,
       jwToken: null

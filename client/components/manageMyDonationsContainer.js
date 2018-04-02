@@ -13,26 +13,31 @@ class ManageMyDonationsContainer extends React.Component {
     this.state = {
       subscriptionInfo: {plan: {amount: 0, interval: 'month'}},
       charges: [],
-      userName: {first: 'Support', last: 'Team'}
+      userName: {first: 'Support', last: 'Team'},
+      investmentTotal: 0,
+      showMoreCharges: false,
     }
-    this.fetchUserName = this.fetchUserName.bind(this)
+    this.fetchUserInfo = this.fetchUserInfo.bind(this)
     this.fetchSubscriptions = this.fetchSubscriptions.bind(this)
     this.fetchChargeHistory = this.fetchChargeHistory.bind(this)
     this.setSubscriptionInfo = this.setSubscriptionInfo.bind(this)
+    this.incrementInvestmentTotal = this.incrementInvestmentTotal.bind(this)
+    this.toggleShowMoreCharges = this.toggleShowMoreCharges.bind(this)
   }
 
   componentDidMount() {
     const { userId, jwToken } = this.props
-    this.fetchUserName(userId)
+    this.fetchUserInfo(userId)
     .then(() => this.fetchSubscriptions(userId, jwToken))
     .then(() => this.fetchChargeHistory(userId, jwToken))
     .catch(console.error)
   }
 
-  fetchUserName(userId) {
+  fetchUserInfo(userId) {
     return axios.get(`${ROOT_URL}/api/users/${userId}`)
     .then(user => this.setState({
-      userName: {first: user.data.firstName, last: user.data.lastName}
+      userName: {first: user.data.firstName, last: user.data.lastName},
+      investmentTotal: user.data.investmentTotal
     }))
   }
 
@@ -54,8 +59,8 @@ class ManageMyDonationsContainer extends React.Component {
     })
   }
 
-  fetchChargeHistory(userId, jwToken) {
-    return axios.get(`${ROOT_URL}/api/donations/chargeHistory/forUser/${userId}`, {
+  fetchChargeHistory(userId, jwToken, limit = 10) {
+    return axios.get(`${ROOT_URL}/api/donations/chargeHistory/forUser/${userId}/limit/${limit}`, {
       headers: {token: jwToken}
     })
     .then(charges => this.setState({ charges: charges.data.data }))
@@ -63,6 +68,14 @@ class ManageMyDonationsContainer extends React.Component {
 
   setSubscriptionInfo(subscriptionInfo) {
     this.setState({subscriptionInfo})
+  }
+
+  incrementInvestmentTotal(amount) {
+    this.setState({ investmentTotal: this.state.investmentTotal + amount })
+  }
+
+  toggleShowMoreCharges() {
+    this.setState({showMoreCharges: !this.state.showMoreCharges})
   }
 
   render() {
@@ -74,15 +87,30 @@ class ManageMyDonationsContainer extends React.Component {
           jwToken={this.props.jwToken}
           charges={this.state.charges}
           userName={this.state.userName}
+          investmentTotal={this.state.investmentTotal}
           fetchChargeHistory={this.fetchChargeHistory}
           setSubscriptionInfo={this.setSubscriptionInfo}
-          subscriptionInfo={this.state.subscriptionInfo} />
+          subscriptionInfo={this.state.subscriptionInfo}
+          incrementInvestmentTotal={this.incrementInvestmentTotal} />
         <CupOfJoeContainer
           userId={this.props.userId}
           jwToken={this.props.jwToken}
-          fetchChargeHistory={this.fetchChargeHistory} />
-        <HistoryPresenter charges={this.state.charges} />
-        <button onClick={this.props.logout}>LOGOUT</button>
+          fetchChargeHistory={this.fetchChargeHistory}
+          incrementInvestmentTotal={this.incrementInvestmentTotal} />
+        <HistoryPresenter
+          userId={this.props.userId}
+          jwToken={this.props.jwToken}
+          charges={this.state.charges}
+          fetchChargeHistory={this.fetchChargeHistory}
+          showMoreCharges={this.state.showMoreCharges}
+          toggleShowMoreCharges={this.toggleShowMoreCharges} />
+        <div className="displayFlex flexAllCenter">
+          <div className="topMargin1em bottomMargin1em widthPercent65">
+            <button
+              onClick={this.props.logout}
+              className="supportPlanButton">LOGOUT</button>
+          </div>
+        </div>
         <Footer />
       </div>
     )

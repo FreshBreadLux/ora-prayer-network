@@ -30,41 +30,45 @@ class LoginPage extends React.Component {
       .then(response => JSON.stringify(response.data))
       .then(oraAuth => localStorage.setItem('oraAuth', oraAuth))
       .then(() => this.props.verifyLogin())
-      .catch(error => this.setState({error: error.response.request._response}))
+      .catch(error => this.setState({error: error.response.data}))
     } else {
       this.setState({ error: 'Please provide both an email and a password' })
     }
   }
 
   render() {
+    console.log('login state: ', this.state)
     return (
       <div className="displayFlex flexColumn flex1">
-        <div className="displayFlex flexColumn flex1 flexAllCenter">
-          <form onSubmit={this.handleSubmit}>
+        <div className="displayFlex flexColumn flex1 flexAlignCenter">
+          <p className="raleway font16">{this.state.error}</p>
+          <form onSubmit={this.handleSubmit} className="topMargin1em">
             <div className="lineItemDiv bottomMargin1em">
-              <label className="raleway greyText font12">EMAIL</label>
+              <label className="raleway font20">EMAIL</label>
               <div className="displayFlex">
                 <input
                   type="email"
                   name="email"
                   inputMode="email"
                   placeholder="Email"
+                  className="donateInputLine"
                   onChange={this.handleInputChange} />
               </div>
             </div>
             <div className="lineItemDiv bottomMargin1em">
-              <label className="raleway greyText font12">EMAIL</label>
+              <label className="raleway font20">PASSWORD</label>
               <div className="displayFlex">
                 <input
                   type="password"
                   name="password"
                   inputMode="text"
-                  placeholder="password"
+                  placeholder="Password"
+                  className="donateInputLine"
                   onChange={this.handleInputChange} />
               </div>
             </div>
             <div className="displayFlex flexJustifyCenter">
-              <button className="supportFormbutton" type="submit">LOGIN</button>
+              <button className="supportPlanButton" type="submit">LOGIN</button>
             </div>
           </form>
         </div>

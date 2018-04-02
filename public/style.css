@@ -277,6 +277,10 @@ textarea, input {
   padding-bottom: 2em;
 }
 
+.topMarginHalfem {
+  margin-top: 0.5em;
+}
+
 .topMargin1em {
   margin-top: 1em;
 }
@@ -360,6 +364,10 @@ textarea, input {
 
 .rightText {
   text-align: right;
+}
+
+.whiteText {
+  color: #fff;
 }
 
 .blackText {
@@ -505,6 +513,15 @@ input[type="radio"] + label {
   align-items: center;
   font-family: 'raleway';
   font-size: 16px;
+  color: #000;
+  padding: 0.5em;
+}
+input[type="radio"] + label.font12 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'raleway';
+  font-size: 12px;
   color: #000;
   padding: 0.5em;
 }
@@ -723,24 +740,24 @@ input[type="radio"]:checked + label span {
 
 @keyframes revealSupportPlanDiv {
   from {max-height: 0px; margin: 0 0}
-  to {max-height: 120px; margin: 0.25em 0}
+  to {max-height: 150px; margin: 0.25em 0}
 }
 .revealedSupportPlanDiv {
   margin: 0.25em 0;
   height: auto;
   max-height: 0px;
   overflow-y: hidden;
-  animation: revealSupportPlanDiv 0.3s forwards;
+  animation: revealSupportPlanDiv 0.4s forwards;
 }
 @keyframes hideSupportPlanDiv {
-  from {max-height: 120px; margin: 0.25em 0}
+  from {max-height: 150px; margin: 0.25em 0}
   to {max-height: 0px; margin: 0 0}
 }
 .hiddenSupportPlanDiv {
   height: auto;
-  max-height: 120px;
+  max-height: 150px;
   overflow-y: hidden;
-  animation: hideSupportPlanDiv 0.3s forwards;
+  animation: hideSupportPlanDiv 0.4s forwards;
 }
 
 .cupOfJoeDiv {
