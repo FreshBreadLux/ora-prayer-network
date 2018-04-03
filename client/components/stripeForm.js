@@ -91,19 +91,21 @@ class StripeForm extends React.Component {
   }
 
   checkEmail() {
-    axios.get(`${ROOT_URL}/api/users/byEmail/${this.state.email}`)
-    .then(response => {
-      if (response.data.id && response.data.stripeCustomerId) {
-        this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
-      } else if (response.data.id) {
-        this.setState({ checkEmailReturned: true, userExists: true })
-        this.addressField.focus()
-      } else {
-        this.setState({ checkEmailReturned: true, userExists: false })
-        this.passwordField.focus()
-      }
-    })
-    .catch(console.error)
+    if (this.state.email) {
+      axios.get(`${ROOT_URL}/api/users/byEmail/${this.state.email}`)
+      .then(response => {
+        if (response.data.id && response.data.stripeCustomerId) {
+          this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
+        } else if (response.data.id) {
+          this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: false })
+          this.addressField.focus()
+        } else {
+          this.setState({ checkEmailReturned: true, userExists: false, stripeCustomerExists: false })
+          this.passwordField.focus()
+        }
+      })
+      .catch(console.error)
+    }
   }
 
   handleInputChange(event) {
