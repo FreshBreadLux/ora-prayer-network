@@ -5,10 +5,10 @@ import axios from 'axios'
 const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
 
 function calculateBillingDate(day) {
-  const now = Date.now()
+  const now = new Date()
   let billingDate = new Date(now.getFullYear(), now.getMonth(), +day)
   if (now - billingDate > 0) billingDate.setMonth(now.getMonth() + 1)
-  return billingDate
+  return billingDate.getTime() / 1000
 }
 
 class SupportPlanContainer extends React.Component {
@@ -29,6 +29,7 @@ class SupportPlanContainer extends React.Component {
     this.startNewSubscription = this.startNewSubscription.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.toggleStateField = this.toggleStateField.bind(this)
+    this.changeBillingDate = this.changeBillingDate.bind(this)
   }
 
   toggleStateField(field) {
@@ -56,9 +57,6 @@ class SupportPlanContainer extends React.Component {
       this.setState({
         customInputRevealed: false,
         updatePlanAmount: '',
-        cancelButtonRevealed: false,
-        startNewPlanRevealed: false,
-        startNewPlanAmount: '',
         isLoading: false,
       })
     })
@@ -67,12 +65,20 @@ class SupportPlanContainer extends React.Component {
   }
 
   changeBillingDate() {
+    this.setState({ isLoading: true })
     const { id } = this.props.subscriptionInfo
     const billingDate = calculateBillingDate(this.state.selectedBillingOption)
     axios.put(`${ROOT_URL}/api/donations/subscription/${id}/billingCycle`, {
       billingDate,
     })
-    .then(subscription => this.props.setSubscriptionInfo(subscription.data))
+    .then(subscription => {
+      this.props.setSubscriptionInfo(subscription.data)
+      this.setState({
+        selectedBillingOption: '',
+        changeBillingRevealed: false,
+        isLoading: false,
+      })
+    })
     .catch(console.error)
   }
 
@@ -85,11 +91,7 @@ class SupportPlanContainer extends React.Component {
     .then(() => {
       this.props.setSubscriptionInfo({plan: {amount: 0, interval: 'month'}, created: 'CANCELED'})
       this.setState({
-        customInputRevealed: false,
-        updatePlanAmount: '',
         cancelButtonRevealed: false,
-        startNewPlanRevealed: false,
-        startNewPlanAmount: '',
         isLoading: false,
       })
     })
@@ -110,9 +112,6 @@ class SupportPlanContainer extends React.Component {
       this.props.incrementInvestmentTotal(startNewPlanAmount * 100)
       this.props.setSubscriptionInfo(subscription.data)
       this.setState({
-        customInputRevealed: false,
-        updatePlanAmount: '',
-        cancelButtonRevealed: false,
         startNewPlanRevealed: false,
         startNewPlanAmount: '',
         isLoading: false,
@@ -129,12 +128,14 @@ class SupportPlanContainer extends React.Component {
         userName={this.props.userName}
         isLoading={this.state.isLoading}
         toggleStateField={this.toggleStateField}
+        changeBillingDate={this.changeBillingDate}
         handleInputChange={this.handleInputChange}
         investmentTotal={this.props.investmentTotal}
         updateSubscription={this.updateSubscription}
         cancelSubscription={this.cancelSubscription}
         updatePlanAmount={this.state.updatePlanAmount}
         startNewSubscription={this.startNewSubscription}
+        billingCycleAnchor={this.props.subscriptionInfo && this.props.subscriptionInfo.billing_cycle_anchor}
         startNewPlanAmount={this.state.startNewPlanAmount}
         customInputRevealed={this.state.customInputRevealed}
         cancelButtonRevealed={this.state.cancelButtonRevealed}
