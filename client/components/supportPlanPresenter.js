@@ -41,14 +41,14 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
               : `STARTED: ${new Date(created * 1000).toDateString().slice(3)
               .toUpperCase()}`}
             </p>
-            <p className="font12">
+            <p className="font12 bottomMargin1em">
               {`Billed on the ${createDateWithSuffix(billingCycleAnchor)} of the month`}
             </p>
           </div>
         </div>
         <div className="displayFlex flex2 flexJustifyEnd">
           <div className="displayFlex flexColumn">
-            <p className="font30">{`$${plan.amount / 100}`}</p>
+            <p className="font36">{`$${plan.amount / 100}`}</p>
             <p className="font12 rightText">{`per ${plan.interval}`}</p>
           </div>
         </div>
