@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setAddressFieldRef, setPasswordFieldRef, stripeCustomerExists }) => (
+const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setPasswordFieldRef, stripeCustomerExists }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -59,7 +59,6 @@ const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned,
         <label className="raleway greyText font12">ADDRESS</label>
         <div className="displayFlex">
           <input
-            ref={setAddressFieldRef}
             type="text"
             name="address"
             inputMode="text"

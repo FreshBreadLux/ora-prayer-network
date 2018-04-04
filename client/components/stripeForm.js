@@ -31,7 +31,6 @@ class StripeForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.toggleOneTimeDonationDivOpen = this.toggleOneTimeDonationDivOpen.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
-    this.setAddressFieldRef = this.setAddressFieldRef.bind(this)
     this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
     this.createUserWithStripeCustomerID = this.createUserWithStripeCustomerID.bind(this)
     this.createStripeCustomer = this.createStripeCustomer.bind(this)
@@ -98,7 +97,7 @@ class StripeForm extends React.Component {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
         } else if (response.data.id) {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: false })
-          this.addressField.focus()
+          this.passwordField.focus()
         } else {
           this.setState({ checkEmailReturned: true, userExists: false, stripeCustomerExists: false })
           this.passwordField.focus()
@@ -115,10 +114,6 @@ class StripeForm extends React.Component {
 
   toggleOneTimeDonationDivOpen() {
     this.setState({oneTimeDonationDivOpen: !this.state.oneTimeDonationDivOpen})
-  }
-
-  setAddressFieldRef(ref) {
-    this.addressField = ref
   }
 
   setPasswordFieldRef(ref) {
@@ -138,7 +133,6 @@ class StripeForm extends React.Component {
             checkEmail={this.checkEmail}
             userExists={this.state.userExists}
             handleInputChange={this.handleInputChange}
-            setAddressFieldRef={this.setAddressFieldRef}
             setPasswordFieldRef={this.setPasswordFieldRef}
             checkEmailReturned={this.state.checkEmailReturned}
             stripeCustomerExists={this.state.stripeCustomerExists} />
