@@ -92,7 +92,7 @@ class StripeForm extends React.Component {
 
   checkEmail() {
     if (this.state.email) {
-      axios.get(`${ROOT_URL}/api/users/byEmail/${this.state.email}`)
+      axios.get(`${ROOT_URL}/api/users/?email=${this.state.email}`)
       .then(response => {
         if (response.data.id && response.data.stripeCustomerId) {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
