@@ -67,9 +67,12 @@ class SupportPlanContainer extends React.Component {
   changeBillingDate() {
     this.setState({ isLoading: true })
     const { id } = this.props.subscriptionInfo
+    const { jwToken } = this.props
     const billingDate = calculateBillingDate(this.state.selectedBillingOption)
-    axios.put(`${ROOT_URL}/api/donations/subscription/${id}`, {
+    axios.put(`${ROOT_URL}/api/donations/subscription/${id}/billingAnchor`, {
       billingDate,
+    }, {
+      headers: {token: jwToken}
     })
     .then(subscription => {
       this.props.setSubscriptionInfo(subscription.data)
