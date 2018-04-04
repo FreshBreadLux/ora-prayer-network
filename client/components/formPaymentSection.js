@@ -39,11 +39,13 @@ const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned,
       <div className={checkEmailReturned && userExists && stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
         <p className="raleway greyText font10 bottomMargin1em">YOU ALREADY HAVE A DONATION PROFILE. PLEASE GO TO 'MANAGE MY DONATIONS'</p>
       </div>
-      <div className={checkEmailReturned && userExists && !stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
-        <p className="raleway greenText font10 bottomMargin1em">VERIFIED! YOU'LL USE THE SAME PASSWORD YOU USE FOR THE APP TO MANAGE YOUR DONATIONS</p>
-      </div>
-      <div className={checkEmailReturned && !userExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
-        <p className="raleway greyText font10">WELCOME! YOU'LL NEED TO SET A PASSWORD TO USE IN THE ORA APP AND TO MANAGE YOUR DONATIONS</p>
+      <div className={checkEmailReturned && !stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
+        <p className="raleway greenText font10 bottomMargin1em">
+          {!userExists
+          ? `WELCOME! YOU'LL NEED TO SET A PASSWORD TO USE IN THE ORA APP AND TO MANAGE YOUR DONATIONS`
+          : `WELCOME BACK! PLEASE VERIFY YOUR ACCOUNT USING THE SAME PASSWORD YOU USED FOR THE ORA APP`
+          }
+        </p>
         <input
           ref={setPasswordFieldRef}
           type="password"
