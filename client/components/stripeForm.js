@@ -35,6 +35,8 @@ class StripeForm extends React.Component {
     this.createUserWithStripeCustomerID = this.createUserWithStripeCustomerID.bind(this)
     this.createStripeCustomer = this.createStripeCustomer.bind(this)
     this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
+    this.createCustomer = this.createCustomer.bind(this)
+    this.createUserWithCustomerId = this.createUserWithCustomerId.bind(this)
   }
 
   async handleSubmit(event) {
@@ -45,19 +47,26 @@ class StripeForm extends React.Component {
     } else {
       console.log('token: ', token)
       const { userExists, stripeCustomerExists } = this.state
-      if (!userExists) this.createUserWithStripeCustomerID(token)
-      else if (userExists && !stripeCustomerExists) this.createStripeCustomer(token)
+      if (!userExists) {
+        this.createCustomer(token)
+        .then(customer => this.createUserWithCustomerId(customer))
+      } else if (userExists && !stripeCustomerExists) {
+        this.createStripeCustomer(token)
+      }
     }
   }
 
-  createUserWithStripeCustomerID(token) {
+  createCustomer(token) {
+    const { email } = this.state
+    return axios.post(`${ROOT_URL}/api/donations/customer`, { email, token })
+  }
+
+  createUserWithCustomerId(customer) {
     const { firstName, lastName, email, password, address, city, state, zip } = this.state
-    axios.post(`${ROOT_URL}/api/users/donor`, {
-      token,
-      userInfo: { firstName, lastName, email, password, address, city, state, zip }
+    return axios.post(`${ROOT_URL}/api/users`, {
+      stripeCustomerId: customer.id,
+      firstName, lastName, email, password, address, city, state, zip
     })
-    .then(createdUser => this.subscribeOrCharge(createdUser))
-    .catch(console.error)
   }
 
   createStripeCustomer(token) {
