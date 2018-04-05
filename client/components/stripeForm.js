@@ -66,7 +66,7 @@ class StripeForm extends React.Component {
 
   createCustomer(token) {
     const { email } = this.state
-    return axios.post(`${ROOT_URL}/api/donations/customer`, { email, token })
+    return axios.post(`${ROOT_URL}/api/donations/customers`, { email, token })
   }
 
   createUserWithCustomerId(customer) {
@@ -98,13 +98,13 @@ class StripeForm extends React.Component {
   }
 
   subscribeOrCharge(verifiedResult) {
-    const { userIdAndJwt, customer } = verifiedResult
+    const { userId, jwToken } = verifiedResult.userIdAndJwt
     const { selectedOption } = this.state
     if (selectedOption === 'OneTime') {
-      axios.post(`${ROOT_URL}/api/donations/charge`, {
-        customerId: customer.id, amount: +this.state.oneTimeAmount * 100
+      axios.post(`${ROOT_URL}/api/donations/charges`, {
+        userId, amount: +this.state.oneTimeAmount * 100
       }, {
-        headers: {token: userIdAndJwt.jwToken}
+        headers: {token: jwToken}
       })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
@@ -112,10 +112,8 @@ class StripeForm extends React.Component {
       const amount = selectedOption === 'Custom'
         ? +this.state.customAmount * 100
         : +selectedOption * 100
-      axios.post(`${ROOT_URL}/api/donations/subscription`, {
-        userId: userIdAndJwt.userId, amount
-      }, {
-        headers: {token: userIdAndJwt.jwToken}
+      axios.post(`${ROOT_URL}/api/donations/subscriptions`, { userId, amount }, {
+        headers: {token: jwToken}
       })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
@@ -124,7 +122,7 @@ class StripeForm extends React.Component {
 
   checkEmail() {
     if (this.state.email) {
-      axios.get(`${ROOT_URL}/api/users/?email=${this.state.email}`)
+      axios.get(`${ROOT_URL}/api/users?email=${this.state.email}`)
       .then(response => {
         if (response.data.id && response.data.stripeCustomerId) {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })

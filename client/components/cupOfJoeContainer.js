@@ -15,16 +15,12 @@ class CupOfJoeContainer extends React.Component {
   }
 
   buyCoffee() {
-    console.log('buying coffee...')
     this.setState({ coffeeStatus: 'loading' })
     const { userId, jwToken, fetchChargeHistory, incrementInvestmentTotal } = this.props
-    axios.post(`${ROOT_URL}/api/donations/buyCoffee`, {
-      userId
-    }, {
+    axios.post(`${ROOT_URL}/api/donations/charges`, { userId, amount: 300 }, {
       headers: {token: jwToken}
     })
     .then(charge => {
-      console.log('charge successful: ', charge)
       fetchChargeHistory(userId, jwToken)
       incrementInvestmentTotal(charge.data.amount)
     })

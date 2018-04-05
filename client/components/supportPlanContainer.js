@@ -45,11 +45,11 @@ class SupportPlanContainer extends React.Component {
     this.setState({ isLoading: true })
     const { userId, jwToken, subscriptionInfo } = this.props
     const { updatePlanAmount } = this.state
-    axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`, {
+    axios.delete(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
       headers: {token: jwToken}
     })
-    axios.post(`${ROOT_URL}/api/donations/subscription`, {
-      userId, amount: updatePlanAmount
+    axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
+      userId, amount: +updatePlanAmount * 100
     }, {
       headers: {token: jwToken}
     })
@@ -71,7 +71,7 @@ class SupportPlanContainer extends React.Component {
     const { id } = this.props.subscriptionInfo
     const { jwToken } = this.props
     const billingDate = calculateBillingDate(this.state.selectedBillingOption)
-    axios.put(`${ROOT_URL}/api/donations/subscription/${id}/billingAnchor`, {
+    axios.put(`${ROOT_URL}/api/donations/subscriptions/${id}/billingAnchor`, {
       billingDate,
     }, {
       headers: {token: jwToken}
@@ -90,7 +90,7 @@ class SupportPlanContainer extends React.Component {
   cancelSubscription() {
     this.setState({ isLoading: true })
     const { jwToken, subscriptionInfo } = this.props
-    axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`, {
+    axios.delete(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
       headers: {token: jwToken}
     })
     .then(() => {
@@ -107,7 +107,7 @@ class SupportPlanContainer extends React.Component {
     this.setState({ isLoading: true })
     const { userId, jwToken } = this.props
     const { startNewPlanAmount } = this.state
-    axios.post(`${ROOT_URL}/api/donations/subscription`, {
+    axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
       userId,
       amount: +startNewPlanAmount * 100
     }, {

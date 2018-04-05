@@ -42,7 +42,7 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   fetchSubscriptions(userId, jwToken) {
-    return axios.get(`${ROOT_URL}/api/donations/subscription/?userId=${userId}`, {
+    return axios.get(`${ROOT_URL}/api/donations/subscriptions?userId=${userId}`, {
       headers: {token: jwToken}
     })
     .then(subscriptions => {
@@ -59,7 +59,7 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   fetchChargeHistory(userId, jwToken, limit = 10) {
-    return axios.get(`${ROOT_URL}/api/donations/chargeHistory/forUser/${userId}/limit/${limit}`, {
+    return axios.get(`${ROOT_URL}/api/donations/charges?userId=${userId}&limit=${limit}`, {
       headers: {token: jwToken}
     })
     .then(charges => this.setState({ charges: charges.data.data }))
