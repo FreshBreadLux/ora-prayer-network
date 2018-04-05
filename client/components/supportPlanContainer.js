@@ -45,9 +45,11 @@ class SupportPlanContainer extends React.Component {
     this.setState({ isLoading: true })
     const { userId, jwToken, subscriptionInfo } = this.props
     const { updatePlanAmount } = this.state
-    axios.post(`${ROOT_URL}/api/donations/updateSubscription/forUser/${userId}`, {
-      updatePlanAmount: +updatePlanAmount * 100,
-      subscriptionId: subscriptionInfo.id
+    axios.delete(`${ROOT_URL}/api/donations/subscription/${subscriptionInfo.id}`, {
+      headers: {token: jwToken}
+    })
+    axios.post(`${ROOT_URL}/api/donations/subscription`, {
+      userId, amount: updatePlanAmount
     }, {
       headers: {token: jwToken}
     })

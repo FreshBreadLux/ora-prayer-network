@@ -872,11 +872,11 @@ input[type="radio"]:checked + label span {
   }
 
   .supportForm {
-    width: 50vw;
+    width: 40vw;
   }
 
   .supportFormInput {
-    width: 50vw;
+    width: 40vw;
   }
 
   .supportFormButton {
@@ -884,7 +884,7 @@ input[type="radio"]:checked + label span {
   }
 
   .stripeForm {
-    max-width: 50vw;
+    max-width: 40vw;
   }
 
   .thankYouPageButton {
