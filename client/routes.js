@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { Home, About, GetInvolved, Blog, Feedback, Support, Donate, ThankYou, PrivacyPolicy, CheckLoggedInContainer } from './components'
+import { Home, About, GetInvolved, Blog, Feedback, Support, DonorSignup, ThankYou, PrivacyPolicy, CheckLoggedInContainer } from './components'
 
 const Routes = () => (
   <Switch>
@@ -11,7 +11,7 @@ const Routes = () => (
     <Route path="/blog" component={Blog} />
     <Route path="/feedback" component={Feedback} />
     <Route path="/support" component={Support} />
-    <Route path="/donate" render={props => <Donate {...props} />} />
+    <Route path="/donor-signup" render={props => <DonorSignup {...props} />} />
     <Route path="/thank-you" component={ThankYou} />
     <Route path="/manage-my-donations" component={CheckLoggedInContainer} />
     <Route path="/privacy-policy" component={PrivacyPolicy} />

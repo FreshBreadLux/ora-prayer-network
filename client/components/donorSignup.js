@@ -4,10 +4,10 @@ import Footer from './footer'
 import { Elements } from 'react-stripe-elements'
 import StripeForm from './stripeForm'
 
-const Donate = props => (
+const DonorSignup = props => (
   <div className="displayFlex flexColumn flex1">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
-      <p className="raleway font30 centerText paddingHalfem">DONATE</p>
+      <p className="raleway font30 centerText paddingHalfem">DONOR SIGNUP</p>
       <Elements>
         <StripeForm {...props} />
       </Elements>
@@ -16,4 +16,4 @@ const Donate = props => (
   </div>
 )
 
-export default connect()(Donate)
+export default connect()(DonorSignup)

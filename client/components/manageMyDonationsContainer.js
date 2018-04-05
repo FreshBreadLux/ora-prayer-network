@@ -80,7 +80,7 @@ class ManageMyDonationsContainer extends React.Component {
   render() {
     console.log('manageDonations state: ', this.state)
     return (
-      <div className="displayFlex flexColumn flex1 paddingHalfem">
+      <div className="donationContainerDiv">
         <SupportPlanContainer
           userId={this.props.userId}
           jwToken={this.props.jwToken}

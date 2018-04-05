@@ -7,7 +7,7 @@ const GetInvolved = () => (
   <div className="displayFlex flexColumn flex1">
     <div className="displayFlex flexColumn flex1 flexAllCenter">
       <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ANGEL INVESTOR</p>
-      <Link to="/donate" className="getInvolvedButton">DONATE</Link>
+      <Link to="/donor-signup" className="getInvolvedButton">DONATE</Link>
       <hr className="getInvolvedDivider" />
       <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ORA MISSIONARY</p>
       <Link to="/donate" className="getInvolvedButton">SHARE ORA</Link>

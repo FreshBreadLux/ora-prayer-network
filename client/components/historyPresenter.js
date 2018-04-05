@@ -28,13 +28,13 @@ const HistoryPresenter = ({ charges, userId, jwToken, fetchChargeHistory, showMo
     })}
     {!showMoreCharges
     ? <button
-        className="topMargin1em bottomMargin3em whiteText raleway"
+        className="historyShowButton"
         onClick={() => {
           fetchChargeHistory(userId, jwToken, 100)
           .then(toggleShowMoreCharges)
         }}>SHOW MORE</button>
     : <button
-        className="topMargin1em bottomMargin3em whiteText raleway"
+        className="historyShowButton"
         onClick={toggleShowMoreCharges}>SHOW FEWER</button>
     }
   </div>

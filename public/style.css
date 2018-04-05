@@ -709,6 +709,13 @@ input[type="radio"]:checked + label span {
   min-width: 80vw;
 }
 
+.donationContainerDiv {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.5em;
+}
+
 .supportPlanDiv {
   display: flex;
   flex-direction: column;
@@ -807,6 +814,16 @@ input[type="radio"]:checked + label span {
   animation: fadeIn 1s forwards;
 }
 
+.historyShowButton {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  color: #fff;
+  font-family: 'raleway';
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
 @media (min-width: 600px) {
   .menuButtonDiv {
     display: none;
@@ -890,5 +907,10 @@ input[type="radio"]:checked + label span {
   .thankYouPageButton {
     min-width: 270px;
     max-width: 350px;
+  }
+
+  .donationContainerDiv {
+    max-width: 40vw;
+    align-self: center;
   }
 }
