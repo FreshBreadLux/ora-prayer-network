@@ -42,15 +42,14 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   fetchSubscriptions(userId, jwToken) {
-    return axios.get(`${ROOT_URL}/api/donations/subscription/forUser/${userId}`, {
+    return axios.get(`${ROOT_URL}/api/donations/subscription/?userId=${userId}`, {
       headers: {token: jwToken}
     })
     .then(subscriptions => {
       if (subscriptions.data.data[0]) {
         this.setState({ subscriptionInfo: subscriptions.data.data[0] })
       } else {
-        this.setState({
-          subscriptionInfo: {
+        this.setState({ subscriptionInfo: {
             plan: {amount: 0, interval: 'month'},
             created: 'CANCELED'
           }
