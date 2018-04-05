@@ -26,32 +26,40 @@ class StripeForm extends React.Component {
       city: '',
       state: '',
       zip: '',
+      isLoading: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.toggleOneTimeDonationDivOpen = this.toggleOneTimeDonationDivOpen.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
     this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
-    this.createUserWithStripeCustomerID = this.createUserWithStripeCustomerID.bind(this)
-    this.createStripeCustomer = this.createStripeCustomer.bind(this)
     this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
     this.createUserWithCustomerId = this.createUserWithCustomerId.bind(this)
+    this.verifyUser = this.verifyUser.bind(this)
   }
 
   async handleSubmit(event) {
     event.preventDefault()
+    this.setState({ isLoading: true })
     const { token, error } = await this.props.stripe.createToken()
     if (error) {
       console.error('Error: ', error.message)
     } else {
-      console.log('token: ', token)
       const { userExists, stripeCustomerExists } = this.state
       if (!userExists) {
         this.createCustomer(token)
-        .then(customer => this.createUserWithCustomerId(customer))
+        .then(customer => this.createUserWithCustomerId(customer.data))
+        .then(verifiedResult => this.subscribeOrCharge(verifiedResult))
+        .catch(console.error)
       } else if (userExists && !stripeCustomerExists) {
-        this.createStripeCustomer(token)
+        this.createCustomer(token)
+        .then(customer => this.verifyUser(customer.data))
+        .then(verifiedResult => {
+          this.updateUserWithCustomerId(verifiedResult)
+          return this.subscribeOrCharge(verifiedResult)
+        })
+        .catch(console.error)
       }
     }
   }
@@ -66,33 +74,49 @@ class StripeForm extends React.Component {
     return axios.post(`${ROOT_URL}/api/users`, {
       stripeCustomerId: customer.id,
       firstName, lastName, email, password, address, city, state, zip
+    }).then(userIdAndJwt => {
+      return { userIdAndJwt: userIdAndJwt.data, customer }
     })
   }
 
-  createStripeCustomer(token) {
-    const { firstName, lastName, email, address, city, state, zip } = this.state
-    axios.post(`${ROOT_URL}/api/users/stripeCustomer`, {
-      token,
-      userInfo: { firstName, lastName, email, address, city, state, zip }
+  verifyUser(customer) {
+    const { email, password } = this.state
+    return axios.post(`${ROOT_URL}/api/users/sessions`, { email, password })
+    .then(userIdAndJwt => {
+      return { userIdAndJwt: userIdAndJwt.data, customer }
     })
-    .then(updatedUser => this.subscribeOrCharge(updatedUser))
+  }
+
+  updateUserWithCustomerId(verifiedResult) {
+    const { userIdAndJwt, customer } = verifiedResult
+    const { firstName, lastName, address, city, state, zip } = this.state
+    axios.put(`${ROOT_URL}/api/users/${userIdAndJwt.userId}`, {
+      stripeCustomerId: customer.id,
+      firstName, lastName, address, city, state, zip
+    })
     .catch(console.error)
   }
 
-  subscribeOrCharge(user) {
+  subscribeOrCharge(verifiedResult) {
+    const { userIdAndJwt, customer } = verifiedResult
     const { selectedOption } = this.state
-    const oneTimeAmount = +this.state.oneTimeAmount * 100
-    const customAmount = +this.state.customAmount * 100
     if (selectedOption === 'OneTime') {
-      axios.post(`${ROOT_URL}/api/donations/oneTime`, { user, oneTimeAmount })
-      .then(() => this.props.history.push('/thank-you'))
-      .catch(console.error)
-    } else if (selectedOption === 'Custom') {
-      axios.post(`${ROOT_URL}/api/donations/customSubscription`, { user, customAmount })
+      axios.post(`${ROOT_URL}/api/donations/charge`, {
+        customerId: customer.id, amount: +this.state.oneTimeAmount * 100
+      }, {
+        headers: {token: userIdAndJwt.jwToken}
+      })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
-      axios.post(`${ROOT_URL}/api/donations/existingSubscription`, { user, selectedOption })
+      const amount = selectedOption === 'Custom'
+        ? +this.state.customAmount * 100
+        : +selectedOption * 100
+      axios.post(`${ROOT_URL}/api/donations/subscription`, {
+        userId: userIdAndJwt.userId, amount
+      }, {
+        headers: {token: userIdAndJwt.jwToken}
+      })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
@@ -152,6 +176,7 @@ class StripeForm extends React.Component {
               className="stripeCardElement" />
           </div>
           <FormReviewSection
+            isLoading={this.state.isLoading}
             customAmount={this.state.customAmount}
             oneTimeAmount={this.state.oneTimeAmount}
             selectedOption={this.state.selectedOption} />

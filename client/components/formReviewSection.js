@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from 'react-loader-spinner'
 
 class FormReviewSection extends React.Component {
   constructor(props) {
@@ -54,7 +55,12 @@ class FormReviewSection extends React.Component {
           {this.createReviewString()}
         </div>
         <div className="displayFlex flexJustifyCenter">
-          <button className="supportFormButton" type="submit">DONATE</button>
+          <button className="supportFormButton" type="submit">
+            {this.props.isLoading
+            ? <Loader type="Bars" height={20} width={20} color="#000" />
+            : `DONATE`
+            }
+          </button>
         </div>
       </div>
     )
