@@ -35,7 +35,7 @@ const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, custo
           className="supportPlanButton bottomMarginHalfem">EDIT MONTHLY AMOUNT</button>
         <div className={customInputRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
           <div className="displayFlex flexColumn">
-            <p className="font12">This will cancel your current plan and start a new one, with an immediate charge</p>
+            <p className="font12">You will be charged for the updated amount on your next billing date</p>
             <input
               name="updatePlanAmount"
               value={updatePlanAmount}

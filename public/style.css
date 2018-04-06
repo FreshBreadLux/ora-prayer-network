@@ -38,8 +38,8 @@ textarea, input {
 }
 
 @keyframes revealNavbar {
-  from {max-height: 0px; background-color: rgba(255, 255, 255, 0.75)}
-  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.25)}
+  from {max-height: 0px; background-color: rgba(255, 255, 255, 0.75); margin: 0}
+  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.25); margin: 0.75em 0 0.75em 0}
 }
 .revealedNavbar {
   display: flex;
@@ -50,16 +50,30 @@ textarea, input {
   max-height: 600px;
   overflow-y: hidden;
   background-color: rgba(255, 255, 255, 0.25);
-  animation-name: revealNavbar;
-  animation-duration: 0.75s;
+  animation: revealNavbar 0.4s forwards;
 }
 .revealedNavbar a {
   font-family: 'raleway';
   margin: 0.75em;
 }
-
+@keyframes hideNavbar {
+  from {max-height: 600px; background-color: rgba(255, 255, 255, 0.25); margin: 0.75em 0 0.75em 0}
+  to {max-height: 0px; background-color: rgba(255, 255, 255, 0.0); margin: 0}
+}
 .hiddenNavbar {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  max-height: 600px;
+  overflow-y: hidden;
+  background-color: rgba(255, 255, 255, 0.75);
+  animation: hideNavbar 0.4s forwards;
+}
+.hiddenNavbar a {
+  font-family: 'raleway';
+  margin: 0.75em;
 }
 
 .mainHomeDiv {
@@ -831,8 +845,12 @@ input[type="radio"]:checked + label span {
 
   .hiddenNavbar {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: auto;
+    background-color: transparent;
+    animation: none;
   }
   .hiddenNavbar a {
     font-family: 'raleway';
