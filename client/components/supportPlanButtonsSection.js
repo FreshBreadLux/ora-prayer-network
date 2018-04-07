@@ -41,16 +41,16 @@ const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, custo
               value={updatePlanAmount}
               className="donateInputLine"
               onChange={handleInputChange} />
-            <button
+            <LoadingButtonPresenter
+              color="#555"
+              dimensions={12}
+              isLoading={isLoading}
               onClick={updateSubscription}
-              className="supportPlanUpdateButton">
-              {isLoading
-              ? <Loader type="Bars" height={12} width={12} color="#555" />
-              : <span className="emojiSpan">
-                  {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
-                </span>
-              }
-            </button>
+              classNameProp="supportPlanUpdateButton">
+              <span className="emojiSpan">
+                {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+              </span>
+            </LoadingButtonPresenter>
           </div>
         </div>
         <button
@@ -81,16 +81,16 @@ const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, custo
               <label htmlFor="15" className="font12">
                 <span />15th of the month</label>
             </div>
-            <button
+            <LoadingButtonPresenter
+              color="#555"
+              dimensions={12}
+              isLoading={isLoading}
               onClick={changeBillingDate}
-              className="supportPlanUpdateButton">
-              {isLoading
-              ? <Loader type="Bars" height={12} width={12} color="#555" />
-              : <span className="emojiSpan">
-                  {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
-                </span>
-              }
-            </button>
+              classNameProp="supportPlanUpdateButton">
+              <span className="emojiSpan">
+                {ReactEmoji.emojify(':heavy_check_mark:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+              </span>
+            </LoadingButtonPresenter>
           </div>
         </div>
         <button
@@ -99,16 +99,16 @@ const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, custo
         <div className={cancelButtonRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
           <div className="displayFlex flexColumn">
             <p className="font12">Are you sure you want to cancel your donation plan?</p>
-            <button
+            <LoadingButtonPresenter
+              color="#555"
+              dimensions={12}
+              isLoading={isLoading}
               onClick={cancelSubscription}
-              className="supportPlanCancelButton">
-              {isLoading
-              ? <Loader type="Bars" height={12} width={12} color="#555" />
-              : <span className="emojiSpan">
-                  {ReactEmoji.emojify(':x:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`CANCEL`}
-                </span>
-              }
-            </button>
+              classNameProp="supportPlanCancelButton">
+              <span className="emojiSpan">
+                {ReactEmoji.emojify(':x:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`CANCEL`}
+              </span>
+            </LoadingButtonPresenter>
           </div>
         </div>
       </div>
