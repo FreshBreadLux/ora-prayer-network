@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
-import Loader from 'react-loader-spinner'
+import LoadingButtonPresenter from './loadingButtonPresenter'
 
 const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, customInputRevealed, handleInputChange, updateSubscription, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, startNewSubscription, startNewPlanAmount, updatePlanAmount, changeBillingRevealed, selectedBillingOption, changeBillingDate }) => (
   <div className="displayFlex flexColumn widthPercent65 flexAllCenter">
@@ -16,16 +16,16 @@ const SupportPlanButtonsSection = ({ isLoading, toggleStateField, created, custo
               value={startNewPlanAmount}
               className="donateInputLine"
               onChange={handleInputChange} />
-            <button
+            <LoadingButtonPresenter
+              color="#555"
+              dimensions={12}
+              isLoading={isLoading}
               onClick={startNewSubscription}
-              className="supportPlanUpdateButton">
-              {isLoading
-              ? <Loader type="Bars" height={12} width={12} color="#555" />
-              : <span className="emojiSpan">
-                  {ReactEmoji.emojify(':tada:', {attributes: {width: '18px', height: '18px', className: 'rightMarginHalfem'}})}{`UPDATE`}
-                </span>
-              }
-            </button>
+              classNameProp="supportPlanUpdateButton">
+              <span className="emojiSpan">
+                {ReactEmoji.emojify(':tada:', {attributes: {width: '18px', height: '18px', className: 'rightMarginHalfem'}})}{`UPDATE`}
+              </span>
+            </LoadingButtonPresenter>
           </div>
         </div>
       </div>
