@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import NavbarLinkPresenter from './navbarLinkPresenter'
+const Io = require('react-icons/lib/io')
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -9,15 +10,17 @@ class Navbar extends React.Component {
       revealedNavbar: false
     }
     this.toggleNavbar = this.toggleNavbar.bind(this)
-    this.hideNavbar = this.hideNavbar.bind(this)
+    this.manageNavigation = this.manageNavigation.bind(this)
   }
 
   toggleNavbar() {
     this.setState({revealedNavbar: !this.state.revealedNavbar})
   }
 
-  hideNavbar() {
-    this.setState({revealedNavbar: false})
+  manageNavigation() {
+    this.setState({
+      revealedNavbar: false
+    })
   }
 
   render() {
@@ -25,15 +28,52 @@ class Navbar extends React.Component {
       <div>
         <nav>
           <div className="menuButtonDiv">
-            <a className="raleway" href="#" onClick={this.toggleNavbar}>MENU</a>
+            <a className="displayFlex flexJustifyBetween raleway" href="#" onClick={this.toggleNavbar}>
+              MENU
+              <Io.IoChevronRight
+                className={this.state.revealedNavbar
+                ? 'menuChevronDown'
+                : 'menuChevronRight'} />
+            </a>
           </div>
           <div className={this.state.revealedNavbar ? 'revealedNavbar' : 'hiddenNavbar'}>
-            <Link to="/home" onClick={this.hideNavbar}>HOME</Link>
-            <Link to="/about" onClick={this.hideNavbar}>ABOUT</Link>
-            <Link to="/donor-signup" onClick={this.hideNavbar}>DONOR SIGNUP</Link>
-            <Link to="/get-involved" onClick={this.hideNavbar}>GET INVOLVED</Link>
-            <Link to="/support" onClick={this.hideNavbar}>SUPPORT</Link>
-            <Link to="/manage-my-donations" onClick={this.hideNavbar}>MANAGE MY DONATIONS</Link>
+            <NavbarLinkPresenter
+              path="/home"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosHome className="navIcon" />
+              <p className="navLinkText">HOME</p>
+            </NavbarLinkPresenter>
+            <NavbarLinkPresenter
+              path="/about"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosInformation className="navIcon" />
+              <p className="navLinkText">ABOUT</p>
+            </NavbarLinkPresenter>
+            <NavbarLinkPresenter
+              path="/support"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosMedical className="navIcon" />
+              <p className="navLinkText">HELP</p>
+            </NavbarLinkPresenter>
+            <NavbarLinkPresenter
+              path="/get-involved"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosWorld className="navIcon" />
+              <p className="navLinkText">GET INVOLVED</p>
+            </NavbarLinkPresenter>
+            <NavbarLinkPresenter
+              path="/donor-signup"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosPeople className="navIcon" />
+              <p className="navLinkText">DONOR SIGNUP</p>
+            </NavbarLinkPresenter>
+            <NavbarLinkPresenter
+              heart="Heart"
+              path="/manage-my-donations"
+              manageNavigation={this.manageNavigation}>
+              <Io.IoIosHeart className="navIcon" />
+              <p className="navLinkText">MY DONATIONS</p>
+            </NavbarLinkPresenter>
           </div>
         </nav>
       </div>

@@ -15,7 +15,7 @@
 }
 
 html, body {
-  background: url(images/mountains-purple.jpg) no-repeat center center fixed;
+  background-color: #0c2461;
   background-size: cover;
   height: 100vh;
   min-height: 100vh;
@@ -33,13 +33,107 @@ textarea, input {
   outline: none;
 }
 
+/** INPUT STYLING **/
+.formGroup {
+  position: relative;
+  padding-top: 16px;
+  margin-bottom: 16px;
+  .animatedLabel {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    font-weight: 300;
+    opacity: 0.5;
+    cursor: text;
+    transition: 0.2s ease all;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 45%;
+      height: 2px;
+      width: 10px;
+      visibility: hidden;
+      background-color:#8e44ad;
+      transition: 0.2s ease all;
+    }
+  }
+  &.notEmpty {
+    .animatedLabel {
+      top: 0;
+      font-size: 12px;
+    }
+  }
+  .formControl {
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-bottom-color: rgba(0,0,0,0.25);
+    height: auto;
+    padding: 3px 0 5px;
+    &:focus {
+      box-shadow: none;
+      border-bottom-color: rgba(0,0,0,0.12);
+      ~ .animatedLabel {
+        top: 0;
+        opacity: 1;
+        color: #8e44ad;
+        font-size: 12px;
+        &:after {
+          visibility: visible;
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+}
+
+::placeholder {
+  font-family: 'raleway';
+}
+
+nav a {
+  color: #000;
+}
+
 .menuButtonDiv {
+  background-color: #fff;
   padding: 0.5em;
 }
 
+@keyframes rotateChevronRight {
+  from {transform: rotate(90deg)}
+  to {transform: rotate(0deg)}
+}
+.menuChevronRight {
+  transform: rotate(0deg);
+  animation: rotateChevronRight 0.4s forwards;
+}
+@keyframes rotateChevronDown {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(90deg)}
+}
+.menuChevronDown {
+  transform: rotate(90deg);
+  animation: rotateChevronDown 0.4s forwards;
+}
+
 @keyframes revealNavbar {
-  from {max-height: 0px; background-color: rgba(255, 255, 255, 0.75); margin: 0}
-  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.25); margin: 0.75em 0 0.75em 0}
+  from {max-height: 0px; background-color: rgba(255, 255, 255, 1); padding: 0}
+  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.9); padding: 0.75em 0 0.75em 0}
 }
 .revealedNavbar {
   display: flex;
@@ -49,7 +143,7 @@ textarea, input {
   height: auto;
   max-height: 600px;
   overflow-y: hidden;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.9);
   animation: revealNavbar 0.4s forwards;
 }
 .revealedNavbar a {
@@ -57,8 +151,8 @@ textarea, input {
   margin: 0.75em;
 }
 @keyframes hideNavbar {
-  from {max-height: 600px; background-color: rgba(255, 255, 255, 0.25); margin: 0.75em 0 0.75em 0}
-  to {max-height: 0px; background-color: rgba(255, 255, 255, 0.0); margin: 0}
+  from {max-height: 600px; background-color: rgba(255, 255, 255, 0.9); padding: 0.75em 0 0.75em 0}
+  to {max-height: 0px; background-color: rgba(255, 255, 255, 1); padding: 0}
 }
 .hiddenNavbar {
   display: flex;
@@ -68,12 +162,38 @@ textarea, input {
   height: auto;
   max-height: 600px;
   overflow-y: hidden;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.9);
   animation: hideNavbar 0.4s forwards;
 }
 .hiddenNavbar a {
   font-family: 'raleway';
   margin: 0.75em;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navIcon {
+  display: none;
+}
+
+.navIconActive {
+  display: none;
+}
+
+.navIconActiveHeart {
+  display: none;
+}
+
+.homeBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 .mainHomeDiv {
@@ -723,6 +843,18 @@ input[type="radio"]:checked + label span {
   min-width: 80vw;
 }
 
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.redirectMessage {
+  display: flex;
+}
+.redirectMessageHidden {
+  display: none;
+}
+
 .donationContainerDiv {
   display: flex;
   flex-direction: column;
@@ -737,6 +869,11 @@ input[type="radio"]:checked + label span {
   padding: 0.5em;
   color: #000;
   font-family: 'raleway';
+}
+
+.supportHeart {
+  color: #FF4081;
+  margin-left: 7px;
 }
 
 .supportPlanButton {
@@ -839,6 +976,10 @@ input[type="radio"]:checked + label span {
 }
 
 @media (min-width: 600px) {
+  nav {
+    background-color: #fff;
+  }
+
   .menuButtonDiv {
     display: none;
   }
@@ -848,23 +989,49 @@ input[type="radio"]:checked + label span {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: auto;
     height: auto;
-    background-color: transparent;
     animation: none;
+    max-width: 950px;
   }
   .hiddenNavbar a {
     font-family: 'raleway';
     margin: 0.75em;
   }
 
-  .revealedNavbar {
+  .navLink {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex: 1;
     align-items: center;
+    color: #000;
   }
-  .revealedNavbar a {
+
+  .navLinkActive {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    color: rgba(69, 119, 238, 1);
+  }
+
+  .navLinkActiveHeart {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    color: #FF4081;
+  }
+
+  .navIcon {
+    display: flex;
+    font-size: 30px;
+  }
+
+  .navLinkText {
     font-family: 'raleway';
-    margin: 0.75em;
+    font-size: 10px;
+    color: #000;
   }
 
   .mainHomeDiv {

@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginPage from './loginPage'
+import LoginPageContainer from './loginPageContainer'
 import LoadingPresenter from './loadingPresenter'
 import ManageMyDonationsContainer from './manageMyDonationsContainer'
 
@@ -53,7 +53,7 @@ class CheckLoggedInContainer extends React.Component {
       ? <LoadingPresenter />
       : <div className="displayFlex flexColumn flex1">
           {!this.state.isLoggedIn
-          ? <LoginPage verifyLogin={this.verifyLogin} />
+          ? <LoginPageContainer verifyLogin={this.verifyLogin} />
           : <ManageMyDonationsContainer
               logout={this.logout}
               userId={this.state.userId}

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
+const Io = require('react-icons/lib/io')
 import SupportPlanButtonsSection from './supportPlanButtonsSection'
 
 function createDateWithSuffix(billingAnchor) {
@@ -31,7 +32,7 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
                 {`SUPPORT PLAN`}
                 {created === 'CANCELED'
                 ? null
-                : ReactEmoji.emojify(':heart:', {attributes: {width: '16px', height: '16px', className: 'leftMarginHalfem'}})
+                : <Io.IoIosHeart className="supportHeart" />
                 }
               </span>
             </p>

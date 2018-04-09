@@ -18,5 +18,5 @@ export { default as ManageMyDonationsPresenter } from './manageMyDonationsPresen
 export { default as SupportPlanButtonsSection } from './supportPlanButtonsSection'
 export { default as CupOfJoeContainer } from './cupOfJoeContainer'
 export { default as CupOfJoePresenter } from './cupOfJoePresenter'
-export { default as LoginPage } from './loginPage'
+export { default as LoginPageContainer } from './loginPageContainer'
 export { default as PrivacyPolicy } from './privacyPolicy'
