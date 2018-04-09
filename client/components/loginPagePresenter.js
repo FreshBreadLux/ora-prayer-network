@@ -1,38 +1,37 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import FormInputPresenter from './formInputPresenter'
+const Io = require('react-icons/lib/io')
 
 const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange, checkEmailReturned, stripeCustomerExists, email, password }) => (
-  <div className="homeBackgroundImage">
-    <div className="displayFlex flexColumn flex1 flexAlignCenter flexJustifyCenter">
+  <div className="loginPageBackgroundImage">
+    <div className="displayFlex flexColumn flex1 flexAllCenter padding1em">
       <p className="raleway font16">{error}</p>
       <form onSubmit={handleSubmit} className="loginForm">
         <FormInputPresenter
           type="email"
           name="email"
-          label="EMAIL"
+          label="Email"
+          value={email}
           inputMode="email"
           onBlur={checkEmail}
           notEmpty={!!email.length}
           onChange={handleInputChange} />
-        <div className="lineItemDiv bottomMargin1em">
-          <label className="inputLabel">PASSWORD</label>
-          <div className="inputWrapperDiv">
-            <input
-              type="password"
-              name="password"
-              inputMode="text"
-              placeholder="Password"
-              className="loginFormInput"
-              onChange={handleInputChange} />
-          </div>
-        </div>
+        <FormInputPresenter
+          type="password"
+          name="password"
+          label="Password"
+          inputMode="text"
+          value={password}
+          notEmpty={!!password.length}
+          onChange={handleInputChange} />
         <div className={checkEmailReturned && !stripeCustomerExists ? 'redirectMessage' : 'redirectMessageHidden'}>
-          <p>There isn't a donation profile associated with this email. Please head over to Donor Signup to create an account</p>
-          <Link to="/donor-signup">DONOR SIGNUP</Link>
+          <p className="raleway blackText centerText font12">There isn't a donation profile associated with this email. Please head over to Donor Signup to create an account</p>
         </div>
-        <div className="displayFlex flexJustifyCenter">
-          <button className="supportPlanButton" type="submit" disabled={!checkEmailReturned || !stripeCustomerExists}>LOGIN</button>
+        <div className="displayFlex flexAllCenter">
+          <button className="loginFormButton" type="submit" disabled={!checkEmailReturned || !stripeCustomerExists}>
+            <Io.IoLogIn className="rightMarginHalfem" />
+            LOGIN
+          </button>
         </div>
       </form>
     </div>

@@ -15,7 +15,7 @@
 }
 
 html, body {
-  background-color: #0c2461;
+  background-color: #fff;
   background-size: cover;
   height: 100vh;
   min-height: 100vh;
@@ -33,68 +33,71 @@ textarea, input {
   outline: none;
 }
 
-/** INPUT STYLING **/
 .formGroup {
   position: relative;
-  padding-top: 16px;
-  margin-bottom: 16px;
-  .animatedLabel {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 100%;
-    font-weight: 300;
-    opacity: 0.5;
-    cursor: text;
-    transition: 0.2s ease all;
-    margin: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 45%;
-      height: 2px;
-      width: 10px;
-      visibility: hidden;
-      background-color:#8e44ad;
-      transition: 0.2s ease all;
-    }
-  }
-  &.notEmpty {
-    .animatedLabel {
-      top: 0;
-      font-size: 12px;
-    }
-  }
-  .formControl {
-    position: relative;
-    z-index: 1;
-    border-radius: 0;
-    border-width: 0 0 1px;
-    border-bottom-color: rgba(0,0,0,0.25);
-    height: auto;
-    padding: 3px 0 5px;
-    &:focus {
-      box-shadow: none;
-      border-bottom-color: rgba(0,0,0,0.12);
-      ~ .animatedLabel {
-        top: 0;
-        opacity: 1;
-        color: #8e44ad;
-        font-size: 12px;
-        &:after {
-          visibility: visible;
-          width: 100%;
-          left: 0;
-        }
-      }
-    }
-  }
+  font-family: 'raleway';
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.formGroup .animatedLabel {
+  position: absolute;
+  color: #555;
+  top: 24px;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  font-size: 16px;
+  opacity: 0.5;
+  cursor: text;
+  transition: 0.2s ease all;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.formGroup .animatedLabel:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  height: 2px;
+  width: 10px;
+  visibility: hidden;
+  background-color:#0c2461;
+  transition: 0.3s ease all;
+}
+.formGroup.notEmpty .animatedLabel {
+  top: 0;
+  font-size: 14px;
+}
+.formGroup .formControl {
+  font-family: 'raleway';
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+  border-width: 0 0 1px;
+  border-bottom-color: rgba(0,0,0,0.25);
+  height: auto;
+  padding: 5px 0 7px;
+}
+.formGroup .formControl:focus {
+  box-shadow: none;
+  border-bottom-color: rgba(0,0,0,0.12);
+}
+.formGroup .formControl:focus ~ .animatedLabel {
+  top: 0;
+  opacity: 1;
+  color: #0c2461;
+  font-size: 14px;
+}
+.formGroup .formControl:focus ~ .animatedLabel:after {
+  visibility: visible;
+  width: 100%;
+  left: 0;
 }
 
 input:-webkit-autofill {
@@ -195,6 +198,42 @@ nav a {
   background: url(images/mountains-blue.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+.donorSignupBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+.thankYouBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+.loginPageBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.myDonationsBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.mobileHeader {
+  display: flex;
+  font-family: 'raleway';
+  font-size: 30px;
+  text-align: center;
+  padding: 0.5em;
+}
 
 .mainHomeDiv {
   display: flex;
@@ -210,8 +249,8 @@ nav a {
 .homeScriptureQuote {
   font-family: 'ebgaramond';
   color: #000;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 2em;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 1em;
   max-width: 90vw;
 }
 
@@ -527,6 +566,10 @@ nav a {
   color: green;
 }
 
+.pinkText {
+  color: #FF4081;
+}
+
 .transparentWhiteBackground {
   background-color: rgba(255, 255, 255, 0.75)
 }
@@ -609,19 +652,31 @@ nav a {
 .selectAmountDiv {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
+  margin-bottom: 34px;
 }
 
 .stripeForm {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 1em;
 }
-
 .stripeFormSectionHeader {
   font-family: 'raleway';
   font-size: 18px;
+  color: #000;
+  padding-bottom: 16px;
+}
+.stripeFormButton {
   color: #0c2461;
-  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-family: 'raleway';
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .radioButtonDiv {
@@ -789,22 +844,22 @@ input[type="radio"]:checked + label span {
 
 @keyframes revealEmailMessageDiv {
   from {max-height: 0px; margin: 0}
-  to {max-height: 100px; margin: 0.5em}
+  to {max-height: 200px; margin: 0.5em 0}
 }
 .revealedEmailMessageDiv {
-  margin: 0.5em;
+  margin: 0.5em 0;
   height: auto;
   max-height: 0px;
   overflow-y: hidden;
   animation: revealEmailMessageDiv 0.3s forwards;
 }
 @keyframes hideEmailMessageDiv {
-  from {max-height: 100px; margin: 0.5em}
+  from {max-height: 200px; margin: 0.5em 0}
   to {max-height: 0px; margin: 0em}
 }
 .hiddenEmailMessageDiv {
   height: auto;
-  max-height: 50px;
+  max-height: 200px;
   overflow-y: hidden;
   animation: hideEmailMessageDiv 0.3s forwards;
 }
@@ -812,7 +867,6 @@ input[type="radio"]:checked + label span {
 .paymentInfoDiv {
   display: flex;
   flex-direction: column;
-  padding: 0.5em;
 }
 
 .lineItemDiv {
@@ -820,17 +874,19 @@ input[type="radio"]:checked + label span {
   flex-direction: column;
 }
 
+.stripeCardElementDiv {
+  padding-top: 20px;
+  margin-bottom: 54px;
+}
 .stripeCardElement {
-  font-family: 'raleway';
-  font-size: 16px;
-  padding: 0.5em;
-  border-bottom: 1px solid #0c2461;
+  padding: 5px 0 7px;
+  border-bottom: 1px rgba(0,0,0,0.25) solid;
 }
 
 .reviewDiv {
   display: flex;
   flex-direction: column;
-  padding: 0.5em;
+  margin-bottom: 2em;
 }
 
 .thankYouPageButton {
@@ -846,10 +902,39 @@ input[type="radio"]:checked + label span {
 .loginForm {
   display: flex;
   flex-direction: column;
+  width: 90vw;
+  max-width: 350px;
+  padding: 2em;
+  background-color: #fff;
+  font-family: 'raleway';
+}
+.loginFormTitle {
+  font-size: 24px;
+  text-align: center;
+  color: #000;
+}
+.loginFormButton {
+  color: #0c2461;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-family: 'raleway';
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+.loginFormButton:disabled {
+  cursor: default;
 }
 
 .redirectMessage {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .redirectMessageHidden {
   display: none;
@@ -1034,6 +1119,10 @@ input[type="radio"]:checked + label span {
     color: #000;
   }
 
+  .mobileHeader {
+    display: none;
+  }
+
   .mainHomeDiv {
     display: flex;
     flex: 1;
@@ -1087,6 +1176,7 @@ input[type="radio"]:checked + label span {
 
   .stripeForm {
     max-width: 40vw;
+    margin-top: 2em;
   }
 
   .thankYouPageButton {

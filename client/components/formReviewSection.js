@@ -1,5 +1,6 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
+const Io = require('react-icons/lib/io')
 
 class FormReviewSection extends React.Component {
   constructor(props) {
@@ -8,41 +9,26 @@ class FormReviewSection extends React.Component {
   }
 
   createReviewString() {
-    if (this.props.selectedOption === 'OneTime') {
+    if (this.props.singleDonation.length) {
       return (
         <div>
-          <p className="raleway blackText font20 rightText">
-            {`$${this.props.oneTimeAmount} `}
+          <p className="raleway blackText font30 rightText">
+            {`$${this.props.singleDonation} `}
           </p>
-          <p className="raleway blackText font16 rightText">
-            one-time donation
-          </p>
+          <p className="raleway blackText font16 rightText">single donation</p>
         </div>
       )
-    } else if (this.props.selectedOption === 'Custom') {
+    } else if (this.props.monthlyDonation.length) {
       return (
         <div>
-          <p className="raleway blackText font20 rightText">
-            {`$${this.props.customAmount} `}
+          <p className="raleway blackText font30 rightText">
+            {`$${this.props.monthlyDonation} `}
           </p>
-          <p className="raleway blackText font16 rightText">
-            monthly donation
-          </p>
+          <p className="raleway blackText font16 rightText">monthly donation</p>
         </div>
       )
-    } else if (this.props.selectedOption === '') {
-      return ''
     } else {
-      return (
-        <div>
-          <p className="raleway blackText font20 rightText">
-            {`$${this.props.selectedOption} `}
-          </p>
-          <p className="raleway blackText font16 rightText">
-            monthly donation
-          </p>
-        </div>
-      )
+      return ''
     }
   }
 
@@ -50,15 +36,19 @@ class FormReviewSection extends React.Component {
     return (
       <div>
         <p className="stripeFormSectionHeader">REVIEW</p>
-        <div className="reviewDiv blueBottomBorder bottomMargin1em">
+        <div className="reviewDiv">
+          <p className="raleway blackText font12 bottomMargin1em">DONATION TO ORA PRAYER NETWORK INC.</p>
           <p className="raleway blackText font12 bottomMargin1em">ANGEL INVESTOR STATUS</p>
           {this.createReviewString()}
         </div>
         <div className="displayFlex flexJustifyCenter">
-          <button className="supportFormButton" type="submit">
+          <button className="stripeFormButton" type="submit">
             {this.props.isLoading
             ? <Loader type="Bars" height={20} width={20} color="#000" />
-            : `DONATE`
+            : <div className="displayFlex flexAllCenter">
+                <Io.IoIosHeart className="rightMarginHalfem font20 pinkText" />
+                DONATE
+              </div>
             }
           </button>
         </div>

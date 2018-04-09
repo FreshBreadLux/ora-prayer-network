@@ -1,89 +1,88 @@
 import React from 'react'
+import FormInputPresenter from './formInputPresenter'
 
-const FormPaymentSection = ({ handleInputChange, checkEmail, checkEmailReturned, userExists, setPasswordFieldRef, stripeCustomerExists }) => (
+const FormPaymentSection = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
-      <div className="lineItemDiv bottomMargin1em">
-        <label className="raleway greyText font12">NAME</label>
-        <div className="displayFlex flexJustifyCenter">
-          <input
+      <div className="displayFlex">
+        <div className="widthPercent50">
+          <FormInputPresenter
             type="text"
+            inputMode="text"
             name="firstName"
-            inputMode="text"
+            value={firstName}
+            label="First Name"
             onChange={handleInputChange}
-            className="donateInputLine widthPercent50"
-            placeholder="First Name" />
-          <input
+            notEmpty={!!firstName.length} />
+        </div>
+        <div className="widthPercent50">
+          <FormInputPresenter
             type="text"
-            name="lastName"
             inputMode="text"
+            name="lastName"
+            value={lastName}
+            label="Last Name"
             onChange={handleInputChange}
-            className="donateInputLine widthPercent50"
-            placeholder="Last Name" />
+            notEmpty={!!lastName.length} />
         </div>
       </div>
-      <div className="lineItemDiv bottomMargin1em">
-        <label className="raleway greyText font12">EMAIL</label>
-        <div className="displayFlex">
-          <input
-            type="email"
-            name="email"
-            inputMode="email"
-            onChange={handleInputChange}
-            onBlur={checkEmail}
-            className="donateInputLine widthPercent100"
-            placeholder="Email" />
-        </div>
-      </div>
+      <FormInputPresenter
+        type="email"
+        inputMode="email"
+        name="email"
+        value={email}
+        label="Email"
+        onBlur={checkEmail}
+        onChange={handleInputChange}
+        notEmpty={!!email.length} />
       <div className={checkEmailReturned && userExists && stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
-        <p className="raleway greyText font10 bottomMargin1em">YOU ALREADY HAVE A DONATION PROFILE. PLEASE GO TO 'MANAGE MY DONATIONS'</p>
+        <p className="raleway greyText font12 bottomMargin1em">You already have a donation profile. Use My Donations to manage your support</p>
       </div>
       <div className={checkEmailReturned && !stripeCustomerExists ? 'revealedEmailMessageDiv' : 'hiddenEmailMessageDiv'}>
-        <p className="raleway greenText font10 bottomMargin1em">
+        <p className="raleway greenText font12 bottomMargin1em">
           {!userExists
-          ? `WELCOME! YOU'LL NEED TO SET A PASSWORD TO USE IN THE ORA APP AND TO MANAGE YOUR DONATIONS`
-          : `WELCOME BACK! PLEASE VERIFY YOUR ACCOUNT USING THE SAME PASSWORD YOU USED FOR THE ORA APP`
+          ? `Welcome! You'll need to set a password to use in the Ora app and to manage your donations`
+          : `Welcome back! Please verify your account using the same password that you used for the Ora app`
           }
         </p>
-        <input
-          ref={setPasswordFieldRef}
+        <FormInputPresenter
           type="password"
-          name="password"
           inputMode="text"
+          name="password"
+          value={password}
+          label="Password"
           onChange={handleInputChange}
-          className="donateInputLine widthPercent100 bottomMargin1em"
-          placeholder="Password" />
+          notEmpty={!!password.length} />
       </div>
-      <div className="lineItemDiv bottomMargin1em">
-        <label className="raleway greyText font12">ADDRESS</label>
-        <div className="displayFlex">
-          <input
+      <FormInputPresenter
+        type="text"
+        inputMode="text"
+        name="address"
+        value={address}
+        label="Address"
+        onChange={handleInputChange}
+        notEmpty={!!address.length} />
+      <div className="displayFlex">
+        <div className="widthPercent50">
+          <FormInputPresenter
             type="text"
-            name="address"
             inputMode="text"
-            onChange={handleInputChange}
-            className="donateInputLine widthPercent100"
-            placeholder="Address" />
-        </div>
-      </div>
-      <div className="lineItemDiv">
-        <label className="raleway greyText font12">CITY | STATE</label>
-        <div className="displayFlex flexJustifyCenter">
-          <input
-            type="text"
             name="city"
-            inputMode="text"
+            value={city}
+            label="City"
             onChange={handleInputChange}
-            className="donateInputLine widthPercent50"
-            placeholder="City" />
-          <input
+            notEmpty={!!city.length} />
+        </div>
+        <div className="widthPercent50">
+          <FormInputPresenter
             type="text"
-            name="state"
             inputMode="text"
+            name="state"
+            value={state}
+            label="State"
             onChange={handleInputChange}
-            className="donateInputLine widthPercent50"
-            placeholder="State" />
+            notEmpty={!!state.length} />
         </div>
       </div>
     </div>

@@ -1,13 +1,15 @@
 import React from 'react'
 
-const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, inputMode }) => (
+const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, inputMode, value }) => (
   <div className={notEmpty ? 'formGroup notEmpty' : 'formGroup'}>
     <input
+      id={name}
       type={type}
       name={name}
-      inputMode={inputMode}
+      value={value}
       onBlur={onBlur}
       onChange={onChange}
+      inputMode={inputMode}
       className="formControl" />
     <label
       htmlFor={name}

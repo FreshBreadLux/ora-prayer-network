@@ -7,7 +7,11 @@ const Home = () => (
     <div className="mainHomeDiv">
       <p className="raleway font100 centerText paddingHalfem">ORA</p>
       <div className="homeScriptureDiv">
-        <p className="homeScriptureQuote">"I am troubled now. Yet what should I say?<br />Father, save me from this hour'?<br />But it was for this purpose that I came to this hour.<br />Father, glorify your name."<br />- John 12:27-28</p>
+        <div className="homeScriptureQuote">
+          <p>"I am troubled now. Yet what should I say?<br />Father, save me from this hour'?<br />But it was for this purpose that I came to this hour.<br />Father, glorify your name."
+        <br /><br /></p>
+        <p className="rightText">- John 12:27-28</p>
+      </div>
       </div>
     </div>
     <Footer />

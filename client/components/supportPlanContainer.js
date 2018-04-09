@@ -51,7 +51,6 @@ class SupportPlanContainer extends React.Component {
       headers: {token: jwToken}
     })
     .then(subscription => {
-      this.props.incrementInvestmentTotal(updatePlanAmount * 100)
       this.props.setSubscriptionInfo(subscription.data)
       this.setState({
         customInputRevealed: false,

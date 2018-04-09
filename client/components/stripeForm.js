@@ -11,10 +11,8 @@ class StripeForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedOption: '',
-      customAmount: '',
-      oneTimeDonationDivOpen: false,
-      oneTimeAmount: '',
+      monthlyDonation: '',
+      singleDonation: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -29,10 +27,9 @@ class StripeForm extends React.Component {
       isLoading: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleDonationAmount = this.handleDonationAmount.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.toggleOneTimeDonationDivOpen = this.toggleOneTimeDonationDivOpen.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
-    this.setPasswordFieldRef = this.setPasswordFieldRef.bind(this)
     this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
     this.createUserWithCustomerId = this.createUserWithCustomerId.bind(this)
@@ -99,20 +96,19 @@ class StripeForm extends React.Component {
 
   subscribeOrCharge(verifiedResult) {
     const { userId, jwToken } = verifiedResult.userIdAndJwt
-    const { selectedOption } = this.state
-    if (selectedOption === 'OneTime') {
+    const { monthlyDonation, singleDonation } = this.state
+    if (singleDonation.length) {
       axios.post(`${ROOT_URL}/api/donations/charges`, {
-        userId, amount: +this.state.oneTimeAmount * 100
+        userId, amount: +singleDonation * 100
       }, {
         headers: {token: jwToken}
       })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
-      const amount = selectedOption === 'Custom'
-        ? +this.state.customAmount * 100
-        : +selectedOption * 100
-      axios.post(`${ROOT_URL}/api/donations/subscriptions`, { userId, amount }, {
+      axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
+        userId, amount: +monthlyDonation * 100
+      }, {
         headers: {token: jwToken}
       })
       .then(() => this.props.history.push('/thank-you'))
@@ -128,10 +124,8 @@ class StripeForm extends React.Component {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
         } else if (response.data.id) {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: false })
-          this.passwordField.focus()
         } else {
           this.setState({ checkEmailReturned: true, userExists: false, stripeCustomerExists: false })
-          this.passwordField.focus()
         }
       })
       .catch(console.error)
@@ -143,12 +137,20 @@ class StripeForm extends React.Component {
     this.setState({ [name]: value })
   }
 
-  toggleOneTimeDonationDivOpen() {
-    this.setState({oneTimeDonationDivOpen: !this.state.oneTimeDonationDivOpen})
-  }
-
-  setPasswordFieldRef(ref) {
-    this.passwordField = ref
+  handleDonationAmount(event) {
+    const { name, value } = event.target
+    if (name === 'monthlyDonation') {
+      this.setState({
+        [name]: value,
+        singleDonation: ''
+      })
+    }
+    if (name === 'singleDonation') {
+      this.setState({
+        [name]: value,
+        monthlyDonation: ''
+      })
+    }
   }
 
   render() {
@@ -156,28 +158,38 @@ class StripeForm extends React.Component {
       <div className="vw90 displayFlex flexJustifyCenter">
         <form onSubmit={this.handleSubmit} className="stripeForm">
           <FormSupportSection
-            handleInputChange={this.handleInputChange}
-            selectedOption={this.state.selectedOption}
-            oneTimeDonationDivOpen={this.state.oneTimeDonationDivOpen}
-            toggleOneTimeDonationDivOpen={this.toggleOneTimeDonationDivOpen} />
+            singleDonation={this.state.singleDonation}
+            monthlyDonation={this.state.monthlyDonation}
+            handleDonationAmount={this.handleDonationAmount} />
           <FormPaymentSection
+            city={this.state.city}
+            state={this.state.state}
+            email={this.state.email}
+            address={this.state.address}
             checkEmail={this.checkEmail}
+            lastName={this.state.lastName}
+            password={this.state.password}
+            firstName={this.state.firstName}
             userExists={this.state.userExists}
             handleInputChange={this.handleInputChange}
-            setPasswordFieldRef={this.setPasswordFieldRef}
             checkEmailReturned={this.state.checkEmailReturned}
             stripeCustomerExists={this.state.stripeCustomerExists} />
-          <div className="paddingHalfem bottomMargin1em">
-            <label className="raleway greyText font12">CARD INFORMATION</label>
+          <div className="stripeCardElementDiv">
             <CardElement
+              style={{base: {
+                fontFamily: 'raleway',
+                fontSize: '16px',
+                '::placeholder': {
+                  color: 'rgba(85, 85, 85, 0.5)'
+                }
+              }}}
               onChange={event => this.setState({zip: event.value.postalCode})}
               className="stripeCardElement" />
           </div>
           <FormReviewSection
             isLoading={this.state.isLoading}
-            customAmount={this.state.customAmount}
-            oneTimeAmount={this.state.oneTimeAmount}
-            selectedOption={this.state.selectedOption} />
+            singleDonation={this.state.singleDonation}
+            monthlyDonation={this.state.monthlyDonation} />
         </form>
       </div>
     )

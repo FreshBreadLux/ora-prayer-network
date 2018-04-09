@@ -78,39 +78,40 @@ class ManageMyDonationsContainer extends React.Component {
   }
 
   render() {
-    console.log('manageDonations state: ', this.state)
     return (
-      <div className="donationContainerDiv">
-        <SupportPlanContainer
-          userId={this.props.userId}
-          jwToken={this.props.jwToken}
-          charges={this.state.charges}
-          userName={this.state.userName}
-          investmentTotal={this.state.investmentTotal}
-          fetchChargeHistory={this.fetchChargeHistory}
-          setSubscriptionInfo={this.setSubscriptionInfo}
-          subscriptionInfo={this.state.subscriptionInfo}
-          incrementInvestmentTotal={this.incrementInvestmentTotal} />
-        <CupOfJoeContainer
-          userId={this.props.userId}
-          jwToken={this.props.jwToken}
-          fetchChargeHistory={this.fetchChargeHistory}
-          incrementInvestmentTotal={this.incrementInvestmentTotal} />
-        <HistoryPresenter
-          userId={this.props.userId}
-          jwToken={this.props.jwToken}
-          charges={this.state.charges}
-          fetchChargeHistory={this.fetchChargeHistory}
-          showMoreCharges={this.state.showMoreCharges}
-          toggleShowMoreCharges={this.toggleShowMoreCharges} />
-        <div className="displayFlex flexAllCenter">
-          <div className="topMargin1em bottomMargin1em widthPercent65">
-            <button
-              onClick={this.props.logout}
-              className="supportPlanButton">LOGOUT</button>
+      <div className="myDonationsBackgroundImage">
+        <div className="donationContainerDiv">
+          <SupportPlanContainer
+            userId={this.props.userId}
+            jwToken={this.props.jwToken}
+            charges={this.state.charges}
+            userName={this.state.userName}
+            investmentTotal={this.state.investmentTotal}
+            fetchChargeHistory={this.fetchChargeHistory}
+            setSubscriptionInfo={this.setSubscriptionInfo}
+            subscriptionInfo={this.state.subscriptionInfo}
+            incrementInvestmentTotal={this.incrementInvestmentTotal} />
+          <CupOfJoeContainer
+            userId={this.props.userId}
+            jwToken={this.props.jwToken}
+            fetchChargeHistory={this.fetchChargeHistory}
+            incrementInvestmentTotal={this.incrementInvestmentTotal} />
+          <HistoryPresenter
+            userId={this.props.userId}
+            jwToken={this.props.jwToken}
+            charges={this.state.charges}
+            fetchChargeHistory={this.fetchChargeHistory}
+            showMoreCharges={this.state.showMoreCharges}
+            toggleShowMoreCharges={this.toggleShowMoreCharges} />
+          <div className="displayFlex flexAllCenter">
+            <div className="topMargin1em bottomMargin1em widthPercent65">
+              <button
+                onClick={this.props.logout}
+                className="supportPlanButton">LOGOUT</button>
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     )
   }
