@@ -18,7 +18,7 @@ class SupportPlanContainer extends React.Component {
       customInputRevealed: false,
       updatePlanAmount: '',
       changeBillingRevealed: false,
-      selectedBillingOption: '',
+      donationDate: '',
       cancelButtonRevealed: false,
       startNewPlanRevealed: false,
       startNewPlanAmount: '',
@@ -66,7 +66,7 @@ class SupportPlanContainer extends React.Component {
     this.setState({ isLoading: true })
     const { id } = this.props.subscriptionInfo
     const { jwToken } = this.props
-    const billingDate = calculateBillingDate(this.state.selectedBillingOption)
+    const billingDate = calculateBillingDate(this.state.donationDate)
     axios.put(`${ROOT_URL}/api/donations/subscriptions/${id}/billingAnchor`, {
       billingDate,
     }, {
@@ -75,7 +75,7 @@ class SupportPlanContainer extends React.Component {
     .then(subscription => {
       this.props.setSubscriptionInfo(subscription.data)
       this.setState({
-        selectedBillingOption: '',
+        donationDate: '',
         changeBillingRevealed: false,
         isLoading: false,
       })
@@ -141,7 +141,7 @@ class SupportPlanContainer extends React.Component {
         cancelButtonRevealed={this.state.cancelButtonRevealed}
         startNewPlanRevealed={this.state.startNewPlanRevealed}
         changeBillingRevealed={this.state.changeBillingRevealed}
-        selectedBillingOption={this.state.selectedBillingOption}
+        donationDate={this.state.donationDate}
         plan={this.props.subscriptionInfo && this.props.subscriptionInfo.plan}
         created={this.props.subscriptionInfo && this.props.subscriptionInfo.created} />
     )

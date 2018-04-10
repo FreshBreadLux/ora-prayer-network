@@ -60,7 +60,7 @@ class Support extends React.Component {
 
   render() {
     return (
-      <div className="displayFlex flexColumn flex1">
+      <div className="helpBackgroundImage">
         <div className="displayFlex flexColumn flex1 flexAllCenter">
           <div className="padding1em displayFlex flexColumn flexAllCenter">
             <p className="raleway font24 centerText">Have questions?</p>

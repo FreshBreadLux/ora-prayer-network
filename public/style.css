@@ -36,6 +36,7 @@ textarea, input {
 .formGroup {
   position: relative;
   font-family: 'raleway';
+  width: 100%;
   padding-top: 20px;
   margin-bottom: 20px;
 }
@@ -122,21 +123,23 @@ nav a {
   to {transform: rotate(0deg)}
 }
 .menuChevronRight {
+  margin-left: 7px;
   transform: rotate(0deg);
-  animation: rotateChevronRight 0.4s forwards;
+  animation: rotateChevronRight 0.25s forwards;
 }
 @keyframes rotateChevronDown {
   from {transform: rotate(0deg)}
   to {transform: rotate(90deg)}
 }
 .menuChevronDown {
+  margin-left: 7px;
   transform: rotate(90deg);
-  animation: rotateChevronDown 0.4s forwards;
+  animation: rotateChevronDown 0.25s forwards;
 }
 
 @keyframes revealNavbar {
-  from {max-height: 0px; background-color: rgba(255, 255, 255, 1); padding: 0}
-  to {max-height: 600px; background-color: rgba(255, 255, 255, 0.9); padding: 0.75em 0 0.75em 0}
+  from {max-height: 0px; background-color: rgba(12, 36, 97, 0); padding: 0}
+  to {max-height: 600px; background-color: rgba(12, 36, 97, 0.1); padding: 0.75em 0 0.75em 0}
 }
 .revealedNavbar {
   display: flex;
@@ -146,16 +149,16 @@ nav a {
   height: auto;
   max-height: 600px;
   overflow-y: hidden;
-  background-color: rgba(255, 255, 255, 0.9);
-  animation: revealNavbar 0.4s forwards;
+  background-color: rgba(12, 36, 97, 0.1);
+  animation: revealNavbar 0.3s forwards;
 }
 .revealedNavbar a {
   font-family: 'raleway';
   margin: 0.75em;
 }
 @keyframes hideNavbar {
-  from {max-height: 600px; background-color: rgba(255, 255, 255, 0.9); padding: 0.75em 0 0.75em 0}
-  to {max-height: 0px; background-color: rgba(255, 255, 255, 1); padding: 0}
+  from {max-height: 600px; background-color: rgba(12, 36, 97, 0.1); padding: 0.75em 0 0.75em 0}
+  to {max-height: 0px; background-color: rgba(12, 36, 97, 0); padding: 0}
 }
 .hiddenNavbar {
   display: flex;
@@ -165,8 +168,8 @@ nav a {
   height: auto;
   max-height: 600px;
   overflow-y: hidden;
-  background-color: rgba(255, 255, 255, 0.9);
-  animation: hideNavbar 0.4s forwards;
+  background-color: rgba(12, 36, 97, 0.1);
+  animation: hideNavbar 0.3s forwards;
 }
 .hiddenNavbar a {
   font-family: 'raleway';
@@ -196,6 +199,27 @@ nav a {
   flex-direction: column;
   flex: 1;
   background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.aboutBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-purple.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.helpBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-purple.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.getInvolvedBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains.jpeg) no-repeat center center fixed;
   background-size: cover;
 }
 .donorSignupBackgroundImage {
@@ -275,6 +299,14 @@ nav a {
   flex-direction: column;
   justify-content: center;
   padding: 1em;
+}
+
+.aboutText {
+  font-family: 'raleway';
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  padding: 2em;
 }
 
 .heightPercent100 {
@@ -371,6 +403,10 @@ nav a {
 
 .vw25 {
   width: 25vw;
+}
+
+.width170Pixels {
+  width: 170px;
 }
 
 .displayFlex {
@@ -489,6 +525,17 @@ nav a {
   margin-left: 0.5em;
 }
 
+.iconMarginBoth {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.iconMarginLeft {
+  margin-left: 5px;
+}
+.iconMarginRight {
+  margin-right: 5px;
+}
+
 .raleway {
   font-family: 'raleway';
 }
@@ -534,6 +581,10 @@ nav a {
   font-size: 16px;
 }
 
+.font14 {
+  font-size: 14px;
+}
+
 .font12 {
   font-size: 12px;
 }
@@ -558,12 +609,20 @@ nav a {
   color: #000;
 }
 
+.blueText {
+  color: #0c2461;
+}
+
 .greyText {
   color: #555;
 }
 
 .greenText {
   color: green;
+}
+
+.redText {
+  color: red;
 }
 
 .pinkText {
@@ -950,7 +1009,7 @@ input[type="radio"]:checked + label span {
 .supportPlanDiv {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   padding: 0.5em;
   color: #000;
   font-family: 'raleway';
@@ -961,13 +1020,32 @@ input[type="radio"]:checked + label span {
   margin-left: 7px;
 }
 
+.supportPlanOptionsHeader {
+  font-family: 'raleway';
+  font-size: 14px;
+  padding: 0 0 0.5em 0;
+  border-bottom: 1px #000 solid;
+}
+
+.supportPlanOptionsButton {
+  color: #0c2461;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-family: 'raleway';
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+}
+
 .supportPlanButton {
   width: 100%;
   padding: 7px;
-  background-color: white;
-  border: 0;
-  border-radius: 5px;
+  border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .supportPlanUpdateButton {
@@ -1005,10 +1083,11 @@ input[type="radio"]:checked + label span {
 }
 .revealedSupportPlanDiv {
   margin: 0.25em 0;
+  padding-top: 0.5em;
   height: auto;
   max-height: 0px;
   overflow-y: hidden;
-  animation: revealSupportPlanDiv 0.4s forwards;
+  animation: revealSupportPlanDiv 0.3s forwards;
 }
 @keyframes hideSupportPlanDiv {
   from {max-height: 150px; margin: 0.25em 0}
@@ -1018,13 +1097,13 @@ input[type="radio"]:checked + label span {
   height: auto;
   max-height: 150px;
   overflow-y: hidden;
-  animation: hideSupportPlanDiv 0.4s forwards;
+  animation: hideSupportPlanDiv 0.3s forwards;
 }
 
 .cupOfJoeDiv {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   padding: 0.5em;
   color: #000;
   font-family: 'raleway';
@@ -1074,6 +1153,7 @@ input[type="radio"]:checked + label span {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
     margin: auto;
     height: auto;
     animation: none;

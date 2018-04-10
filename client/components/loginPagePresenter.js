@@ -29,7 +29,7 @@ const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange
         </div>
         <div className="displayFlex flexAllCenter">
           <button className="loginFormButton" type="submit" disabled={!checkEmailReturned || !stripeCustomerExists}>
-            <Io.IoLogIn className="rightMarginHalfem" />
+            <Io.IoLogIn className="iconMarginRight" />
             LOGIN
           </button>
         </div>

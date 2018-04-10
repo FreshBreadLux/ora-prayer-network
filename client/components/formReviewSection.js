@@ -46,7 +46,7 @@ class FormReviewSection extends React.Component {
             {this.props.isLoading
             ? <Loader type="Bars" height={20} width={20} color="#000" />
             : <div className="displayFlex flexAllCenter">
-                <Io.IoIosHeart className="rightMarginHalfem font20 pinkText" />
+                <Io.IoIosHeart className="iconMarginRight font20 pinkText" />
                 DONATE
               </div>
             }

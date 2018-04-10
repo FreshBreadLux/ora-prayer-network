@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
 const Io = require('react-icons/lib/io')
-import SupportPlanButtonsSection from './supportPlanButtonsSection'
+import SupportPlanOptionsSection from './supportPlanOptionsSection'
 
 function createDateWithSuffix(billingAnchor) {
   const billingAnchorDate = new Date(billingAnchor * 1000)
@@ -13,7 +13,7 @@ function createDateWithSuffix(billingAnchor) {
   return date + 'th'
 }
 
-const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, selectedBillingOption, billingCycleAnchor, changeBillingDate }) => (
+const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate }) => (
   <div>
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
@@ -27,15 +27,7 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
       <div className="displayFlex bottomMargin1em">
         <div className="displayFlex flex3">
           <div className="displayFlex flexColumn">
-            <p className="bottomMarginHalfem">
-              <span className="emojiSpan justifyStart">
-                {`SUPPORT PLAN`}
-                {created === 'CANCELED'
-                ? null
-                : <Io.IoIosHeart className="supportHeart" />
-                }
-              </span>
-            </p>
+            <p className="bottomMarginHalfem font16">SUPPORT PLAN</p>
             <p className="font12 bottomMarginHalfem">
               {created === 'CANCELED'
               ? created
@@ -43,7 +35,9 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
               .toUpperCase()}`}
             </p>
             <p className="font12 bottomMargin1em">
-              {`Billed on the ${createDateWithSuffix(billingCycleAnchor)} of the month`}
+              {created === 'CANCELED'
+              ? null
+              : `Donation on the ${createDateWithSuffix(billingCycleAnchor)} of the month`}
             </p>
           </div>
         </div>
@@ -54,24 +48,23 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
           </div>
         </div>
       </div>
-      <div className="displayFlex flexJustifyCenter">
-        <SupportPlanButtonsSection
-          created={created}
-          isLoading={isLoading}
-          updatePlanAmount={updatePlanAmount}
-          toggleStateField={toggleStateField}
-          changeBillingDate={changeBillingDate}
-          handleInputChange={handleInputChange}
-          updateSubscription={updateSubscription}
-          cancelSubscription={cancelSubscription}
-          startNewPlanAmount={startNewPlanAmount}
-          customInputRevealed={customInputRevealed}
-          startNewPlanRevealed={startNewPlanRevealed}
-          startNewSubscription={startNewSubscription}
-          cancelButtonRevealed={cancelButtonRevealed}
-          changeBillingRevealed={changeBillingRevealed}
-          selectedBillingOption={selectedBillingOption} />
-      </div>
+      <p className="supportPlanOptionsHeader">OPTIONS</p>
+      <SupportPlanOptionsSection
+        created={created}
+        isLoading={isLoading}
+        donationDate={donationDate}
+        updatePlanAmount={updatePlanAmount}
+        toggleStateField={toggleStateField}
+        changeBillingDate={changeBillingDate}
+        handleInputChange={handleInputChange}
+        updateSubscription={updateSubscription}
+        cancelSubscription={cancelSubscription}
+        startNewPlanAmount={startNewPlanAmount}
+        customInputRevealed={customInputRevealed}
+        startNewPlanRevealed={startNewPlanRevealed}
+        startNewSubscription={startNewSubscription}
+        cancelButtonRevealed={cancelButtonRevealed}
+        changeBillingRevealed={changeBillingRevealed} />
     </div>
   </div>
 )

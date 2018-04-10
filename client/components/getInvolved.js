@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Footer from './footer'
 
 const GetInvolved = () => (
-  <div className="displayFlex flexColumn flex1">
+  <div className="getInvolvedBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAllCenter">
       <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ANGEL INVESTOR</p>
       <Link to="/donor-signup" className="getInvolvedButton">DONATE</Link>

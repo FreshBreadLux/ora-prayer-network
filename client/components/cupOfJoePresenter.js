@@ -18,13 +18,14 @@ const CupOfJoePresenter = ({ buyCoffee, coffeeStatus }) => (
           className="supportPlanButton">
           {coffeeStatus === 'ready'
           ? <span className="emojiSpan fadeIn">
-              {ReactEmoji.emojify(':coffee:', {attributes: {width: '14px', height: '14px', className: 'rightMarginHalfem'}})}{`DONATE $3`}
+              {ReactEmoji.emojify(':coffee:', {attributes: {width: '16px', height: '16px', className: 'rightMarginHalfem'}})}
+              <p className="raleway font14">DONATE $3</p>
             </span>
           : <div>
               {coffeeStatus === 'loading'
               ? <Loader type="Bars" height={12} width={12} color="#555" />
               : <span className="emojiSpan fadeInAndOut">
-                  {`THANK YOU`}{ReactEmoji.emojify(':smile:', {attributes: {width: '14px', height: '14px', className: 'leftMarginHalfem'}})}
+                  <p className="raleway font14">THANK YOU</p>{ReactEmoji.emojify(':blush:', {attributes: {width: '16px', height: '16px', className: 'leftMarginHalfem'}})}
                 </span>
               }
             </div>
