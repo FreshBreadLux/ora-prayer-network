@@ -187,6 +187,7 @@ class StripeForm extends React.Component {
               className="stripeCardElement" />
           </div>
           <FormReviewSection
+            email={this.state.email}
             isLoading={this.state.isLoading}
             singleDonation={this.state.singleDonation}
             monthlyDonation={this.state.monthlyDonation} />

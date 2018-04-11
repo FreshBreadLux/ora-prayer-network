@@ -39,6 +39,7 @@ class FormReviewSection extends React.Component {
         <div className="reviewDiv">
           <p className="raleway blackText font12 bottomMargin1em">DONATION TO ORA PRAYER NETWORK INC.</p>
           <p className="raleway blackText font12 bottomMargin1em">ANGEL INVESTOR STATUS</p>
+          <p className="raleway blackText font12 bottomMargin1em">{this.props.email}</p>
           {this.createReviewString()}
         </div>
         <div className="displayFlex flexJustifyCenter">

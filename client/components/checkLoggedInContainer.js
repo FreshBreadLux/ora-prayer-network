@@ -1,19 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { setAuthInfo } from '../store'
 import LoginPageContainer from './loginPageContainer'
-import LoadingPresenter from './loadingPresenter'
-import ManageMyDonationsContainer from './manageMyDonationsContainer'
+import MyDonationsContainer from './myDonationsContainer'
 
 class CheckLoggedInContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isLoading: true,
-      isLoggedIn: false,
-      userId: null,
-      jwToken: null,
-    }
     this.verifyLogin = this.verifyLogin.bind(this)
-    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -24,46 +18,32 @@ class CheckLoggedInContainer extends React.Component {
     const oraAuth = localStorage.getItem('oraAuth')
     const oraAuthJson = JSON.parse(oraAuth)
     if (oraAuthJson) {
-      this.setState({
-        isLoading: false,
+      this.props.dispatchSetAuthInfo({
         isLoggedIn: true,
         userId: oraAuthJson.userId,
-        jwToken: oraAuthJson.jwToken
+        jwToken: oraAuthJson.jwToken,
       })
-    } else {
-      this.setState({ isLoading: false })
     }
   }
 
-  logout(){
-    localStorage.removeItem('oraAuth')
-    this.setState({
-      isLoading: false,
-      isLoggedIn: false,
-      userId: null,
-      jwToken: null
-    })
-  }
-
   render() {
-    console.log('this.state: ', this.state)
     return (
       <div className="displayFlex flexColumn flex1">
-      {this.state.isLoading
-      ? <LoadingPresenter />
-      : <div className="displayFlex flexColumn flex1">
-          {!this.state.isLoggedIn
-          ? <LoginPageContainer verifyLogin={this.verifyLogin} />
-          : <ManageMyDonationsContainer
-              logout={this.logout}
-              userId={this.state.userId}
-              jwToken={this.state.jwToken} />
-          }
-        </div>
-      }
+        {!this.props.isLoggedIn
+        ? <LoginPageContainer verifyLogin={this.verifyLogin} />
+        : <MyDonationsContainer />
+        }
       </div>
     )
   }
 }
 
-export default CheckLoggedInContainer
+const mapState = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+})
+
+const mapDispatch = dispatch => ({
+  dispatchSetAuthInfo: authInfo => dispatch(setAuthInfo(authInfo)),
+})
+
+export default connect(mapState, mapDispatch)(CheckLoggedInContainer)

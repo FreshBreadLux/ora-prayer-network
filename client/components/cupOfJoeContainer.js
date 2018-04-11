@@ -32,7 +32,7 @@ class CupOfJoeContainer extends React.Component {
     this.setState({ coffeeStatus: 'thank you' })
     setTimeout(() => {
       this.setState({ coffeeStatus: 'ready' })
-    }, 3000)
+    }, 5000)
   }
 
   render() {

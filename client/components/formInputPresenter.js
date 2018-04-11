@@ -1,9 +1,10 @@
 import React from 'react'
 
-const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, inputMode, value }) => (
+const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, inputMode, value, step }) => (
   <div className={notEmpty ? 'formGroup notEmpty' : 'formGroup'}>
     <input
       id={name}
+      step={step}
       type={type}
       name={name}
       value={value}

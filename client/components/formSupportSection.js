@@ -6,16 +6,18 @@ const FormSupportSection = ({ handleDonationAmount, singleDonation, monthlyDonat
     <p className="stripeFormSectionHeader">SUPPORT INFORMATION</p>
     <div className="selectAmountDiv">
       <FormInputPresenter
-        type="text"
-        inputMode="text"
+        step="0.01"
+        type="number"
+        inputMode="number"
         name="monthlyDonation"
         value={monthlyDonation}
         label="Monthly Donation"
         onChange={handleDonationAmount}
         notEmpty={!!monthlyDonation.length} />
       <FormInputPresenter
-        type="text"
-        inputMode="text"
+        step="0.01"
+        type="number"
+        inputMode="number"
         name="singleDonation"
         value={singleDonation}
         label="Single Donation"

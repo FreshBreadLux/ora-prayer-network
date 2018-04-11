@@ -24,6 +24,12 @@ html, body {
   color: #fff;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: #fff;
@@ -1047,6 +1053,7 @@ input[type="radio"]:checked + label span {
   outline: none;
   background-color: transparent;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .supportPlanOptionsButton {
   color: #0c2461;
@@ -1136,7 +1143,7 @@ input[type="radio"]:checked + label span {
 }
 .fadeInAndOut {
   opacity: 0;
-  animation: fadeInAndOut 3s forwards;
+  animation: fadeInAndOut 5s forwards;
 }
 
 @keyframes fadeIn {

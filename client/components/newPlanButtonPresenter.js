@@ -18,8 +18,9 @@ const NewPlanButtonPresenter = ({ toggleStateField, startNewPlanRevealed, startN
       <p className="font12 bottomMargin1em">Your first monthly donation will occur immediately</p>
         <div className="displayFlex flexJustifyBetween flexAlignCenter">
           <FormInputPresenter
-            type="text"
-            inputMode="text"
+            step="0.01"
+            type="number"
+            inputMode="number"
             name="startNewPlanAmount"
             value={startNewPlanAmount}
             label="New Monthly Amount"

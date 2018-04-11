@@ -18,8 +18,9 @@ const ChangeDateButtonPresenter = ({ toggleStateField, changeBillingRevealed, ha
         <p className="font12 bottomMargin1em">Which day of the month would you like to donate on?</p>
         <div className="displayFlex flexJustifyBetween flexAlignCenter">
           <FormInputPresenter
-            type="text"
-            inputMode="text"
+            step="1"
+            type="number"
+            inputMode="number"
             name="donationDate"
             value={donationDate}
             label="New Donation Date"

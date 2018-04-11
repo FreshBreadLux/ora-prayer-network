@@ -9,8 +9,9 @@ const SingleDonationPresenter = ({ singleDonation, handleInputChange, chargeSing
     <p className="supportPlanHeader">MAKE A SINGLE DONATION</p>
     <p className="supportPlanSubHeader">Single donations are charged to your card on file and are independent of your monthly support plan</p>
     <FormInputPresenter
-      type="text"
-      inputMode="text"
+      step="0.01"
+      type="number"
+      inputMode="number"
       name="singleDonation"
       value={singleDonation}
       label="Single Donation"
@@ -24,11 +25,11 @@ const SingleDonationPresenter = ({ singleDonation, handleInputChange, chargeSing
         {singleDonationStatus === 'ready'
         ? <div>
             {singleDonation.length
-            ? <div className="displayFlex flexAllCenter">
+            ? <div className="displayFlex flexAllCenter fadeIn">
                 <Io.IoIosHeart className="iconMarginRight font16 pinkText" />
                 <p className="raleway font14">DONATE</p>
               </div>
-            : <div className="displayFlex flexAllCenter">
+            : <div className="displayFlex flexAllCenter fadeIn">
                 <Io.IoIosHeartOutline className="iconMarginRight font16" />
                 <p className="raleway font14">DONATE</p>
               </div>
