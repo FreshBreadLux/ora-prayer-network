@@ -416,6 +416,9 @@ nav a {
 .flexColumn {
   flex-direction: column;
 }
+.flexRow {
+  flex-direction: row;
+}
 
 .flex1 {
   display: flex;
@@ -1014,19 +1017,37 @@ input[type="radio"]:checked + label span {
   color: #000;
   font-family: 'raleway';
 }
-
+.supportPlanHeaderSection {
+  display: flex;
+  margin-bottom: 40px;
+}
 .supportHeart {
   color: #FF4081;
   margin-left: 7px;
 }
 
-.supportPlanOptionsHeader {
+.supportPlanHeader {
   font-family: 'raleway';
   font-size: 14px;
   padding: 0 0 0.5em 0;
   border-bottom: 1px #000 solid;
 }
+.supportPlanSubHeader {
+  font-family: 'raleway';
+  font-size: 12px;
+  padding: 8px 0 12px;
+}
 
+.supportPlanDonateButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0c2461;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin-bottom: 40px;
+}
 .supportPlanOptionsButton {
   color: #0c2461;
   display: flex;
@@ -1039,15 +1060,14 @@ input[type="radio"]:checked + label span {
   margin: 10px 0 0 0;
   cursor: pointer;
 }
-
 .supportPlanButton {
   width: 100%;
   padding: 7px;
+  background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
 }
-
 .supportPlanUpdateButton {
   width: 100%;
   padding: 10px;
@@ -1056,7 +1076,6 @@ input[type="radio"]:checked + label span {
   border-radius: 5px;
   outline: none;
 }
-
 .supportPlanCancelButton {
   width: 100%;
   padding: 10px 10px 5px 10px;

@@ -6,6 +6,7 @@ import NewPlanButtonPresenter from './newPlanButtonPresenter'
 
 const SupportPlanOptionsSection = ({ isLoading, toggleStateField, created, customInputRevealed, handleInputChange, updateSubscription, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, startNewSubscription, startNewPlanAmount, updatePlanAmount, changeBillingRevealed, donationDate, changeBillingDate }) => (
   <div className="displayFlex flexColumn">
+    <p className="supportPlanHeader">OPTIONS</p>
     {created === 'CANCELED'
     ? <NewPlanButtonPresenter
         isLoading={isLoading}

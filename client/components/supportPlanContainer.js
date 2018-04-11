@@ -15,6 +15,8 @@ class SupportPlanContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      singleDonation: '',
+      singleDonationStatus: 'ready',
       customInputRevealed: false,
       updatePlanAmount: '',
       changeBillingRevealed: false,
@@ -30,6 +32,8 @@ class SupportPlanContainer extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this)
     this.toggleStateField = this.toggleStateField.bind(this)
     this.changeBillingDate = this.changeBillingDate.bind(this)
+    this.chargeSingleDonation = this.chargeSingleDonation.bind(this)
+    this.sayThanks = this.sayThanks.bind(this)
   }
 
   toggleStateField(field) {
@@ -39,6 +43,31 @@ class SupportPlanContainer extends React.Component {
   handleInputChange(event) {
     const { name, value } = event.target
     this.setState({ [name]: value })
+  }
+
+  chargeSingleDonation() {
+    this.setState({ singleDonationStatus: 'loading' })
+    const { userId, jwToken, fetchChargeHistory, incrementInvestmentTotal } = this.props
+    const { singleDonation } = this.state
+    axios.post(`${ROOT_URL}/api/donations/charges`, { userId, amount: +singleDonation * 100 }, {
+      headers: {token: jwToken}
+    })
+    .then(charge => {
+      fetchChargeHistory(userId, jwToken)
+      incrementInvestmentTotal(charge.data.amount)
+    })
+    .then(() => this.sayThanks())
+    .catch(console.error)
+  }
+
+  sayThanks() {
+    this.setState({
+      singleDonationStatus: 'thank you',
+      singleDonation: '',
+    })
+    setTimeout(() => {
+      this.setState({ singleDonationStatus: 'ready' })
+    }, 5000)
   }
 
   updateSubscription() {
@@ -127,21 +156,24 @@ class SupportPlanContainer extends React.Component {
       <SupportPlanPresenter
         userName={this.props.userName}
         isLoading={this.state.isLoading}
+        donationDate={this.state.donationDate}
         toggleStateField={this.toggleStateField}
+        singleDonation={this.state.singleDonation}
         changeBillingDate={this.changeBillingDate}
         handleInputChange={this.handleInputChange}
         investmentTotal={this.props.investmentTotal}
         updateSubscription={this.updateSubscription}
         cancelSubscription={this.cancelSubscription}
         updatePlanAmount={this.state.updatePlanAmount}
+        chargeSingleDonation={this.chargeSingleDonation}
         startNewSubscription={this.startNewSubscription}
         billingCycleAnchor={this.props.subscriptionInfo && this.props.subscriptionInfo.billing_cycle_anchor}
         startNewPlanAmount={this.state.startNewPlanAmount}
         customInputRevealed={this.state.customInputRevealed}
         cancelButtonRevealed={this.state.cancelButtonRevealed}
         startNewPlanRevealed={this.state.startNewPlanRevealed}
+        singleDonationStatus={this.state.singleDonationStatus}
         changeBillingRevealed={this.state.changeBillingRevealed}
-        donationDate={this.state.donationDate}
         plan={this.props.subscriptionInfo && this.props.subscriptionInfo.plan}
         created={this.props.subscriptionInfo && this.props.subscriptionInfo.created} />
     )

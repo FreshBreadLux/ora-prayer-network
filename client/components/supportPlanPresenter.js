@@ -1,7 +1,6 @@
 import React from 'react'
-import ReactEmoji from 'react-emoji'
-const Io = require('react-icons/lib/io')
 import SupportPlanOptionsSection from './supportPlanOptionsSection'
+import SingleDonationPresenter from './singleDonationPresenter'
 
 function createDateWithSuffix(billingAnchor) {
   const billingAnchorDate = new Date(billingAnchor * 1000)
@@ -13,7 +12,7 @@ function createDateWithSuffix(billingAnchor) {
   return date + 'th'
 }
 
-const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate }) => (
+const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate, singleDonation, chargeSingleDonation, singleDonationStatus }) => (
   <div>
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
@@ -24,7 +23,7 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
       <p className="raleway font12 rightText">INVESTMENT<br />TOTAL</p>
     </div>
     <div className="supportPlanDiv">
-      <div className="displayFlex bottomMargin1em">
+      <div className="supportPlanHeaderSection">
         <div className="displayFlex flex3">
           <div className="displayFlex flexColumn">
             <p className="bottomMarginHalfem font16">SUPPORT PLAN</p>
@@ -48,7 +47,11 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
           </div>
         </div>
       </div>
-      <p className="supportPlanOptionsHeader">OPTIONS</p>
+      <SingleDonationPresenter
+        singleDonation={singleDonation}
+        handleInputChange={handleInputChange}
+        chargeSingleDonation={chargeSingleDonation}
+        singleDonationStatus={singleDonationStatus} />
       <SupportPlanOptionsSection
         created={created}
         isLoading={isLoading}
