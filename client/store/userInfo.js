@@ -22,7 +22,6 @@ const defaultUserInfo = {
  */
 const setUserInfo = userInfo => ({type: SET_USER_INFO, userInfo})
 export const incrementInvestmentTotal = amount => ({type: INCREMENT_INVESTMENT_TOTAL, amount})
-export const logout = () => ({type: LOGOUT})
 
 /**
  * THUNK CREATORS

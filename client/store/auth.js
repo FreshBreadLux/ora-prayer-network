@@ -17,6 +17,7 @@ const defaultAuthInfo = {
  * ACTION CREATORS
  */
 export const setAuthInfo = authInfo => ({type: SET_AUTH_INFO, authInfo})
+export const logout = () => ({type: LOGOUT})
 
 /**
  * REDUCER

@@ -2,27 +2,19 @@ import React from 'react'
 import Footer from './footer'
 import { connect } from 'react-redux'
 import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../store'
-import SupportPlanContainer from './SupportPlanContainer'
+import SupportPlanPresenter from './SupportPlanPresenter'
 import CupOfJoeContainer from './cupOfJoeContainer'
-import HistoryPresenter from './historyPresenter'
+import ChargeHistoryContainer from './ChargeHistoryContainer'
 
 class MyDonationsContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      showMoreCharges: false,
-    }
-    this.toggleShowMoreCharges = this.toggleShowMoreCharges.bind(this)
     this.clearLocalStorageAndLogout = this.clearLocalStorageAndLogout.bind(this)
   }
 
   componentDidMount() {
     const { userId, jwToken, loadInitialData } = this.props
     loadInitialData(userId, jwToken)
-  }
-
-  toggleShowMoreCharges() {
-    this.setState({showMoreCharges: !this.state.showMoreCharges})
   }
 
   clearLocalStorageAndLogout() {
@@ -34,11 +26,9 @@ class MyDonationsContainer extends React.Component {
     return (
       <div className="myDonationsBackgroundImage">
         <div className="donationContainerDiv">
-          <SupportPlanContainer />
+          <SupportPlanPresenter />
           <CupOfJoeContainer />
-          <HistoryPresenter
-            showMoreCharges={this.state.showMoreCharges}
-            toggleShowMoreCharges={this.toggleShowMoreCharges} />
+          <ChargeHistoryContainer />
           <div className="displayFlex flexAllCenter">
             <div className="topMargin1em bottomMargin1em widthPercent65">
               <button

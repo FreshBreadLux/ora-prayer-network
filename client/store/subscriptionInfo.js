@@ -13,8 +13,9 @@ const CLEAR_SUBSCRIPTION_INFO = 'CLEAR_SUBSCRIPTION_INFO'
  * INITIAL STATE
  */
 const defaultSubscriptionInfo = {
-  plan: {amount: 0, interval: 'month'},
   created: 'CANCELED',
+  billing_cycle_anchor: '',
+  plan: {amount: 0, interval: 'month'},
 }
 
 /**
@@ -36,8 +37,9 @@ export const fetchSubscriptionInfo = (userId, jwToken) =>
         return dispatch(setSubscriptionInfo(subscriptions.data.data[0]))
       } else {
         return dispatch(setSubscriptionInfo({
-          plan: {amount: 0, interval: 'month'},
           created: 'CANCELED',
+          billing_cycle_anchor: '',
+          plan: {amount: 0, interval: 'month'},
         }))
       }
     })

@@ -1,77 +1,18 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import SupportPlanOptionsSection from './supportPlanOptionsSection'
 import SingleDonationContainer from './SingleDonationContainer'
+import SupportPlanDetailPresenter from './SupportPlanDetailPresenter'
+import SupportPlanHeaderPresenter from './SupportPlanHeaderPresenter'
+import SupportPlanOptionsPresenter from './SupportPlanOptionsPresenter'
 
-function createDateWithSuffix(billingAnchor) {
-  const billingAnchorDate = new Date(billingAnchor * 1000)
-  let date = billingAnchorDate.getDate()
-  const mod10 = date % 10, mod100 = date % 100
-  if (mod10 === 1 && mod100 !== 11) return date + 'st'
-  if (mod10 === 2 && mod100 !== 12) return date + 'nd'
-  if (mod10 === 3 && mod100 !== 13) return date + 'rd'
-  return date + 'th'
-}
-
-const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscriptionAmount, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate }) => (
+const SupportPlanPresenter = () => (
   <div>
-    <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
-      <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
-      <p className="raleway font30">{`$${investmentTotal / 100}`}</p>
-    </div>
-    <div className="displayFlex flexJustifyBetween flexAlignEnd bottomMarginHalfem">
-      <p className="raleway font20">ANGEL INVESTOR</p>
-      <p className="raleway font12 rightText">INVESTMENT<br />TOTAL</p>
-    </div>
+    <SupportPlanHeaderPresenter />
     <div className="supportPlanDiv">
-      <div className="supportPlanHeaderSection">
-        <div className="displayFlex flex3">
-          <div className="displayFlex flexColumn">
-            <p className="bottomMarginHalfem font16">SUPPORT PLAN</p>
-            <p className="font12 bottomMarginHalfem">
-              {created === 'CANCELED'
-              ? created
-              : `STARTED: ${new Date(created * 1000).toDateString().slice(3)
-              .toUpperCase()}`}
-            </p>
-            <p className="font12 bottomMargin1em">
-              {created === 'CANCELED'
-              ? null
-              : `Donation on the ${createDateWithSuffix(billingCycleAnchor)} of the month`}
-            </p>
-          </div>
-        </div>
-        <div className="displayFlex flex2 flexJustifyEnd">
-          <div className="displayFlex flexColumn">
-            <p className="font36">{`$${plan.amount / 100}`}</p>
-            <p className="font12 rightText">{`per ${plan.interval}`}</p>
-          </div>
-        </div>
-      </div>
+      <SupportPlanDetailPresenter />
       <SingleDonationContainer />
-      <SupportPlanOptionsSection
-        created={created}
-        isLoading={isLoading}
-        donationDate={donationDate}
-        updatePlanAmount={updatePlanAmount}
-        toggleStateField={toggleStateField}
-        changeBillingDate={changeBillingDate}
-        handleInputChange={handleInputChange}
-        updateSubscriptionAmount={updateSubscriptionAmount}
-        cancelSubscription={cancelSubscription}
-        startNewPlanAmount={startNewPlanAmount}
-        customInputRevealed={customInputRevealed}
-        startNewPlanRevealed={startNewPlanRevealed}
-        startNewSubscription={startNewSubscription}
-        cancelButtonRevealed={cancelButtonRevealed}
-        changeBillingRevealed={changeBillingRevealed} />
+      <SupportPlanOptionsPresenter />
     </div>
   </div>
 )
 
-const mapState = state => ({
-  userName: state.userInfo.userName,
-  investmentTotal: state.userInfo.investmentTotal,
-})
-
-export default connect(mapState)(SupportPlanPresenter)
+export default SupportPlanPresenter
