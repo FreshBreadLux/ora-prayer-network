@@ -25,20 +25,4 @@ describe('thunk creators', () => {
     mockAxios.restore()
     store.clearActions()
   })
-
-  describe('fetchUserInfo', () => {
-    it('eventually dispatches the SET_USER_INFO action', () => {
-      const fakeUserInfo = {
-        userName: {first: 'Cody', last: 'Just Cody'},
-        investmentTotal: 100,
-      }
-      mockAxios.onGet('/api/users/').replyOnce(200, fakeUserInfo)
-      return store.dispatch(fetchUserInfo())
-        .then(() => {
-          const actions = store.getActions()
-          expect(actions[0].type).to.be.equal('SET_USER_INFO')
-          expect(actions[0].userInfo).to.be.deep.equal(fakeUserInfo)
-        })
-    })
-  })
 })
