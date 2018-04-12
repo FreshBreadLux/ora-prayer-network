@@ -26,7 +26,6 @@ class EditAmountButtonContainer extends React.Component {
   }
 
   updateSubscriptionAmount() {
-    console.log('Hit updateSubscriptionAmount')
     this.setState({ isLoading: true })
     const { userId, jwToken, subscriptionInfo, dispatchUpdateSubscription, dispatchFetchChargeHistory } = this.props
     const { updatePlanAmount } = this.state
