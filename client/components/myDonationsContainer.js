@@ -1,8 +1,8 @@
 import React from 'react'
 import Footer from './footer'
 import { connect } from 'react-redux'
-import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory } from '../store'
-import SupportPlanContainer from './supportPlanContainer'
+import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../store'
+import SupportPlanContainer from './SupportPlanContainer'
 import CupOfJoeContainer from './cupOfJoeContainer'
 import HistoryPresenter from './historyPresenter'
 
@@ -13,6 +13,7 @@ class MyDonationsContainer extends React.Component {
       showMoreCharges: false,
     }
     this.toggleShowMoreCharges = this.toggleShowMoreCharges.bind(this)
+    this.clearLocalStorageAndLogout = this.clearLocalStorageAndLogout.bind(this)
   }
 
   componentDidMount() {
@@ -24,27 +25,24 @@ class MyDonationsContainer extends React.Component {
     this.setState({showMoreCharges: !this.state.showMoreCharges})
   }
 
+  clearLocalStorageAndLogout() {
+    localStorage.removeItem('oraAuth')
+    this.props.dispatchLogout()
+  }
+
   render() {
     return (
       <div className="myDonationsBackgroundImage">
         <div className="donationContainerDiv">
           <SupportPlanContainer />
-          <CupOfJoeContainer
-            userId={this.props.userId}
-            jwToken={this.props.jwToken}
-            fetchChargeHistory={this.fetchChargeHistory}
-            incrementInvestmentTotal={this.incrementInvestmentTotal} />
+          <CupOfJoeContainer />
           <HistoryPresenter
-            userId={this.props.userId}
-            jwToken={this.props.jwToken}
-            charges={this.state.charges}
-            fetchChargeHistory={this.fetchChargeHistory}
             showMoreCharges={this.state.showMoreCharges}
             toggleShowMoreCharges={this.toggleShowMoreCharges} />
           <div className="displayFlex flexAllCenter">
             <div className="topMargin1em bottomMargin1em widthPercent65">
               <button
-                onClick={this.props.logout}
+                onClick={this.clearLocalStorageAndLogout}
                 className="supportPlanButton">LOGOUT</button>
             </div>
           </div>
@@ -65,7 +63,8 @@ const mapDispatch = dispatch => ({
     dispatch(fetchUserInfo(userId))
     dispatch(fetchSubscriptionInfo(userId, jwToken))
     dispatch(fetchChargeHistory(userId, jwToken))
-  }
+  },
+  dispatchLogout: () => dispatch(logout())
 })
 
 export default connect(mapState, mapDispatch)(MyDonationsContainer)

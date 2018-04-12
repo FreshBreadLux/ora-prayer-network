@@ -3,7 +3,7 @@ import LoadingButtonPresenter from './loadingButtonPresenter'
 import FormInputPresenter from './formInputPresenter'
 const Io = require('react-icons/lib/io')
 
-const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, updatePlanAmount, handleInputChange, isLoading, updateSubscription }) => (
+const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, updatePlanAmount, handleInputChange, isLoading, updateSubscriptionAmount }) => (
   <div>
     <button
       className="supportPlanOptionsButton width170Pixels flexJustifyBetween"
@@ -24,12 +24,12 @@ const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, upda
             value={updatePlanAmount}
             label="New Monthly Amount"
             onChange={handleInputChange}
-            notEmpty={!!updatePlanAmount.length} />
+            notEmpty={updatePlanAmount} />
           <LoadingButtonPresenter
             color="#555"
             dimensions={12}
             isLoading={isLoading}
-            onClick={updateSubscription}
+            onClick={updateSubscriptionAmount}
             classNameProp="supportPlanOptionsButton">
             <div className="displayFlex flexAllCenter">
               <Io.IoIosHeart className="iconMarginBoth font16 pinkText" />

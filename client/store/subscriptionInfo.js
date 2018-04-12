@@ -7,18 +7,21 @@ const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
  * ACTION TYPES
  */
 const SET_SUBSCRIPTION_INFO = 'SET_SUBSCRIPTION_INFO'
+const CLEAR_SUBSCRIPTION_INFO = 'CLEAR_SUBSCRIPTION_INFO'
 
 /**
  * INITIAL STATE
  */
 const defaultSubscriptionInfo = {
-  plan: {amount: 0, interval: 'month'}
+  plan: {amount: 0, interval: 'month'},
+  created: 'CANCELED',
 }
 
 /**
  * ACTION CREATORS
  */
 const setSubscriptionInfo = subscriptionInfo => ({type: SET_SUBSCRIPTION_INFO, subscriptionInfo})
+const clearSubscriptionInfo = () => ({type: CLEAR_SUBSCRIPTION_INFO})
 
 /**
  * THUNK CREATORS
@@ -30,14 +33,53 @@ export const fetchSubscriptionInfo = (userId, jwToken) =>
     })
     .then(subscriptions => {
       if (subscriptions.data.data[0]) {
-        dispatch(setSubscriptionInfo(subscriptions.data.data[0]))
+        return dispatch(setSubscriptionInfo(subscriptions.data.data[0]))
       } else {
-        dispatch(setSubscriptionInfo({
+        return dispatch(setSubscriptionInfo({
           plan: {amount: 0, interval: 'month'},
           created: 'CANCELED',
         }))
       }
     })
+    .catch(err => console.log(err))
+
+export const updateSubscription = (userId, jwToken, subscriptionInfo, amount) =>
+  dispatch =>
+    axios.put(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
+      amount: +amount * 100
+    }, {
+      headers: {token: jwToken}
+    })
+    .then(subscription => dispatch(setSubscriptionInfo(subscription.data)))
+    .catch(err => console.log(err))
+
+export const updateBillingDate = (jwToken, subscriptionInfo, billingDate) =>
+  dispatch =>
+    axios.put(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}/billingAnchor`, {
+      billingDate
+    }, {
+      headers: {token: jwToken}
+    })
+    .then(subscription => dispatch(setSubscriptionInfo(subscription.data)))
+    .catch(err => console.log(err))
+
+export const deleteSubscription = (jwToken, subscriptionInfo) =>
+  dispatch =>
+    axios.delete(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
+      headers: {token: jwToken}
+    })
+    .then(() => dispatch(clearSubscriptionInfo()))
+    .catch(err => console.log(err))
+
+export const createSubscription = (userId, jwToken, amount) =>
+  dispatch =>
+    axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
+      userId,
+      amount: +amount * 100
+    }, {
+      headers: {token: jwToken}
+    })
+    .then(subscription => dispatch(setSubscriptionInfo(subscription.data)))
     .catch(err => console.log(err))
 
 /**
@@ -47,6 +89,8 @@ export default function (state = defaultSubscriptionInfo, action) {
   switch (action.type) {
     case SET_SUBSCRIPTION_INFO:
       return action.subscriptionInfo
+    case CLEAR_SUBSCRIPTION_INFO:
+      return defaultSubscriptionInfo
     case LOGOUT:
       return defaultSubscriptionInfo
     default:

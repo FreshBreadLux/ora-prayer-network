@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import SupportPlanOptionsSection from './supportPlanOptionsSection'
-import SingleDonationPresenter from './singleDonationPresenter'
+import SingleDonationContainer from './SingleDonationContainer'
 
 function createDateWithSuffix(billingAnchor) {
   const billingAnchorDate = new Date(billingAnchor * 1000)
@@ -12,7 +13,7 @@ function createDateWithSuffix(billingAnchor) {
   return date + 'th'
 }
 
-const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscription, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate, singleDonation, chargeSingleDonation, singleDonationStatus }) => (
+const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, handleInputChange, updateSubscriptionAmount, cancelSubscription, startNewPlanRevealed, startNewSubscription, customInputRevealed, cancelButtonRevealed, plan, startNewPlanAmount, updatePlanAmount, toggleStateField, changeBillingRevealed, donationDate, billingCycleAnchor, changeBillingDate }) => (
   <div>
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
@@ -47,11 +48,7 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
           </div>
         </div>
       </div>
-      <SingleDonationPresenter
-        singleDonation={singleDonation}
-        handleInputChange={handleInputChange}
-        chargeSingleDonation={chargeSingleDonation}
-        singleDonationStatus={singleDonationStatus} />
+      <SingleDonationContainer />
       <SupportPlanOptionsSection
         created={created}
         isLoading={isLoading}
@@ -60,7 +57,7 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
         toggleStateField={toggleStateField}
         changeBillingDate={changeBillingDate}
         handleInputChange={handleInputChange}
-        updateSubscription={updateSubscription}
+        updateSubscriptionAmount={updateSubscriptionAmount}
         cancelSubscription={cancelSubscription}
         startNewPlanAmount={startNewPlanAmount}
         customInputRevealed={customInputRevealed}
@@ -72,4 +69,9 @@ const SupportPlanPresenter = ({ isLoading, investmentTotal, userName, created, h
   </div>
 )
 
-export default SupportPlanPresenter
+const mapState = state => ({
+  userName: state.userInfo.userName,
+  investmentTotal: state.userInfo.investmentTotal,
+})
+
+export default connect(mapState)(SupportPlanPresenter)

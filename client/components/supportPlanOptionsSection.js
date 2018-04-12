@@ -4,7 +4,7 @@ import ChangeDateButtonPresenter from './changeDateButtonPresenter'
 import CancelPlanButtonPresenter from './cancelPlanButtonPresenter'
 import NewPlanButtonPresenter from './newPlanButtonPresenter'
 
-const SupportPlanOptionsSection = ({ isLoading, toggleStateField, created, customInputRevealed, handleInputChange, updateSubscription, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, startNewSubscription, startNewPlanAmount, updatePlanAmount, changeBillingRevealed, donationDate, changeBillingDate }) => (
+const SupportPlanOptionsSection = ({ isLoading, toggleStateField, created, customInputRevealed, handleInputChange, updateSubscriptionAmount, cancelButtonRevealed, cancelSubscription, startNewPlanRevealed, startNewSubscription, startNewPlanAmount, updatePlanAmount, changeBillingRevealed, donationDate, changeBillingDate }) => (
   <div className="displayFlex flexColumn">
     <p className="supportPlanHeader">OPTIONS</p>
     {created === 'CANCELED'
@@ -21,7 +21,7 @@ const SupportPlanOptionsSection = ({ isLoading, toggleStateField, created, custo
           toggleStateField={toggleStateField}
           updatePlanAmount={updatePlanAmount}
           handleInputChange={handleInputChange}
-          updateSubscription={updateSubscription}
+          updateSubscriptionAmount={updateSubscriptionAmount}
           customInputRevealed={customInputRevealed} />
         <ChangeDateButtonPresenter
           isLoading={isLoading}

@@ -1,8 +1,7 @@
 import React from 'react'
-import SupportPlanPresenter from './supportPlanPresenter'
-import axios from 'axios'
-
-const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+import { connect } from 'react-redux'
+import { fetchChargeHistory, incrementInvestmentTotal, updateSubscription, updateBillingDate, deleteSubscription, createSubscription } from '../store'
+import SupportPlanPresenter from './SupportPlanPresenter'
 
 function calculateBillingDate(day) {
   const now = new Date()
@@ -15,10 +14,6 @@ class SupportPlanContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      singleDonation: '',
-      singleDonationStatus: 'ready',
-      customInputRevealed: false,
-      updatePlanAmount: '',
       changeBillingRevealed: false,
       donationDate: '',
       cancelButtonRevealed: false,
@@ -26,14 +21,11 @@ class SupportPlanContainer extends React.Component {
       startNewPlanAmount: '',
       isLoading: false,
     }
-    this.updateSubscription = this.updateSubscription.bind(this)
     this.cancelSubscription = this.cancelSubscription.bind(this)
     this.startNewSubscription = this.startNewSubscription.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.toggleStateField = this.toggleStateField.bind(this)
     this.changeBillingDate = this.changeBillingDate.bind(this)
-    this.chargeSingleDonation = this.chargeSingleDonation.bind(this)
-    this.sayThanks = this.sayThanks.bind(this)
   }
 
   toggleStateField(field) {
@@ -45,134 +37,62 @@ class SupportPlanContainer extends React.Component {
     this.setState({ [name]: value })
   }
 
-  chargeSingleDonation() {
-    this.setState({ singleDonationStatus: 'loading' })
-    const { userId, jwToken, fetchChargeHistory, incrementInvestmentTotal } = this.props
-    const { singleDonation } = this.state
-    axios.post(`${ROOT_URL}/api/donations/charges`, { userId, amount: +singleDonation * 100 }, {
-      headers: {token: jwToken}
-    })
-    .then(charge => {
-      fetchChargeHistory(userId, jwToken)
-      incrementInvestmentTotal(charge.data.amount)
-    })
-    .then(() => this.sayThanks())
-    .catch(console.error)
-  }
-
-  sayThanks() {
-    this.setState({
-      singleDonationStatus: 'thank you',
-      singleDonation: '',
-    })
-    setTimeout(() => {
-      this.setState({ singleDonationStatus: 'ready' })
-    }, 5000)
-  }
-
-  updateSubscription() {
-    this.setState({ isLoading: true })
-    const { userId, jwToken, subscriptionInfo } = this.props
-    const { updatePlanAmount } = this.state
-    axios.put(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
-      amount: +updatePlanAmount * 100
-    }, {
-      headers: {token: jwToken}
-    })
-    .then(subscription => {
-      this.props.setSubscriptionInfo(subscription.data)
-      this.setState({
-        customInputRevealed: false,
-        updatePlanAmount: '',
-        isLoading: false,
-      })
-    })
-    .then(() => this.props.fetchChargeHistory(userId, jwToken))
-    .catch(console.error)
-  }
-
   changeBillingDate() {
     this.setState({ isLoading: true })
-    const { id } = this.props.subscriptionInfo
-    const { jwToken } = this.props
+    const { subscriptionInfo, jwToken, dispatchUpdateBillingDate } = this.props
     const billingDate = calculateBillingDate(this.state.donationDate)
-    axios.put(`${ROOT_URL}/api/donations/subscriptions/${id}/billingAnchor`, {
-      billingDate,
-    }, {
-      headers: {token: jwToken}
-    })
-    .then(subscription => {
-      this.props.setSubscriptionInfo(subscription.data)
-      this.setState({
-        donationDate: '',
-        changeBillingRevealed: false,
-        isLoading: false,
-      })
-    })
+    dispatchUpdateBillingDate(jwToken, subscriptionInfo, billingDate)
+    .then(() => this.setState({
+      donationDate: '',
+      changeBillingRevealed: false,
+      isLoading: false,
+    }))
     .catch(console.error)
   }
 
   cancelSubscription() {
     this.setState({ isLoading: true })
-    const { jwToken, subscriptionInfo } = this.props
-    axios.delete(`${ROOT_URL}/api/donations/subscriptions/${subscriptionInfo.id}`, {
-      headers: {token: jwToken}
-    })
-    .then(() => {
-      this.props.setSubscriptionInfo({plan: {amount: 0, interval: 'month'}, created: 'CANCELED'})
-      this.setState({
+    const { jwToken, subscriptionInfo, dispatchDeleteSubscription } = this.props
+    dispatchDeleteSubscription(jwToken, subscriptionInfo)
+    .then(() => this.setState({
         cancelButtonRevealed: false,
         isLoading: false,
-      })
-    })
+    }))
     .catch(console.error)
   }
 
   startNewSubscription() {
     this.setState({ isLoading: true })
-    const { userId, jwToken } = this.props
+    const { userId, jwToken, dispatchCreateSubscription } = this.props
     const { startNewPlanAmount } = this.state
-    axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
-      userId,
-      amount: +startNewPlanAmount * 100
-    }, {
-      headers: {token: jwToken}
-    })
-    .then(subscription => {
-      this.props.incrementInvestmentTotal(startNewPlanAmount * 100)
-      this.props.setSubscriptionInfo(subscription.data)
+    dispatchCreateSubscription(userId, jwToken, startNewPlanAmount)
+    .then(() => {
+      this.props.dispatchIncrementInvestmentTotal(startNewPlanAmount * 100)
+      this.props.dispatchFetchChargeHistory(userId, jwToken)
       this.setState({
         startNewPlanRevealed: false,
         startNewPlanAmount: '',
         isLoading: false,
       })
     })
-    .then(() => this.props.fetchChargeHistory(userId, jwToken))
     .catch(console.error)
   }
 
   render() {
     return (
       <SupportPlanPresenter
-        userName={this.props.userName}
         isLoading={this.state.isLoading}
         donationDate={this.state.donationDate}
         toggleStateField={this.toggleStateField}
-        singleDonation={this.state.singleDonation}
         changeBillingDate={this.changeBillingDate}
         handleInputChange={this.handleInputChange}
-        investmentTotal={this.props.investmentTotal}
-        updateSubscription={this.updateSubscription}
         cancelSubscription={this.cancelSubscription}
-        updatePlanAmount={this.state.updatePlanAmount}
-        chargeSingleDonation={this.chargeSingleDonation}
         startNewSubscription={this.startNewSubscription}
         billingCycleAnchor={this.props.subscriptionInfo && this.props.subscriptionInfo.billing_cycle_anchor}
         startNewPlanAmount={this.state.startNewPlanAmount}
         customInputRevealed={this.state.customInputRevealed}
         cancelButtonRevealed={this.state.cancelButtonRevealed}
         startNewPlanRevealed={this.state.startNewPlanRevealed}
-        singleDonationStatus={this.state.singleDonationStatus}
         changeBillingRevealed={this.state.changeBillingRevealed}
         plan={this.props.subscriptionInfo && this.props.subscriptionInfo.plan}
         created={this.props.subscriptionInfo && this.props.subscriptionInfo.created} />
@@ -180,4 +100,19 @@ class SupportPlanContainer extends React.Component {
   }
 }
 
-export default SupportPlanContainer
+const mapState = state => ({
+  userId: state.auth.userId,
+  jwToken: state.auth.jwToken,
+  subscriptionInfo: state.subscriptionInfo,
+})
+
+const mapDispatch = dispatch => ({
+  dispatchIncrementInvestmentTotal: amount => dispatch(incrementInvestmentTotal(amount)),
+  dispatchFetchChargeHistory: (userId, jwToken) => dispatch(fetchChargeHistory(userId, jwToken)),
+  dispatchUpdateSubscription: (userId, jwToken, subscriptionInfo, amount) => dispatch(updateSubscription(userId, jwToken, subscriptionInfo, amount)),
+  dispatchUpdateBillingDate: (jwToken, subscriptionInfo, billingDate) => dispatch(updateBillingDate(jwToken, subscriptionInfo, billingDate)),
+  dispatchDeleteSubscription: (jwToken, subscriptionInfo) => dispatch(deleteSubscription(jwToken, subscriptionInfo)),
+  dispatchCreateSubscription: (userId, jwToken, amount) => dispatch(createSubscription(userId, jwToken, amount))
+})
+
+export default connect(mapState, mapDispatch)(SupportPlanContainer)

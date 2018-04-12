@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchChargeHistory } from '../store'
 
-const HistoryPresenter = ({ charges, userId, jwToken, fetchChargeHistory, showMoreCharges, toggleShowMoreCharges }) => (
+const HistoryPresenter = ({ chargeHistory, userId, jwToken, dispatchFetchChargeHistory, showMoreCharges, toggleShowMoreCharges }) => (
   <div>
     <p className="raleway font20 bottomMarginHalfem topMargin1em">HISTORY</p>
-    {charges.map((charge, index) => {
+    {chargeHistory.map((charge, index) => {
       if (showMoreCharges) {
         return (
           <div
@@ -30,7 +32,7 @@ const HistoryPresenter = ({ charges, userId, jwToken, fetchChargeHistory, showMo
     ? <button
         className="historyShowButton"
         onClick={() => {
-          fetchChargeHistory(userId, jwToken, 100)
+          dispatchFetchChargeHistory(userId, jwToken, 100)
           .then(toggleShowMoreCharges)
         }}>SHOW MORE</button>
     : <button
@@ -40,4 +42,14 @@ const HistoryPresenter = ({ charges, userId, jwToken, fetchChargeHistory, showMo
   </div>
 )
 
-export default HistoryPresenter
+const mapState = state => ({
+  userId: state.auth.userId,
+  jwToken: state.auth.jwToken,
+  chargeHistory: state.chargeHistory,
+})
+
+const mapDispatch = dispatch => ({
+  dispatchFetchChargeHistory: (userId, jwToken, limit) => dispatch(fetchChargeHistory(userId, jwToken, limit)),
+})
+
+export default connect(mapState, mapDispatch)(HistoryPresenter)

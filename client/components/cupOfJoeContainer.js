@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchChargeHistory, incrementInvestmentTotal } from '../store'
 import CupOfJoePresenter from './cupOfJoePresenter'
 import axios from 'axios'
 
@@ -16,13 +18,13 @@ class CupOfJoeContainer extends React.Component {
 
   buyCoffee() {
     this.setState({ coffeeStatus: 'loading' })
-    const { userId, jwToken, fetchChargeHistory, incrementInvestmentTotal } = this.props
+    const { userId, jwToken, dispatchFetchChargeHistory, dispatchIncrementInvestmentTotal } = this.props
     axios.post(`${ROOT_URL}/api/donations/charges`, { userId, amount: 300 }, {
       headers: {token: jwToken}
     })
     .then(charge => {
-      fetchChargeHistory(userId, jwToken)
-      incrementInvestmentTotal(charge.data.amount)
+      dispatchFetchChargeHistory(userId, jwToken)
+      dispatchIncrementInvestmentTotal(charge.data.amount)
     })
     .then(() => this.sayThanks())
     .catch(console.error)
@@ -44,4 +46,14 @@ class CupOfJoeContainer extends React.Component {
   }
 }
 
-export default CupOfJoeContainer
+const mapState = state => ({
+  userId: state.auth.userId,
+  jwToken: state.auth.jwToken,
+})
+
+const mapDispatch = dispatch => ({
+  dispatchFetchChargeHistory: (userId, jwToken) => dispatch(fetchChargeHistory(userId, jwToken)),
+  dispatchIncrementInvestmentTotal: amount => dispatch(incrementInvestmentTotal(amount)),
+})
+
+export default connect(mapState, mapDispatch)(CupOfJoeContainer)
