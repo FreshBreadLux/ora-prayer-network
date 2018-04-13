@@ -1,13 +1,11 @@
 import React from 'react'
-import { injectStripe, CardElement } from 'react-stripe-elements'
-import FormSupportSection from './formSupportSection'
-import FormPaymentSection from './formPaymentSection'
-import FormReviewSection from './formReviewSection'
 import axios from 'axios'
+import { injectStripe } from 'react-stripe-elements'
+import StripeFormPresenter from './StripeFormPresenter'
 
 const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
 
-class StripeForm extends React.Component {
+class StripeFormContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -26,14 +24,15 @@ class StripeForm extends React.Component {
       zip: '',
       isLoading: false,
     }
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleDonationAmount = this.handleDonationAmount.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.checkEmail = this.checkEmail.bind(this)
-    this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
-    this.createCustomer = this.createCustomer.bind(this)
-    this.createUserWithCustomerId = this.createUserWithCustomerId.bind(this)
     this.verifyUser = this.verifyUser.bind(this)
+    this.checkEmail = this.checkEmail.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleZipCode = this.handleZipCode.bind(this)
+    this.createCustomer = this.createCustomer.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
+    this.handleDonationAmount = this.handleDonationAmount.bind(this)
+    this.createUserWithCustomerId = this.createUserWithCustomerId.bind(this)
   }
 
   async handleSubmit(event) {
@@ -137,6 +136,10 @@ class StripeForm extends React.Component {
     this.setState({ [name]: value })
   }
 
+  handleZipCode(event) {
+    this.setState({ zip: event.value.postalCode })
+  }
+
   handleDonationAmount(event) {
     const { name, value } = event.target
     if (name === 'monthlyDonation') {
@@ -155,46 +158,24 @@ class StripeForm extends React.Component {
 
   render() {
     return (
-      <div className="vw90 displayFlex flexJustifyCenter">
-        <form onSubmit={this.handleSubmit} className="stripeForm">
-          <FormSupportSection
-            singleDonation={this.state.singleDonation}
-            monthlyDonation={this.state.monthlyDonation}
-            handleDonationAmount={this.handleDonationAmount} />
-          <FormPaymentSection
-            city={this.state.city}
-            state={this.state.state}
-            email={this.state.email}
-            address={this.state.address}
-            checkEmail={this.checkEmail}
-            lastName={this.state.lastName}
-            password={this.state.password}
-            firstName={this.state.firstName}
-            userExists={this.state.userExists}
-            handleInputChange={this.handleInputChange}
-            checkEmailReturned={this.state.checkEmailReturned}
-            stripeCustomerExists={this.state.stripeCustomerExists} />
-          <div className="stripeCardElementDiv">
-            <CardElement
-              style={{base: {
-                fontFamily: 'raleway',
-                fontSize: '16px',
-                '::placeholder': {
-                  color: 'rgba(85, 85, 85, 0.5)'
-                }
-              }}}
-              onChange={event => this.setState({zip: event.value.postalCode})}
-              className="stripeCardElement" />
-          </div>
-          <FormReviewSection
-            email={this.state.email}
-            isLoading={this.state.isLoading}
-            singleDonation={this.state.singleDonation}
-            monthlyDonation={this.state.monthlyDonation} />
-        </form>
-      </div>
+      <StripeFormPresenter
+        city={this.state.city}
+        state={this.state.state}
+        email={this.state.email}
+        checkEmail={this.checkEmail}
+        address={this.state.address}
+        password={this.state.password}
+        lastName={this.state.lastName}
+        firstName={this.state.firstName}
+        isLoading={this.state.isLoading}
+        handleSubmit={this.handleSubmit}
+        userExists={this.state.userExists}
+        handleInputChange={this.handleInputChange}
+        handleDonationAmount={this.handleDonationAmount}
+        checkEmailReturned={this.state.checkEmailReturned}
+        stripeCustomerExists={this.state.stripeCustomerExists} />
     )
   }
 }
 
-export default injectStripe(StripeForm)
+export default injectStripe(StripeFormContainer)

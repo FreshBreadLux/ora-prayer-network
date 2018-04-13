@@ -1,10 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import Footer from './Footer'
+import Footer from '../Footer'
 import { Elements } from 'react-stripe-elements'
 import StripeForm from './stripeForm'
 
-const DonorSignup = props => (
+const DonorSignupPresenter = props => (
   <div className="donorSignupBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
       <p className="mobileHeader">DONOR SIGNUP</p>
@@ -17,4 +16,4 @@ const DonorSignup = props => (
   </div>
 )
 
-export default connect()(DonorSignup)
+export default DonorSignupPresenter
