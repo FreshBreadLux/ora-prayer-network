@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../Footer'
 import { Elements } from 'react-stripe-elements'
-import StripeForm from './stripeForm'
+import StripeFormContainer from './StripeFormContainer'
 
 const DonorSignupPresenter = props => (
   <div className="donorSignupBackgroundImage">
@@ -9,7 +9,7 @@ const DonorSignupPresenter = props => (
       <p className="mobileHeader">DONOR SIGNUP</p>
       <Elements fonts={[{
         cssSrc: 'https://fonts.googleapis.com/css?family=Raleway' }]}>
-        <StripeForm {...props} />
+        <StripeFormContainer {...props} />
       </Elements>
     </div>
     <Footer />

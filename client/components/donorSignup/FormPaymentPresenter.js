@@ -1,7 +1,7 @@
 import React from 'react'
-import FormInputPresenter from './formInputPresenter'
+import { FormInputPresenter } from '../'
 
-const FormPaymentSection = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists }) => (
+const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -89,4 +89,4 @@ const FormPaymentSection = ({ firstName, lastName, email, password, address, cit
   </div>
 )
 
-export default FormPaymentSection
+export default FormPaymentPresenter

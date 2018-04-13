@@ -2,7 +2,7 @@ import React from 'react'
 import Loader from 'react-loader-spinner'
 const Io = require('react-icons/lib/io')
 
-class FormReviewSection extends React.Component {
+class FormReviewPresenter extends React.Component {
   constructor(props) {
     super(props)
     this.createReviewString = this.createReviewString.bind(this)
@@ -58,4 +58,4 @@ class FormReviewSection extends React.Component {
   }
 }
 
-export default FormReviewSection
+export default FormReviewPresenter

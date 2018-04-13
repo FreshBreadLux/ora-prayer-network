@@ -1,17 +1,17 @@
 import React from 'react'
-import FormSupportSection from './formSupportSection'
-import FormPaymentSection from './formPaymentSection'
-import FormReviewSection from './formReviewSection'
 import { CardElement } from 'react-stripe-elements'
+import FormReviewPresenter from './FormReviewPresenter'
+import FormPaymentPresenter from './FormPaymentPresenter'
+import FormSupportPresenter from './FormSupportPresenter'
 
 const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail }) => (
   <div className="vw90 displayFlex flexJustifyCenter">
     <form onSubmit={handleSubmit} className="Container">
-      <FormSupportSection
+      <FormSupportPresenter
         singleDonation={singleDonation}
         monthlyDonation={monthlyDonation}
         handleDonationAmount={handleDonationAmount} />
-      <FormPaymentSection
+      <FormPaymentPresenter
         city={city}
         state={state}
         email={email}
@@ -36,7 +36,7 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
           onChange={event => this.setState({zip: event.value.postalCode})}
           className="stripeCardElement" />
       </div>
-      <FormReviewSection
+      <FormReviewPresenter
         email={email}
         isLoading={isLoading}
         singleDonation={singleDonation}

@@ -1,5 +1,5 @@
 import React from 'react'
-import FormInputPresenter from './formInputPresenter'
+import FormInputPresenter from './utilityComponents/FormInputPresenter'
 const Io = require('react-icons/lib/io')
 
 const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange, checkEmailReturned, stripeCustomerExists, email, password }) => (

@@ -2,8 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { injectStripe } from 'react-stripe-elements'
 import StripeFormPresenter from './StripeFormPresenter'
-
-const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+import { ROOT_URL } from '../../config'
 
 class StripeFormContainer extends React.Component {
   constructor(props) {

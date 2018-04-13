@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
-import FormInputPresenter from './formInputPresenter'
+import { FormInputPresenter } from './'
 import Loader from 'react-loader-spinner'
 const Io = require('react-icons/lib/io')
 

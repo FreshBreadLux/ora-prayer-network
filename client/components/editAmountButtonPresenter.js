@@ -1,6 +1,6 @@
 import React from 'react'
 import LoadingButtonPresenter from './loadingButtonPresenter'
-import FormInputPresenter from './formInputPresenter'
+import { FormInputPresenter } from './'
 const Io = require('react-icons/lib/io')
 
 const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, updatePlanAmount, handleInputChange, isLoading, updateSubscriptionAmount }) => (

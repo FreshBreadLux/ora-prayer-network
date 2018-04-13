@@ -1,7 +1,7 @@
 import React from 'react'
-import FormInputPresenter from './formInputPresenter'
+import { FormInputPresenter } from '../'
 
-const FormSupportSection = ({ handleDonationAmount, singleDonation, monthlyDonation }) => (
+const FormSupportPresenter = ({ handleDonationAmount, singleDonation, monthlyDonation }) => (
   <div>
     <p className="stripeFormSectionHeader">SUPPORT INFORMATION</p>
     <div className="selectAmountDiv">
@@ -27,4 +27,4 @@ const FormSupportSection = ({ handleDonationAmount, singleDonation, monthlyDonat
   </div>
 )
 
-export default FormSupportSection
+export default FormSupportPresenter
