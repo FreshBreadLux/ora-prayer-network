@@ -1,5 +1,5 @@
 import React from 'react'
-import { SingleDonationContainer, DonationPlanDetailPresenter, DonationPlanHeaderPresenter, DonationPlanOptionsPresenter } from '../'
+import { SingleDonationContainer, DonationPlanDetailPresenter, DonationPlanHeaderPresenter, DonationPlanOptionsPresenter } from '../../'
 
 const DonationPlanPresenter = () => (
   <div>

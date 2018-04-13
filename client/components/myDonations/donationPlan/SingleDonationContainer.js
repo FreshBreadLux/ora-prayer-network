@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { fetchChargeHistory, incrementInvestmentTotal } from '../../store'
-import { SingleDonationPresenter } from '../'
-import { ROOT_URL } from '../../config'
+import { fetchChargeHistory, incrementInvestmentTotal } from '../../../store'
+import { SingleDonationPresenter } from '../../'
+import { ROOT_URL } from '../../../config'
 
 class SingleDonationContainer extends React.Component {
   constructor(props) {

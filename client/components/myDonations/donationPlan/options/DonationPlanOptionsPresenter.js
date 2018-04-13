@@ -1,9 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import EditAmountButtonContainer from './EditAmountButtonContainer'
-import ChangeDateButtonContainer from './ChangeDateButtonContainer'
-import CancelPlanButtonContainer from './CancelPlanButtonContainer'
-import NewPlanButtonContainer from './NewPlanButtonContainer'
+import { EditAmountButtonContainer, ChangeDateButtonContainer, CancelPlanButtonContainer, NewPlanButtonContainer } from '../../../'
 
 const DonationPlanOptionsPresenter = ({ created }) => (
   <div className="displayFlex flexColumn">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchChargeHistory, updateSubscription } from '../../store'
-import { EditAmountButtonPresenter } from '../'
+import { fetchChargeHistory, updateSubscription } from '../../../../store'
+import { EditAmountButtonPresenter } from '../../../'
 
 class EditAmountButtonContainer extends React.Component {
   constructor(props) {

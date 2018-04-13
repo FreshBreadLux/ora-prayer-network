@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createSubscription, incrementInvestmentTotal, fetchChargeHistory } from '../../store'
-import { NewPlanButtonPresenter } from '../'
+import { createSubscription, incrementInvestmentTotal, fetchChargeHistory } from '../../../../store'
+import { NewPlanButtonPresenter } from '../../../'
 
 class NewPlanButtonContainer extends React.Component {
   constructor(props) {

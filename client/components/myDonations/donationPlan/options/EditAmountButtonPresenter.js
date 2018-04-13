@@ -1,39 +1,38 @@
 import React from 'react'
-import { FormInputPresenter, LoadingButtonPresenter } from '../'
+import { FormInputPresenter, LoadingButtonPresenter } from '../../../'
 const Io = require('react-icons/lib/io')
 
-const NewPlanButtonPresenter = ({ toggleStateField, startNewPlanRevealed, startNewPlanAmount, handleInputChange, isLoading, startNewSubscription }) => (
+const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, updatePlanAmount, handleInputChange, isLoading, updateSubscriptionAmount }) => (
   <div>
     <button
       className="supportPlanOptionsButton width170Pixels flexJustifyBetween"
-      onClick={() => toggleStateField('startNewPlanRevealed')}>
-      START NEW PLAN
-      <Io.IoChevronRight className={startNewPlanRevealed
+      onClick={() => toggleStateField('customInputRevealed')}>
+      EDIT MONTHLY AMOUNT
+      <Io.IoChevronRight className={customInputRevealed
       ? 'menuChevronDown'
       : 'menuChevronRight'} />
     </button>
-    <div className={startNewPlanRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
+    <div className={customInputRevealed ? 'revealedSupportPlanDiv' : 'hiddenSupportPlanDiv'}>
       <div className="displayFlex flexColumn bottomMargin1em">
-      <p className="font12 bottomMargin1em">Your first monthly donation will occur immediately</p>
+        <p className="font12 bottomMargin1em">The updated amount will take effect on your next donation date</p>
         <div className="displayFlex flexJustifyBetween flexAlignCenter">
           <FormInputPresenter
-            step="0.01"
-            type="number"
-            inputMode="number"
-            name="startNewPlanAmount"
-            value={startNewPlanAmount}
+            type="text"
+            inputMode="text"
+            name="updatePlanAmount"
+            value={updatePlanAmount}
             label="New Monthly Amount"
             onChange={handleInputChange}
-            notEmpty={!!startNewPlanAmount.length} />
+            notEmpty={updatePlanAmount} />
           <LoadingButtonPresenter
             color="#555"
             dimensions={12}
             isLoading={isLoading}
-            onClick={startNewSubscription}
+            onClick={updateSubscriptionAmount}
             classNameProp="supportPlanOptionsButton">
             <div className="displayFlex flexAllCenter">
               <Io.IoIosHeart className="iconMarginBoth font16 pinkText" />
-              <p className="font16">DONATE</p>
+              <p className="font16">UPDATE</p>
             </div>
           </LoadingButtonPresenter>
         </div>
@@ -42,4 +41,4 @@ const NewPlanButtonPresenter = ({ toggleStateField, startNewPlanRevealed, startN
   </div>
 )
 
-export default NewPlanButtonPresenter
+export default EditAmountButtonPresenter

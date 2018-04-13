@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoadingButtonPresenter } from '../'
+import { LoadingButtonPresenter } from '../../../'
 const Io = require('react-icons/lib/io')
 
 const CancelPlanButtonPresenter = ({ toggleStateField, cancelButtonRevealed, isLoading, cancelSubscription }) => (

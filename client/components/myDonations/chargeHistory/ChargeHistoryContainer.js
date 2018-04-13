@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChargeHistoryPresenter } from '../'
+import { ChargeHistoryPresenter } from '../../'
 
 class ChargeHistoryContainer extends React.Component {
   constructor(props) {

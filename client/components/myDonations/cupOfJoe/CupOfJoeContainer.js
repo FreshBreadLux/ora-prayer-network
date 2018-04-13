@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchChargeHistory, incrementInvestmentTotal } from '../../store'
-import { CupOfJoePresenter } from '../'
+import { fetchChargeHistory, incrementInvestmentTotal } from '../../../store'
+import { CupOfJoePresenter } from '../../'
 import axios from 'axios'
-import { ROOT_URL } from '../../config'
+import { ROOT_URL } from '../../../config'
 
 class CupOfJoeContainer extends React.Component {
   constructor(props) {
