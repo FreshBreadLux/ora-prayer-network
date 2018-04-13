@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Footer from './footer'
+import Footer from '../footer'
 
-const About = () => (
+const AboutPresenter = () => (
   <div className="aboutBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
       <img src="images/screenshot-home-screen.png" className="screenshot" />
@@ -60,4 +60,4 @@ const About = () => (
   </div>
 )
 
-export default connect()(About)
+export default connect()(AboutPresenter)

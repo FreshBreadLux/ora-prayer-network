@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Footer from './footer'
+import Footer from '../footer'
 
-const Home = () => (
+const HomePresenter = () => (
   <div className="homeBackgroundImage">
     <div className="mainHomeDiv">
       <p className="raleway font100 centerText paddingHalfem">ORA</p>
@@ -18,4 +18,4 @@ const Home = () => (
   </div>
 )
 
-export default connect()(Home)
+export default connect()(HomePresenter)

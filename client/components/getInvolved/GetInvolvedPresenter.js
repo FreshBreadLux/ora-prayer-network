@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Footer from './footer'
+import Footer from '../footer'
 
-const GetInvolved = () => (
+const GetInvolvedPresenter = () => (
   <div className="getInvolvedBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAllCenter">
       <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ANGEL INVESTOR</p>
@@ -22,4 +22,4 @@ const GetInvolved = () => (
   </div>
 )
 
-export default connect()(GetInvolved)
+export default connect()(GetInvolvedPresenter)

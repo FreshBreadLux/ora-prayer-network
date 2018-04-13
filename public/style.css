@@ -1165,6 +1165,17 @@ input[type="radio"]:checked + label span {
   outline: none;
 }
 
+.logoutButton {
+  width: 50%;
+  padding: 7px;
+  background-color: #fff;
+  font-family: 'raleway';
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
 @media (min-width: 600px) {
   nav {
     background-color: #fff;

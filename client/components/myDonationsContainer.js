@@ -30,10 +30,10 @@ class MyDonationsContainer extends React.Component {
           <CupOfJoeContainer />
           <ChargeHistoryContainer />
           <div className="displayFlex flexAllCenter">
-            <div className="topMargin1em bottomMargin1em widthPercent65">
+            <div className="displayFlex flexAllCenter topMargin1em bottomMargin1em widthPercent65">
               <button
                 onClick={this.clearLocalStorageAndLogout}
-                className="supportPlanButton">LOGOUT</button>
+                className="logoutButton">LOGOUT</button>
             </div>
           </div>
           <Footer />
