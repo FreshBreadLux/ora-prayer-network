@@ -1161,6 +1161,7 @@ input[type="radio"]:checked + label span {
   border: none;
   border-radius: 5px;
   outline: none;
+  cursor: pointer;
 }
 
 @media (min-width: 600px) {

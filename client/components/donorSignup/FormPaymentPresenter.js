@@ -47,8 +47,8 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
           }
         </p>
         <FormInputPresenter
-          type="text"
-          inputMode="text"
+          type="password"
+          inputMode="password"
           name="password"
           value={password}
           label="Password"

@@ -1,19 +1,22 @@
+/** NAVBAR AND FOOTER **/
 export { default as NavbarContainer } from './navbar/NavbarContainer'
 export { default as NavbarPresenter } from './navbar/NavbarPresenter'
 export { default as NavbarLinkPresenter } from './navbar/NavbarLinkPresenter'
 export { default as FooterPresenter } from './footer/FooterPresenter'
+/** HOME, ABOUT, GET INVOLVED, SUPPORT **/
 export { default as HomePresenter } from './home/HomePresenter'
 export { default as AboutPresenter } from './about/AboutPresenter'
 export { default as GetInvolvedPresenter } from './getInvolved/GetInvolvedPresenter'
 export { default as SupportContainer } from './support/SupportContainer'
 export { default as SupportPresenter } from './support/SupportPresenter'
+/** DONOR SIGNUP **/
 export { default as DonorSignupPresenter } from './donorSignup/DonorSignupPresenter'
 export { default as StripeFormContainer } from './donorSignup/StripeFormContainer'
 export { default as StripeFormPresenter } from './donorSignup/StripeFormPresenter'
 export { default as FormSupportPresenter } from './donorSignup/FormSupportPresenter'
 export { default as FormPaymentPresenter } from './donorSignup/FormPaymentPresenter'
 export { default as FormReviewPresenter } from './donorSignup/FormReviewPresenter'
-export { default as ThankYouPresenter } from './thankYou/ThankYouPresenter'
+/** MY DONATIONS **/
 export { default as CheckLoggedInContainer } from './myDonations/CheckLoggedInContainer'
 export { default as LoginPageContainer } from './myDonations/LoginPageContainer'
 export { default as LoginPagePresenter } from './myDonations/LoginPagePresenter'
@@ -36,6 +39,9 @@ export { default as CupOfJoeContainer } from './myDonations/cupOfJoe/CupOfJoeCon
 export { default as CupOfJoePresenter } from './myDonations/cupOfJoe/CupOfJoePresenter'
 export { default as ChargeHistoryContainer } from './myDonations/chargeHistory/ChargeHistoryContainer'
 export { default as ChargeHistoryPresenter } from './myDonations/chargeHistory/ChargeHistoryPresenter'
+/** UTILITY **/
 export { default as FormInputPresenter } from './utilityComponents/FormInputPresenter'
 export { default as LoadingButtonPresenter } from './utilityComponents/LoadingButtonPresenter'
+/** THANK YOU AND PRIVACY POLICY **/
+export { default as ThankYouPresenter } from './thankYou/ThankYouPresenter'
 export { default as PrivacyPolicyPresenter } from './privacyPolicy/PrivacyPolicyPresenter'

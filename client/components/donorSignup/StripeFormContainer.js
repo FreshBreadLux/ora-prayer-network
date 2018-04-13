@@ -169,6 +169,7 @@ class StripeFormContainer extends React.Component {
         isLoading={this.state.isLoading}
         handleSubmit={this.handleSubmit}
         userExists={this.state.userExists}
+        handleZipCode={this.handleZipCode}
         handleInputChange={this.handleInputChange}
         singleDonation={this.state.singleDonation}
         monthlyDonation={this.state.monthlyDonation}
