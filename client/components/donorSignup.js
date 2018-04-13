@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Footer from './footer'
+import Footer from './Footer'
 import { Elements } from 'react-stripe-elements'
 import StripeForm from './stripeForm'
 

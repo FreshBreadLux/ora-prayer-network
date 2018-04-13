@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { IoChevronRight } from 'react-icons/lib/io'
-import Footer from './footer'
+import Footer from '../Footer'
 
-const ThankYou = () => (
+const ThankYouPresenter = () => (
   <div className="thankYouBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
       <p className="raleway font30 centerText paddingHalfem paddingTop2em">THANK YOU</p>
@@ -29,4 +29,4 @@ const ThankYou = () => (
   </div>
 )
 
-export default ThankYou
+export default ThankYouPresenter

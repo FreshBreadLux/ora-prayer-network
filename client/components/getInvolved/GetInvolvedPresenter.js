@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Footer from '../footer'
+import Footer from '../Footer'
 
 const GetInvolvedPresenter = () => (
   <div className="getInvolvedBackgroundImage">

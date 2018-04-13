@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './footer'
+import Footer from '../Footer'
 
 const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange, name, email, subject, body }) => (
   <div className="helpBackgroundImage">
@@ -25,7 +25,7 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
       <form className="supportForm" onSubmit={handleSubmit}>
         <input
           type="text"
-          inputType="text"
+          inputMode="text"
           name="name"
           value={name}
           placeholder="Name"
@@ -50,7 +50,7 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
           onChange={handleInputChange} />
         <textarea
           type="text"
-          inputType="text"
+          inputMode="text"
           name="body"
           value={body}
           placeholder="Body"

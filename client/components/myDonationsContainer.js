@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './footer'
+import Footer from './Footer'
 import { connect } from 'react-redux'
 import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../store'
 import SupportPlanPresenter from './SupportPlanPresenter'

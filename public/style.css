@@ -666,20 +666,18 @@ nav a {
   align-items: center;
   width: 90vw;
 }
-
 .supportFormInput {
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 1);
   padding: 0.5em;
   font-family: 'raleway';
   margin-bottom: 1em;
   width: 90vw;
   border: none;
 }
-
 .supportFormButton {
   width: 60%;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'raleway';
   padding: 0.5em;
   border-radius: 0.25em;
@@ -1282,11 +1280,9 @@ input[type="radio"]:checked + label span {
   .supportForm {
     width: 40vw;
   }
-
   .supportFormInput {
     width: 40vw;
   }
-
   .supportFormButton {
     max-width: 40%;
   }

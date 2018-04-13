@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PrivacyPolicy = () => (
+const PrivacyPolicyPresenter = () => (
   <div className="displayFlex flexAlignCenter flexJustifyCenter">
     <div className="privacyPolicyDiv">
       <p className="raleway centerText padding1em">PRIVACY NOTICE</p>
@@ -51,4 +51,4 @@ const PrivacyPolicy = () => (
   </div>
 )
 
-export default PrivacyPolicy
+export default PrivacyPolicyPresenter
