@@ -1,7 +1,6 @@
 import axios from 'axios'
 import LOGOUT from './auth'
-
-const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+import { ROOT_URL } from '../config'
 
 /**
  * ACTION TYPES

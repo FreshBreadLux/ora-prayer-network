@@ -6,6 +6,7 @@ import { StripeProvider } from 'react-stripe-elements'
 import history from './history'
 import store from './store'
 import App from './app'
+import { STRIPE_API_KEY } from './config'
 
 // establishes socket connection
 import './socket'
@@ -13,7 +14,7 @@ import './socket'
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <StripeProvider apiKey="pk_test_fForoFsHAEaZ91B9z270zs66">
+      <StripeProvider apiKey={STRIPE_API_KEY}>
         <App />
       </StripeProvider>
     </Router>
