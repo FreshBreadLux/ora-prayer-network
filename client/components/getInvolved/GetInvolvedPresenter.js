@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Footer from '../Footer'
+import { FooterPresenter } from '../'
 
 const GetInvolvedPresenter = () => (
   <div className="getInvolvedBackgroundImage">
@@ -18,7 +18,7 @@ const GetInvolvedPresenter = () => (
       <p className="raleway font30 centerText bottomMargin1em topMargin1em">PROPOSE FUTURE PROJECTS FOR ORA</p>
       <Link to="/donate" className="getInvolvedButton">SUBMIT A PROPOSAL</Link>
     </div>
-    <Footer />
+    <FooterPresenter />
   </div>
 )
 

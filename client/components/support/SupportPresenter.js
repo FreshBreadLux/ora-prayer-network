@@ -1,6 +1,6 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { Footer } from '../'
+import { FooterPresenter } from '../'
 
 const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange, name, email, subject, body, isLoading }) => (
   <div className="helpBackgroundImage">
@@ -61,7 +61,7 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
         </button>
       </form>
     </div>
-    <Footer />
+    <FooterPresenter />
   </div>
 )
 

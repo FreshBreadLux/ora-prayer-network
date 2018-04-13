@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { IoChevronRight } from 'react-icons/lib/io'
-import Footer from '../Footer'
+import { FooterPresenter } from '../'
 
 const ThankYouPresenter = () => (
   <div className="thankYouBackgroundImage">
@@ -25,7 +25,7 @@ const ThankYouPresenter = () => (
         </Link>
       </div>
     </div>
-    <Footer />
+    <FooterPresenter />
   </div>
 )
 

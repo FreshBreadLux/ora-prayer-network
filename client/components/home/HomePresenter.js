@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Footer from '../Footer'
+import { FooterPresenter } from '../'
 
 const HomePresenter = () => (
   <div className="homeBackgroundImage">
@@ -14,7 +14,7 @@ const HomePresenter = () => (
       </div>
       </div>
     </div>
-    <Footer />
+    <FooterPresenter />
   </div>
 )
 

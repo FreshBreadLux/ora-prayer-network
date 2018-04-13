@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Footer from '../Footer'
+import { FooterPresenter } from '../'
 
 const AboutPresenter = () => (
   <div className="aboutBackgroundImage">
@@ -54,7 +54,7 @@ const AboutPresenter = () => (
         <img src="images/screenshot-reminder-screen.png" className="extraScreenshot" />
       </div>
       <div>
-        <Footer />
+        <FooterPresenter />
       </div>
     </div>
   </div>

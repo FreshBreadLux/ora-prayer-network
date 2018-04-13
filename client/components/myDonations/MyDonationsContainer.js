@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../../store'
-import { DonationPlanPresenter, CupOfJoeContainer, ChargeHistoryContainer, Footer } from '../'
+import { DonationPlanPresenter, CupOfJoeContainer, ChargeHistoryContainer, FooterPresenter } from '../'
 
 class MyDonationsContainer extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class MyDonationsContainer extends React.Component {
                 className="logoutButton">LOGOUT</button>
             </div>
           </div>
-          <Footer />
+          <FooterPresenter />
         </div>
       </div>
     )

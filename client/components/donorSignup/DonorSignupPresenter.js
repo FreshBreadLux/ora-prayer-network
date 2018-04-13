@@ -1,7 +1,6 @@
 import React from 'react'
-import Footer from '../Footer'
+import { FooterPresenter, StripeFormContainer } from '../'
 import { Elements } from 'react-stripe-elements'
-import StripeFormContainer from './StripeFormContainer'
 
 const DonorSignupPresenter = props => (
   <div className="donorSignupBackgroundImage">
@@ -12,7 +11,7 @@ const DonorSignupPresenter = props => (
         <StripeFormContainer {...props} />
       </Elements>
     </div>
-    <Footer />
+    <FooterPresenter />
   </div>
 )
 
