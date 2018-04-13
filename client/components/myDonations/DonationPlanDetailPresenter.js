@@ -11,7 +11,7 @@ function createDateWithSuffix(billingAnchor) {
   return date + 'th'
 }
 
-const SupportPlanDetailPresenter = ({ created, billingCycleAnchor, plan }) => (
+const DonationPlanDetailPresenter = ({ created, billingCycleAnchor, plan }) => (
   <div className="supportPlanHeaderSection">
     <div className="displayFlex flex3">
       <div className="displayFlex flexColumn">
@@ -44,4 +44,4 @@ const mapState = state => ({
   billingCycleAnchor: state.subscriptionInfo.billing_cycle_anchor,
 })
 
-export default connect(mapState)(SupportPlanDetailPresenter)
+export default connect(mapState)(DonationPlanDetailPresenter)

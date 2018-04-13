@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setAuthInfo } from '../store'
-import LoginPageContainer from './loginPageContainer'
-import MyDonationsContainer from './MyDonationsContainer'
+import { setAuthInfo } from '../../store'
+import { LoginPageContainer, MyDonationsContainer } from '../'
 
 class CheckLoggedInContainer extends React.Component {
   constructor(props) {

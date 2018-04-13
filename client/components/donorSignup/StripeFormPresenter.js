@@ -1,12 +1,10 @@
 import React from 'react'
 import { CardElement } from 'react-stripe-elements'
-import FormReviewPresenter from './FormReviewPresenter'
-import FormPaymentPresenter from './FormPaymentPresenter'
-import FormSupportPresenter from './FormSupportPresenter'
+import { FormReviewPresenter, FormPaymentPresenter, FormSupportPresenter } from '../'
 
 const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail }) => (
   <div className="vw90 displayFlex flexJustifyCenter">
-    <form onSubmit={handleSubmit} className="Container">
+    <form onSubmit={handleSubmit} className="stripeForm">
       <FormSupportPresenter
         singleDonation={singleDonation}
         monthlyDonation={monthlyDonation}

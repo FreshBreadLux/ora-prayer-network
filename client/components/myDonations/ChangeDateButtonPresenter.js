@@ -1,6 +1,5 @@
 import React from 'react'
-import LoadingButtonPresenter from './loadingButtonPresenter'
-import { FormInputPresenter } from './'
+import { FormInputPresenter, LoadingButtonPresenter } from '../'
 const Io = require('react-icons/lib/io')
 
 const ChangeDateButtonPresenter = ({ toggleStateField, changeBillingRevealed, handleInputChange, donationDate, isLoading, changeBillingDate }) => (

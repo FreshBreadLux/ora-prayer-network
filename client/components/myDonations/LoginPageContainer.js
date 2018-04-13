@@ -1,8 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import LoginPagePresenter from './loginPagePresenter'
-
-const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+import { LoginPagePresenter } from '../'
+import { ROOT_URL } from '../../config'
 
 class LoginPageContainer extends React.Component {
   constructor(props) {

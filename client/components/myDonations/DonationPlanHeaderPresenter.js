@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const SupportPlanHeaderPresenter = ({ userName, investmentTotal }) => (
+const DonationPlanHeaderPresenter = ({ userName, investmentTotal }) => (
   <div>
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
@@ -19,4 +19,4 @@ const mapState = state => ({
   investmentTotal: state.userInfo.investmentTotal,
 })
 
-export default connect(mapState)(SupportPlanHeaderPresenter)
+export default connect(mapState)(DonationPlanHeaderPresenter)

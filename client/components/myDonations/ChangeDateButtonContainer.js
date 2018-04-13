@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateBillingDate } from '../store'
-import ChangeDateButtonPresenter from './ChangeDateButtonPresenter'
+import { updateBillingDate } from '../../store'
+import { ChangeDateButtonPresenter } from '../'
 
 function calculateBillingDate(day) {
   const now = new Date()

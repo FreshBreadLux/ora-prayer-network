@@ -1,10 +1,7 @@
 import React from 'react'
-import Footer from './Footer'
 import { connect } from 'react-redux'
-import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../store'
-import SupportPlanPresenter from './SupportPlanPresenter'
-import CupOfJoeContainer from './cupOfJoeContainer'
-import ChargeHistoryContainer from './ChargeHistoryContainer'
+import { fetchUserInfo, fetchSubscriptionInfo, fetchChargeHistory, logout } from '../../store'
+import { DonationPlanPresenter, CupOfJoeContainer, ChargeHistoryContainer, Footer } from '../'
 
 class MyDonationsContainer extends React.Component {
   constructor(props) {
@@ -26,7 +23,7 @@ class MyDonationsContainer extends React.Component {
     return (
       <div className="myDonationsBackgroundImage">
         <div className="donationContainerDiv">
-          <SupportPlanPresenter />
+          <DonationPlanPresenter />
           <CupOfJoeContainer />
           <ChargeHistoryContainer />
           <div className="displayFlex flexAllCenter">

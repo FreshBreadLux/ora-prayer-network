@@ -5,7 +5,7 @@ import ChangeDateButtonContainer from './ChangeDateButtonContainer'
 import CancelPlanButtonContainer from './CancelPlanButtonContainer'
 import NewPlanButtonContainer from './NewPlanButtonContainer'
 
-const SupportPlanOptionsPresenter = ({ created }) => (
+const DonationPlanOptionsPresenter = ({ created }) => (
   <div className="displayFlex flexColumn">
     <p className="supportPlanHeader">OPTIONS</p>
     {created === 'CANCELED'
@@ -23,4 +23,4 @@ const mapState = state => ({
   created: state.subscriptionInfo.created
 })
 
-export default connect(mapState)(SupportPlanOptionsPresenter)
+export default connect(mapState)(DonationPlanOptionsPresenter)

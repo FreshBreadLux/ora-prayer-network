@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteSubscription } from '../store'
-import CancelPlanButtonPresenter from './CancelPlanButtonPresenter'
+import { deleteSubscription } from '../../store'
+import { CancelPlanButtonPresenter } from '../'
 
 class CancelPlanButtonContainer extends React.Component {
   constructor(props) {

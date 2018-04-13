@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchChargeHistory } from '../store'
+import { fetchChargeHistory } from '../../store'
 
 const HistoryPresenter = ({ chargeHistory, userId, jwToken, dispatchFetchChargeHistory, showMoreCharges, toggleShowMoreCharges }) => (
   <div>

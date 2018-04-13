@@ -170,6 +170,8 @@ class StripeFormContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         userExists={this.state.userExists}
         handleInputChange={this.handleInputChange}
+        singleDonation={this.state.singleDonation}
+        monthlyDonation={this.state.monthlyDonation}
         handleDonationAmount={this.handleDonationAmount}
         checkEmailReturned={this.state.checkEmailReturned}
         stripeCustomerExists={this.state.stripeCustomerExists} />

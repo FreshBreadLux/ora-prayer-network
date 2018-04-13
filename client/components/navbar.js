@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import NavbarLinkPresenter from './navbarLinkPresenter'
+import { NavbarLinkPresenter } from './'
 const Io = require('react-icons/lib/io')
 
 class Navbar extends React.Component {

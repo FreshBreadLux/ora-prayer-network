@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchChargeHistory, incrementInvestmentTotal } from '../store'
-import CupOfJoePresenter from './cupOfJoePresenter'
+import { fetchChargeHistory, incrementInvestmentTotal } from '../../store'
+import { CupOfJoePresenter } from '../'
 import axios from 'axios'
-
-const ROOT_URL = 'https://ora-pro-nobis.herokuapp.com'
+import { ROOT_URL } from '../../config'
 
 class CupOfJoeContainer extends React.Component {
   constructor(props) {

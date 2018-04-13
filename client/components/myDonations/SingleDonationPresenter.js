@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
-import { FormInputPresenter } from './'
 import Loader from 'react-loader-spinner'
+import { FormInputPresenter } from '../'
 const Io = require('react-icons/lib/io')
 
 const SingleDonationPresenter = ({ singleDonation, handleInputChange, chargeSingleDonation, singleDonationStatus }) => (
