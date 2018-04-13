@@ -1002,7 +1002,7 @@ input[type="radio"]:checked + label span {
   padding: 0.5em;
 }
 
-.supportPlanDiv {
+.donationPlanDiv {
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 1);
@@ -1010,7 +1010,7 @@ input[type="radio"]:checked + label span {
   color: #000;
   font-family: 'raleway';
 }
-.supportPlanHeaderSection {
+.donationPlanDetail {
   display: flex;
   margin-bottom: 40px;
 }
@@ -1290,5 +1290,8 @@ input[type="radio"]:checked + label span {
   .donationContainerDiv {
     max-width: 40vw;
     align-self: center;
+  }
+  .donationPlanHeader {
+    margin-top: 1em;
   }
 }

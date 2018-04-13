@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const DonationPlanHeaderPresenter = ({ userName, investmentTotal }) => (
-  <div>
+  <div className="donationPlanHeader">
     <div className="displayFlex flexJustifyBetween bottomMarginHalfem">
       <p className="raleway font24">{`${userName.first} ${userName.last}`}</p>
       <p className="raleway font30">{`$${investmentTotal / 100}`}</p>

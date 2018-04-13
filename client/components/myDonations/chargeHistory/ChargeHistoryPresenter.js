@@ -10,7 +10,7 @@ const HistoryPresenter = ({ chargeHistory, userId, jwToken, dispatchFetchChargeH
         return (
           <div
             key={charge.id}
-            className="supportPlanDiv bottomMarginHalfem">
+            className="donationPlanDiv bottomMarginHalfem">
             <p>{`Donation amount: $${charge.amount / 100}`}</p>
             <p>{`Date: ${new Date(charge.created * 1000).toDateString().slice(3)
               .toUpperCase()}`}</p>
@@ -20,7 +20,7 @@ const HistoryPresenter = ({ chargeHistory, userId, jwToken, dispatchFetchChargeH
         return (
           <div
             key={charge.id}
-            className="supportPlanDiv bottomMarginHalfem">
+            className="donationPlanDiv bottomMarginHalfem">
             <p>{`Donation amount: $${charge.amount / 100}`}</p>
             <p>{`Date: ${new Date(charge.created * 1000).toDateString().slice(3)
               .toUpperCase()}`}</p>

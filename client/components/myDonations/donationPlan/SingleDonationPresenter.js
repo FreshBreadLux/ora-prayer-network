@@ -16,11 +16,11 @@ const SingleDonationPresenter = ({ singleDonation, handleInputChange, chargeSing
       value={singleDonation}
       label="Single Donation"
       onChange={handleInputChange}
-      notEmpty={!!singleDonation.length} />
+      notEmpty={singleDonation} />
     <div className="displayFlex flexAllCenter">
       <button
         onClick={chargeSingleDonation}
-        disabled={!singleDonation.length}
+        disabled={!singleDonation}
         className="supportPlanDonateButton">
         {singleDonationStatus === 'ready'
         ? <div>

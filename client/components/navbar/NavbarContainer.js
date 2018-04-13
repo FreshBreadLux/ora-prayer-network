@@ -12,7 +12,7 @@ class NavbarContainer extends React.Component {
   }
 
   toggleNavbar() {
-    this.setState({revealedNavbar: !this.state.revealedNavbar})
+    this.setState({revealedNavbar: !this.state.revealedNavbar}, console.log('state: ', this.state))
   }
 
   manageNavigation() {

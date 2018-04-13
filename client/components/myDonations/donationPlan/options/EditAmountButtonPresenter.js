@@ -17,8 +17,9 @@ const EditAmountButtonPresenter = ({ toggleStateField, customInputRevealed, upda
         <p className="font12 bottomMargin1em">The updated amount will take effect on your next donation date</p>
         <div className="displayFlex flexJustifyBetween flexAlignCenter">
           <FormInputPresenter
-            type="text"
-            inputMode="text"
+            step="0.01"
+            type="number"
+            inputMode="number"
             name="updatePlanAmount"
             value={updatePlanAmount}
             label="New Monthly Amount"

@@ -12,7 +12,7 @@ function createDateWithSuffix(billingAnchor) {
 }
 
 const DonationPlanDetailPresenter = ({ created, billingCycleAnchor, plan }) => (
-  <div className="supportPlanHeaderSection">
+  <div className="donationPlanDetail">
     <div className="displayFlex flex3">
       <div className="displayFlex flexColumn">
         <p className="bottomMarginHalfem font16">SUPPORT PLAN</p>

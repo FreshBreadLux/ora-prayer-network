@@ -3,8 +3,9 @@ import { SingleDonationContainer, DonationPlanDetailPresenter, DonationPlanHeade
 
 const DonationPlanPresenter = () => (
   <div>
+    <p className="mobileHeader">MY DONATIONS</p>
     <DonationPlanHeaderPresenter />
-    <div className="supportPlanDiv">
+    <div className="donationPlanDiv">
       <DonationPlanDetailPresenter />
       <SingleDonationContainer />
       <DonationPlanOptionsPresenter />
