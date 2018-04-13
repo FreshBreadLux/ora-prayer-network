@@ -22,10 +22,6 @@ class CancelPlanButtonContainer extends React.Component {
     this.setState({ isLoading: true })
     const { jwToken, subscriptionInfo, dispatchDeleteSubscription } = this.props
     dispatchDeleteSubscription(jwToken, subscriptionInfo)
-    .then(() => this.setState({
-        cancelButtonRevealed: false,
-        isLoading: false,
-    }))
     .catch(console.error)
   }
 
