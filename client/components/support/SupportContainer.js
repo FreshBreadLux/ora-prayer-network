@@ -12,7 +12,8 @@ class SupportContainer extends React.Component {
       subject: '',
       body: '',
       confirmation: null,
-      error: null
+      error: null,
+      isLoading: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -20,6 +21,7 @@ class SupportContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    this.setState({ isLoading: true })
     axios.post(`${ROOT_URL}/api/support`, {
       name: this.state.name,
       email: this.state.email,
@@ -31,7 +33,8 @@ class SupportContainer extends React.Component {
       email: '',
       subject: '',
       body: '',
-      confirmation: confirmation.data
+      confirmation: confirmation.data,
+      isLoading: false,
     }))
     .catch(error => {
       console.log(error)
@@ -52,6 +55,7 @@ class SupportContainer extends React.Component {
         email={this.state.email}
         error={this.state.error}
         subject={this.state.subject}
+        isLoading={this.state.isLoading}
         handleSubmit={this.handleSubmit}
         confirmation={this.state.confirmation}
         handleInputChange={this.handleInputChange} />

@@ -1,7 +1,8 @@
 import React from 'react'
-import Footer from '../Footer'
+import Loader from 'react-loader-spinner'
+import { Footer } from '../'
 
-const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange, name, email, subject, body }) => (
+const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange, name, email, subject, body, isLoading }) => (
   <div className="helpBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAllCenter">
       <div className="padding1em displayFlex flexColumn flexAllCenter">
@@ -10,14 +11,10 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
         <p className="raleway font24 centerText">Want to share your story?</p>
       </div>
       {confirmation
-      ? <div className="messageFade">
-          <p className="raleway font20 padding1em centerText">{confirmation}</p>
-        </div>
+      ? <p className="raleway font20 padding1em centerText">{confirmation}</p>
       : <div>
           {error
-          ? <div className="messageFade">
-              <p className="raleway font20 padding1em centerText">{error}</p>
-            </div>
+          ? <p className="raleway font20 padding1em centerText">{error}</p>
           : null
           }
         </div>
@@ -56,10 +53,12 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
           placeholder="Body"
           className="vh25 supportFormInput"
           onChange={handleInputChange} />
-        <input
-          className="supportFormButton"
-          type="submit"
-          value="HIT US UP" />
+        <button className="supportFormButton" type="submit">
+          {isLoading
+          ? <Loader type="Bars" height={16} width={16} color="#0c2461" />
+          : 'HIT US UP'
+          }
+        </button>
       </form>
     </div>
     <Footer />

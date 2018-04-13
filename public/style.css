@@ -682,22 +682,11 @@ nav a {
   padding: 0.5em;
   border-radius: 0.25em;
   background-color: #fff;
+  color: #0c2461;
   margin-bottom: 1em;
   border: none;
   outline: none;
-}
-
-@keyframes fadeInMessage {
-  from {height: 0vh}
-  to {height: 20vh}
-}
-.messageFade {
-  height: 0vh;
-  display: flex;
-  align-items: center;
-  animation-name: fadeInMessage;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  cursor: pointer;
 }
 
 .getInvolvedButton {
