@@ -259,6 +259,7 @@ nav a {
 
 .mobileHeader {
   display: flex;
+  justify-content: center;
   font-family: 'raleway';
   font-size: 30px;
   text-align: center;

@@ -6,11 +6,7 @@ const NavbarPresenter = ({ revealedNavbar, toggleNavbar, manageNavigation }) => 
   <div>
     <nav>
       <div className="menuButtonDiv">
-        <a className="displayFlex flexJustifyBetween raleway" href="#" onClick={() => {
-          console.log('link worked')
-          toggleNavbar()
-          console.log('toggleNavbar fired')
-          }}>
+        <a className="displayFlex flexJustifyBetween raleway" href="#" onClick={toggleNavbar}>
           MENU
           <Io.IoChevronRight
             className={revealedNavbar

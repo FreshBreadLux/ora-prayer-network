@@ -5,6 +5,7 @@ import { FooterPresenter } from '../'
 const AboutPresenter = () => (
   <div className="aboutBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAlignCenter">
+      <p className="mobileHeader">ABOUT</p>
       <img src="images/screenshot-home-screen.png" className="screenshot" />
       <h2 className="raleway centerText padding1em">ORA STRENGTHENS PEOPLE'S FAITH AND DEVOTIONAL LIVES</h2>
       <img src="images/download-on-the-app-store.svg" />
