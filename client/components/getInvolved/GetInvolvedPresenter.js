@@ -9,32 +9,6 @@ const GetInvolvedPresenter = () => (
       <p className="getInvolvedHeader">YOU HAVE A PLACE<br />ON OUR TEAM</p>
       <p className="getInvolvedHeaderQuote">For as in one body we have many parts, and all the parts do not have the same function, so we, though many, are one body in Christ and individually parts of one another.<br /><br />Romans 12:4-5</p>
     </div>
-    <div className="getInvolvedSubHeaderBackground">
-      <div className="getInvolvedSubHeaderDiv">
-        <div className="displayFlex flexColumn">
-          <p className="getInvolvedSubHeaderTitle">GET INVOLVED</p>
-          <p className="getInvolvedSubHeaderBody">There are many ways to get involved with Ora. Become part of a strong, close-knit team.</p>
-        </div>
-        <div className="displayFlex flexColumn">
-          <a href="/get-involved#angel-investor" className="getInvolvedSubHeaderLink">
-            BECOME AN ANGEL INVESTOR
-            <Io.IoChevronRight className="iconMarginLeft" />
-          </a>
-          <a href="/get-involved#missionary" className="getInvolvedSubHeaderLink">
-            BECOME AN ORA MISSIONARY
-            <Io.IoChevronRight className="iconMarginLeft" />
-          </a>
-          <a href="/get-involved#blog" className="getInvolvedSubHeaderLink">
-            WRITE FOR OUR BLOG
-            <Io.IoChevronRight className="iconMarginLeft" />
-          </a>
-          <a href="/get-involved#propose" className="getInvolvedSubHeaderLink">
-            PROPOSE A PROJECT
-            <Io.IoChevronRight className="iconMarginLeft" />
-          </a>
-        </div>
-      </div>
-    </div>
     <div className="getInvolvedAngelInvestorDiv" id="angel-investor">
       <div className="displayFlex flexColumn flex3">
         <p className="getInvolvedAngelInvestorTitle">ANGEL INVESTORS</p>
@@ -46,24 +20,6 @@ const GetInvolvedPresenter = () => (
           DONATE
           <Io.IoChevronRight className="iconMarginLeft" />
         </Link>
-      </div>
-    </div>
-    <div className="getInvolvedMissionaryDiv" id="missionary">
-      <div className="displayFlex flexColumn flex3">
-        <p className="getInvolvedMissionaryTitle">ORA MISSIONARIES</p>
-        <p className="getInvolvedMissionaryBody">Ora missionaries are people who are committed to our mission and who want to help us grow. They share Ora with their friends, families, and communities, support our grassroots marketing efforts, and help us reach people we never could on our own.</p>
-      </div>
-      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
-        <p className="raleway font14 bottomMarginHalfem">The Ora Missionary Program is still in development and will be available soon</p>
-      </div>
-    </div>
-    <div className="getInvolvedBlogDiv" id="blog">
-      <div className="displayFlex flexColumn flex3">
-        <p className="getInvolvedBlogTitle">BLOG WRITERS</p>
-        <p className="getInvolvedBlogBody">We're always looking for quality writing for our blog. The blog is a collection of essays on prayer, theology, and devotional life. If you have an essay you'd like to submit for consideration, please fill out our submission form.</p>
-      </div>
-      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
-        <p className="raleway font14 bottomMarginHalfem">The Ora Blog is still in development and will be available soon</p>
       </div>
     </div>
     <div className="getInvolvedProposeDiv" id="propose">
@@ -87,3 +43,51 @@ const GetInvolvedPresenter = () => (
 )
 
 export default GetInvolvedPresenter
+
+/**
+<div className="getInvolvedSubHeaderBackground">
+  <div className="getInvolvedSubHeaderDiv">
+    <div className="displayFlex flexColumn">
+      <p className="getInvolvedSubHeaderTitle">GET INVOLVED</p>
+      <p className="getInvolvedSubHeaderBody">There are many ways to get involved with Ora. Become part of a strong, close-knit team.</p>
+    </div>
+    <div className="displayFlex flexColumn">
+      <a href="/get-involved#angel-investor" className="getInvolvedSubHeaderLink">
+        BECOME AN ANGEL INVESTOR
+        <Io.IoChevronRight className="iconMarginLeft" />
+      </a>
+      <a href="/get-involved#missionary" className="getInvolvedSubHeaderLink">
+        BECOME AN ORA MISSIONARY
+        <Io.IoChevronRight className="iconMarginLeft" />
+      </a>
+      <a href="/get-involved#blog" className="getInvolvedSubHeaderLink">
+        WRITE FOR OUR BLOG
+        <Io.IoChevronRight className="iconMarginLeft" />
+      </a>
+      <a href="/get-involved#propose" className="getInvolvedSubHeaderLink">
+        PROPOSE A PROJECT
+        <Io.IoChevronRight className="iconMarginLeft" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<div className="getInvolvedMissionaryDiv" id="missionary">
+  <div className="displayFlex flexColumn flex3">
+    <p className="getInvolvedMissionaryTitle">ORA MISSIONARIES</p>
+    <p className="getInvolvedMissionaryBody">Ora missionaries are people who are committed to our mission and who want to help us grow. They share Ora with their friends, families, and communities, support our grassroots marketing efforts, and help us reach people we never could on our own.</p>
+  </div>
+  <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+    <p className="raleway font14 bottomMarginHalfem">The Ora Missionary Program is still in development and will be available soon</p>
+  </div>
+</div>
+<div className="getInvolvedBlogDiv" id="blog">
+  <div className="displayFlex flexColumn flex3">
+    <p className="getInvolvedBlogTitle">BLOG WRITERS</p>
+    <p className="getInvolvedBlogBody">We're always looking for quality writing for our blog. The blog is a collection of essays on prayer, theology, and devotional life. If you have an essay you'd like to submit for consideration, please fill out our submission form.</p>
+  </div>
+  <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+    <p className="raleway font14 bottomMarginHalfem">The Ora Blog is still in development and will be available soon</p>
+  </div>
+</div>
+**/
