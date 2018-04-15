@@ -1,21 +1,20 @@
 import React from 'react'
 import axios from 'axios'
-import { SupportPresenter } from '../'
+import { ProjectProposalPresenter } from '../'
 import { ROOT_URL } from '../../config'
 
-class SupportContainer extends React.Component {
+class ProjectProposalContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
       email: '',
       subject: '',
-      body: '',
+      proposal: '',
       confirmation: null,
       error: null,
       isLoading: false,
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
@@ -49,7 +48,7 @@ class SupportContainer extends React.Component {
 
   render() {
     return (
-      <SupportPresenter
+      <ProjectProposalPresenter
         name={this.state.name}
         body={this.state.body}
         email={this.state.email}
@@ -63,4 +62,4 @@ class SupportContainer extends React.Component {
   }
 }
 
-export default SupportContainer
+export default ProjectProposalContainer

@@ -1,25 +1,89 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FooterPresenter } from '../'
+const Io = require('react-icons/lib/io')
 
 const GetInvolvedPresenter = () => (
   <div className="getInvolvedBackgroundImage">
-    <div className="displayFlex flexColumn flex1 flexAllCenter">
-      <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ANGEL INVESTOR</p>
-      <Link to="/donor-signup" className="getInvolvedButton">DONATE</Link>
-      <hr className="getInvolvedDivider" />
-      <p className="raleway font30 centerText bottomMargin1em topMargin1em">BECOME AN ORA MISSIONARY</p>
-      <Link to="/donate" className="getInvolvedButton">SHARE ORA</Link>
-      <hr className="getInvolvedDivider" />
-      <p className="raleway font30 centerText bottomMargin1em topMargin1em">WRITE FOR THE ORA BLOG</p>
-      <Link to="/donate" className="getInvolvedButton">SUBMIT AN ESSAY</Link>
-      <hr className="getInvolvedDivider" />
-      <p className="raleway font30 centerText bottomMargin1em topMargin1em">PROPOSE FUTURE PROJECTS FOR ORA</p>
-      <Link to="/donate" className="getInvolvedButton">SUBMIT A PROPOSAL</Link>
+    <div className="getInvolvedHeaderDiv">
+      <p className="getInvolvedHeader">YOU HAVE A PLACE<br />ON OUR TEAM</p>
+      <p className="getInvolvedHeaderQuote">For as in one body we have many parts, and all the parts do not have the same function, so we, though many, are one body in Christ and individually parts of one another.<br /><br />Romans 12:4-5</p>
+    </div>
+    <div className="getInvolvedSubHeaderBackground">
+      <div className="getInvolvedSubHeaderDiv">
+        <div className="displayFlex flexColumn">
+          <p className="getInvolvedSubHeaderTitle">GET INVOLVED</p>
+          <p className="getInvolvedSubHeaderBody">There are many ways to get involved with Ora. Become part of a strong, close-knit team.</p>
+        </div>
+        <div className="displayFlex flexColumn">
+          <a href="/get-involved#angel-investor" className="getInvolvedSubHeaderLink">
+            BECOME AN ANGEL INVESTOR
+            <Io.IoChevronRight className="iconMarginLeft" />
+          </a>
+          <a href="/get-involved#missionary" className="getInvolvedSubHeaderLink">
+            BECOME AN ORA MISSIONARY
+            <Io.IoChevronRight className="iconMarginLeft" />
+          </a>
+          <a href="/get-involved#blog" className="getInvolvedSubHeaderLink">
+            WRITE FOR OUR BLOG
+            <Io.IoChevronRight className="iconMarginLeft" />
+          </a>
+          <a href="/get-involved#propose" className="getInvolvedSubHeaderLink">
+            PROPOSE A PROJECT
+            <Io.IoChevronRight className="iconMarginLeft" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div className="getInvolvedAngelInvestorDiv" id="angel-investor">
+      <div className="displayFlex flexColumn flex3">
+        <p className="getInvolvedAngelInvestorTitle">ANGEL INVESTORS</p>
+        <p className="getInvolvedAngelInvestorBody">There are many ways to help, but our greatest need is donations. We rely on a highly-valued team of Angel Investors to support Ora's mission to help people cultivate lives of devotion. Angel Investors donate on a recurring monthly basis, and form the first line of support for direction and decision making within the organization.</p>
+      </div>
+      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+        <p className="raleway font14 bottomMarginHalfem">Join our support team</p>
+        <Link to="/donor-signup" className="getInvolvedWhiteLink">
+          DONATE
+          <Io.IoChevronRight className="iconMarginLeft" />
+        </Link>
+      </div>
+    </div>
+    <div className="getInvolvedMissionaryDiv" id="missionary">
+      <div className="displayFlex flexColumn flex3">
+        <p className="getInvolvedMissionaryTitle">ORA MISSIONARIES</p>
+        <p className="getInvolvedMissionaryBody">Ora missionaries are people who are committed to our mission and who want to help us grow. They share Ora with their friends, families, and communities, support our grassroots marketing efforts, and help us reach people we never could on our own.</p>
+      </div>
+      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+        <p className="raleway font14 bottomMarginHalfem">The Ora Missionary Program is still in development and will be available soon</p>
+      </div>
+    </div>
+    <div className="getInvolvedBlogDiv" id="blog">
+      <div className="displayFlex flexColumn flex3">
+        <p className="getInvolvedBlogTitle">BLOG WRITERS</p>
+        <p className="getInvolvedBlogBody">We're always looking for quality writing for our blog. The blog is a collection of essays on prayer, theology, and devotional life. If you have an essay you'd like to submit for consideration, please fill out our submission form.</p>
+      </div>
+      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+        <p className="raleway font14 bottomMarginHalfem">The Ora Blog is still in development and will be available soon</p>
+      </div>
+    </div>
+    <div className="getInvolvedProposeDiv" id="propose">
+      <div className="displayFlex flexColumn flex3">
+        <p className="getInvolvedProposeTitle">PROPOSE FUTURE PROJECTS</p>
+        <p className="getInvolvedProposeBody">We love when people in the Ora Prayer Network propose ideas for new projects or features. We're an eager, collaborative team, so we hope to hear from you soon.</p>
+      </div>
+      <div className="displayFlex flexColumn flex1 flexJustifyEnd">
+        <p className="raleway font14 bottomMarginHalfem">Propose a project</p>
+        <Link to="/project-proposal" className="getInvolvedWhiteLink">
+          SUBMIT
+          <Io.IoChevronRight className="iconMarginLeft" />
+        </Link>
+      </div>
+    </div>
+    <div className="getInvolvedClosingDiv">
+      <p className="getInvolvedClosingQuote">I urge you therefore, brothers, by the mercies of God, to offer your bodies as a living sacrifice, holy and pleasing to God, your spiritual worship.<br /><br />Do not conform yourselves to this age but be transformed by the renewal of your mind, that you may discern what is the will of God, what is good and pleasing and perfect.<br /><br />Romans 12:1-2</p>
     </div>
     <FooterPresenter />
   </div>
 )
 
-export default connect()(GetInvolvedPresenter)
+export default GetInvolvedPresenter
