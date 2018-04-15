@@ -292,28 +292,55 @@ nav a {
   max-width: 95vw;
 }
 
+.aboutHeaderDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.aboutSubHeader {
+  font-family: 'raleway';
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 1em;
+}
 .aboutMainBlurbDiv {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  background: url(images/mountains-black.jpg) no-repeat center center;
+  background-size: cover;
   padding: 1em;
 }
-
+.aboutMainBlurbTitle {
+  font-family: 'raleway';
+  font-size: 30px;
+  margin-bottom: 1em;
+}
+.aboutMainBlurbText {
+  font-family: 'raleway';
+  font-size: 16px;
+}
 .aboutBlurbDiv {
   display: flex;
   flex-direction: column;
+  padding: 40px;
 }
-
 .aboutSubBlurbDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1em;
 }
-
-.aboutText {
+.aboutSubBlurbHeader {
   font-family: 'raleway';
-  font-size: 16px;
-  color: #000;
-  background-color: #fff;
-  padding: 2em;
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+.aboutSubBlurbText {
+  font-family: 'raleway';
+  font-size: 18px;
 }
 
 .heightPercent100 {
@@ -1423,14 +1450,31 @@ input[type="radio"]:checked + label span {
     max-width: 50vw;
   }
 
-  .aboutMainBlurbDiv {
-    padding: 1em;
-    max-width: 60vw;
+  .aboutHeaderDiv {
+    height: 700px;
   }
-
+  .aboutSubHeader {
+    font-family: 'raleway';
+    font-size: 40px;
+    text-align: center;
+  }
+  .aboutMainBlurbDiv {
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    background: url(images/mountains-black.jpg) no-repeat center center;
+    background-size: cover;
+    padding: 40px;
+  }
+  .aboutMainBlurbTitle {
+    font-family: 'raleway';
+    font-size: 26px;
+  }
+  .aboutMainBlurbText {
+    width: 50%;
+  }
   .aboutBlurbDiv {
     flex-direction: row;
-    max-width: 80vw;
   }
 
   .screenshot {
