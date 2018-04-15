@@ -11,7 +11,7 @@ const Routes = () => (
     <Route path="/get-involved" component={GetInvolvedPresenter} />
     <Route path="/donor-signup" render={props => <DonorSignupPresenter {...props} />} />
     <Route path="/manage-my-donations" component={CheckLoggedInContainer} />
-    <Route path="/project-proposal" render={ProjectProposalContainer} />
+    <Route path="/project-proposal" component={ProjectProposalContainer} />
     <Route path="/thank-you" component={ThankYouPresenter} />
     <Route path="/privacy-policy" component={PrivacyPolicyPresenter} />
     <Route component={HomePresenter} />

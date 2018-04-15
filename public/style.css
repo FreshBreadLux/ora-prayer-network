@@ -809,7 +809,7 @@ nav a {
   display: flex;
   flex-direction: column;
   height: 500px;
-  background: url(images/mountains-navy.jpg) no-repeat center center;
+  background: url(images/mountains-iceblue.jpg) no-repeat center center;
   background-size: cover;
   padding: 1em;
 }
@@ -822,6 +822,23 @@ nav a {
   font-family: 'raleway';
   font-size: 14px;
 }
+.getInvolvedProposeDiv {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  background: url(images/mountains-navy.jpg) no-repeat center center;
+  background-size: cover;
+  padding: 1em;
+}
+.getInvolvedProposeTitle {
+  font-family: 'raleway';
+  font-size: 40px;
+  margin-bottom: 1em;
+}
+.getInvolvedProposeBody {
+  font-family: 'raleway';
+  font-size: 20px;
+}
 .getInvolvedClosingDiv {
   display: flex;
   justify-content: center;
@@ -833,6 +850,36 @@ nav a {
   font-family: 'ebgaramond';
   font-size: 20px;
   text-align: center;
+}
+
+.projectProposalForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+}
+.projectProposalInput {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0.5em;
+  font-family: 'raleway';
+  margin-bottom: 1em;
+  width: 90vw;
+  border: none;
+}
+.projectProposalButton {
+  width: 60%;
+  font-size: 16px;
+  font-family: 'raleway';
+  padding: 0.5em;
+  border-radius: 0.25em;
+  background-color: #fff;
+  color: #0c2461;
+  margin-bottom: 1em;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .selectAmountDiv {
@@ -1553,6 +1600,16 @@ input[type="radio"]:checked + label span {
     font-size: 20px;
     text-align: center;
     max-width: 50%;
+  }
+
+  .projectProposalForm {
+    width: 40vw;
+  }
+  .projectProposalInput {
+    width: 40vw;
+  }
+  .projectProposalButton {
+    max-width: 40%;
   }
 
   .stripeForm {

@@ -8,6 +8,7 @@ export { default as HomePresenter } from './home/HomePresenter'
 export { default as AboutPresenter } from './about/AboutPresenter'
 export { default as GetInvolvedPresenter } from './getInvolved/GetInvolvedPresenter'
 export { default as ProjectProposalContainer } from './getInvolved/ProjectProposalContainer'
+export { default as ProjectProposalPresenter } from './getInvolved/ProjectProposalPresenter'
 export { default as SupportContainer } from './support/SupportContainer'
 export { default as SupportPresenter } from './support/SupportPresenter'
 /** DONOR SIGNUP **/

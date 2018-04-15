@@ -15,6 +15,7 @@ class ProjectProposalContainer extends React.Component {
       error: null,
       isLoading: false,
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
