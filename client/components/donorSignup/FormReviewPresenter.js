@@ -38,7 +38,11 @@ class FormReviewPresenter extends React.Component {
         <p className="stripeFormSectionHeader">REVIEW</p>
         <div className="reviewDiv">
           <p className="raleway blackText font12 bottomMargin1em">DONATION TO ORA PRAYER NETWORK INC.</p>
-          <p className="raleway blackText font12 bottomMargin1em">ANGEL INVESTOR STATUS</p>
+          <p className="raleway blackText font12 bottomMargin1em">
+            {this.props.monthlyDonation.length
+            ? 'ANGEL INVESTOR STATUS'
+            : 'DONOR STATUS'}
+          </p>
           <p className="raleway blackText font12 bottomMargin1em">{this.props.email}</p>
           {this.createReviewString()}
         </div>
