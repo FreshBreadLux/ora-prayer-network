@@ -56,7 +56,7 @@ const AboutPresenter = () => (
       </div>
       <img src="images/screenshot-reminder-screen.png" className="extraScreenshot" />
     </div>
-    <div>
+    <div className="topMargin3em bottomMargin3em">
       <FooterPresenter />
     </div>
   </div>

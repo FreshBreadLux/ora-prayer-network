@@ -5,6 +5,7 @@ const Io = require('react-icons/lib/io')
 
 const GetInvolvedPresenter = () => (
   <div className="getInvolvedBackgroundImage">
+    <p className="mobileHeader">GET INVOLVED</p>
     <div className="getInvolvedHeaderDiv">
       <p className="getInvolvedHeader">YOU HAVE A PLACE<br />ON OUR TEAM</p>
       <p className="getInvolvedHeaderQuote">For as in one body we have many parts, and all the parts do not have the same function, so we, though many, are one body in Christ and individually parts of one another.<br /><br />Romans 12:4-5</p>
@@ -15,7 +16,6 @@ const GetInvolvedPresenter = () => (
         <p className="getInvolvedAngelInvestorBody">We rely on a highly-valued team of Angel Investors to support Ora's mission to help people cultivate lives of devotion. Angel Investors donate on a recurring monthly basis, and form the first line of support for direction and decision making within the organization.</p>
       </div>
       <div className="displayFlex flexColumn flex1 flexJustifyEnd">
-        <p className="raleway font14 bottomMarginHalfem">Join our support team</p>
         <a href="/donor-signup#navbar" className="getInvolvedWhiteLink">
           DONATE
           <Io.IoChevronRight className="iconMarginLeft" />
@@ -28,7 +28,6 @@ const GetInvolvedPresenter = () => (
         <p className="getInvolvedProposeBody">We love when people in the Ora Prayer Network propose ideas for new projects or features. We're an eager, collaborative team, so we hope to hear from you soon.</p>
       </div>
       <div className="displayFlex flexColumn flex1 flexJustifyEnd">
-        <p className="raleway font14 bottomMarginHalfem">Propose a project</p>
         <Link to="/project-proposal" className="getInvolvedWhiteLink">
           SUBMIT
           <Io.IoChevronRight className="iconMarginLeft" />

@@ -218,14 +218,14 @@ nav a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: url(images/mountains-purple.jpg) no-repeat center center fixed;
+  background: url(images/mountains-mist.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 .getInvolvedBackgroundImage {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background: url(images/mountains-dark.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 .donorSignupBackgroundImage {
@@ -246,14 +246,14 @@ nav a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background: url(images/mountains-lightblue.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 .myDonationsBackgroundImage {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: url(images/mountains-blue.jpg) no-repeat center center fixed;
+  background: url(images/mountains-lightblue.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -269,6 +269,7 @@ nav a {
 .mainHomeDiv {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1em;
 }
 
 .homeScriptureDiv {
@@ -307,7 +308,7 @@ nav a {
 .aboutMainBlurbDiv {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+  background-color: #fff;
   padding: 1em;
 }
 .aboutMainBlurbTitle {
@@ -319,32 +320,33 @@ nav a {
 .aboutMainBlurbText {
   font-family: 'raleway';
   color: #000;
-  font-size: 16px;
+  font-size: 20px;
 }
 .aboutBlurbDiv {
   display: flex;
   flex-direction: column;
+  padding: 1em;
 }
 .aboutBlurbDiv2 {
   display: flex;
   flex-direction: column;
   color: #000;
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+  padding: 1em;
 }
 .aboutSubBlurbDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1em;
 }
 .aboutSubBlurbHeader {
   font-family: 'raleway';
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 1em;
 }
 .aboutSubBlurbText {
   font-family: 'raleway';
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .heightPercent100 {
@@ -725,6 +727,8 @@ nav a {
   display: flex;
   flex-direction: column;
   height: 500px;
+  color: #000;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
   align-items: center;
   justify-content: center;
   padding: 1em;
@@ -775,8 +779,6 @@ nav a {
 .getInvolvedAngelInvestorDiv {
   display: flex;
   flex-direction: column;
-  color: #000;
-  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
   padding: 1em;
 }
 .getInvolvedAngelInvestorTitle {
@@ -856,6 +858,8 @@ nav a {
 .getInvolvedProposeDiv {
   display: flex;
   flex-direction: column;
+  color: #000;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
   padding: 1em;
 }
 .getInvolvedProposeTitle {
@@ -872,14 +876,12 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
   height: 400px;
   padding: 1em;
 }
 .getInvolvedClosingQuote {
   font-family: 'ebgaramond';
   font-size: 20px;
-  color: #000;
   text-align: center;
 }
 
@@ -931,6 +933,7 @@ nav a {
 .stripeForm {
   background-color: rgba(255, 255, 255, 1);
   padding: 1em;
+  max-width: 90vw;
 }
 .stripeFormSectionHeader {
   font-family: 'raleway';
@@ -1235,6 +1238,11 @@ input[type="radio"]:checked + label span {
   color: #000;
   font-family: 'raleway';
 }
+.donationPlanHeader {
+  padding-bottom: 0.5em;
+  border-bottom: 1px #000 solid;
+  margin-bottom: 1.5em;
+}
 .donationPlanDetail {
   display: flex;
   margin-bottom: 40px;
@@ -1456,6 +1464,7 @@ input[type="radio"]:checked + label span {
   .mainHomeDiv {
     display: flex;
     flex: 1;
+    margin-bottom: 0;
   }
 
   .homeScriptureDiv {
@@ -1479,21 +1488,32 @@ input[type="radio"]:checked + label span {
     text-align: center;
   }
   .aboutMainBlurbDiv {
-    padding: 40px;
+    padding: 80px;
   }
   .aboutMainBlurbTitle {
     font-family: 'raleway';
-    font-size: 26px;
+    font-size: 40px;
   }
   .aboutMainBlurbText {
-    width: 50%;
+    width: 60%;
   }
   .aboutBlurbDiv {
     flex-direction: row;
+    padding: 80px;
   }
   .aboutBlurbDiv2 {
     flex-direction: row;
     background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+    padding: 80px;
+  }
+  .aboutSubBlurbHeader {
+    font-family: 'raleway';
+    font-size: 40px;
+    margin-bottom: 1em;
+  }
+  .aboutSubBlurbText {
+    font-family: 'raleway';
+    font-size: 20px;
   }
 
   .screenshot {
@@ -1521,7 +1541,8 @@ input[type="radio"]:checked + label span {
   .getInvolvedHeaderDiv {
     display: flex;
     flex-direction: column;
-    height: 550px;
+    height: 450px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
     align-items: center;
     justify-content: center;
     padding: 40px;
@@ -1574,7 +1595,6 @@ input[type="radio"]:checked + label span {
   .getInvolvedAngelInvestorDiv {
     display: flex;
     flex-direction: row;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
     height: 450px;
     padding: 40px;
   }
@@ -1636,6 +1656,8 @@ input[type="radio"]:checked + label span {
   .getInvolvedProposeDiv {
     display: flex;
     flex-direction: row;
+    color: #000;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
     height: 450px;
     padding: 40px;
   }
@@ -1652,14 +1674,12 @@ input[type="radio"]:checked + label span {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
     height: 550px;
     padding: 1em;
   }
   .getInvolvedClosingQuote {
     font-family: 'ebgaramond';
     font-size: 20px;
-    color: #000;
     text-align: center;
     max-width: 50%;
   }
@@ -1680,21 +1700,22 @@ input[type="radio"]:checked + label span {
     justify-content: center;
     align-items: center;
     color: #000;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
-    height: 400px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+    height: 450px;
+    padding: 40px;
   }
   .donorWebHeaderTitle {
     display: flex;
     font-family: 'raleway';
     font-size: 45px;
     text-align: center;
+    margin-bottom: 1em;
   }
   .donorWebHeaderSubTitle {
     display: flex;
     font-family: 'raleway';
     font-size: 20px;
     text-align: center;
-    margin-top: 1em;
     width: 50%;
   }
   .stripeForm {
@@ -1710,8 +1731,5 @@ input[type="radio"]:checked + label span {
   .donationContainerDiv {
     max-width: 40vw;
     align-self: center;
-  }
-  .donationPlanHeader {
-    margin-top: 1em;
   }
 }

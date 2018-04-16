@@ -8,10 +8,18 @@ const HomePresenter = () => (
       <p className="raleway font100 centerText paddingHalfem">ORA</p>
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
-          <p>"I am troubled now. Yet what should I say?<br />Father, save me from this hour'?<br />But it was for this purpose that I came to this hour.<br />Father, glorify your name."
-        <br /><br /></p>
-        <p className="rightText">- John 12:27-28</p>
-      </div>
+          <p>
+            "I am the good shepherd,
+            <br />
+            and I know mine and mine know me,
+            <br />
+            just as the Father knows me and I know the Father;
+            <br />
+            and I will lay down my life for the sheep."
+            <br /><br />
+          </p>
+          <p className="rightText">- John 10:14-15</p>
+        </div>
       </div>
     </div>
     <FooterPresenter />

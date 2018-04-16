@@ -6,9 +6,9 @@ const SupportPresenter = ({ confirmation, error, handleSubmit, handleInputChange
   <div className="helpBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAllCenter">
       <div className="padding1em displayFlex flexColumn flexAllCenter">
-        <p className="raleway font24 centerText">Have questions?</p>
-        <p className="raleway font24 centerText">Need to tell us about a bug?</p>
-        <p className="raleway font24 centerText">Want to share your story?</p>
+        <p className="raleway font24 centerText blackText">Have questions?</p>
+        <p className="raleway font24 centerText blackText">Need to tell us about a bug?</p>
+        <p className="raleway font24 centerText blackText">Want to share your story?</p>
       </div>
       {confirmation
       ? <p className="raleway font20 padding1em centerText">{confirmation}</p>

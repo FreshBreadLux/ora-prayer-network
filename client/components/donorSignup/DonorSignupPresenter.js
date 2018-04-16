@@ -7,7 +7,7 @@ const DonorSignupPresenter = props => (
     <div className="displayFlex flexColumn flex1">
       <p className="mobileHeader">DONOR SIGNUP</p>
       <div className="donorWebHeader">
-        <p className="donorWebHeaderTitle">WE'RE GOING TO MAKE<br />A GREAT TEAM</p>
+        <p className="donorWebHeaderTitle">THIS IS GOING TO BE<br />AN ADVENTURE</p>
         <p className="donorWebHeaderSubTitle">We value and trust our community, and turn to you for prayer, support, and guidance</p>
       </div>
       <Elements fonts={[{
