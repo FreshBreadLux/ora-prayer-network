@@ -4,7 +4,7 @@ const Io = require('react-icons/lib/io')
 
 const NavbarPresenter = ({ revealedNavbar, toggleNavbar, manageNavigation }) => (
   <div>
-    <nav>
+    <nav id="navbar">
       <div className="menuButtonDiv">
         <a className="displayFlex flexJustifyBetween raleway" href="#" onClick={toggleNavbar}>
           MENU

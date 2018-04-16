@@ -16,10 +16,10 @@ const GetInvolvedPresenter = () => (
       </div>
       <div className="displayFlex flexColumn flex1 flexJustifyEnd">
         <p className="raleway font14 bottomMarginHalfem">Join our support team</p>
-        <Link to="/donor-signup" className="getInvolvedWhiteLink">
+        <a href="/donor-signup#navbar" className="getInvolvedWhiteLink">
           DONATE
           <Io.IoChevronRight className="iconMarginLeft" />
-        </Link>
+        </a>
       </div>
     </div>
     <div className="getInvolvedProposeDiv" id="propose">

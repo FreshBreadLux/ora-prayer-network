@@ -309,7 +309,7 @@ nav a {
   display: flex;
   flex-direction: column;
   height: 550px;
-  background: url(images/mountains-black.jpg) no-repeat center center;
+  background: url(images/mountains-pink.jpg) no-repeat center center;
   background-size: cover;
   padding: 1em;
 }
@@ -938,6 +938,13 @@ nav a {
   padding: 10px;
   cursor: pointer;
 }
+.stripeFormSubText {
+  font-family: 'raleway';
+  color: #555;
+  font-size: 11px;
+  opacity: 0.5;
+  margin-top: -1em;
+}
 
 .radioButtonDiv {
   display: flex;
@@ -1459,11 +1466,7 @@ input[type="radio"]:checked + label span {
     text-align: center;
   }
   .aboutMainBlurbDiv {
-    display: flex;
-    flex-direction: column;
     height: 550px;
-    background: url(images/mountains-black.jpg) no-repeat center center;
-    background-size: cover;
     padding: 40px;
   }
   .aboutMainBlurbTitle {
