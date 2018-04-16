@@ -232,7 +232,7 @@ nav a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: url(images/mountains.jpeg) no-repeat center center fixed;
+  background: url(images/mountains-black.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 .thankYouBackgroundImage {
@@ -279,9 +279,8 @@ nav a {
 
 .homeScriptureQuote {
   font-family: 'ebgaramond';
-  color: #000;
-  background-color: rgba(255, 255, 255, 1);
-  padding: 1em;
+  font-size: 20px;
+  color: #fff;
   max-width: 90vw;
 }
 
@@ -308,24 +307,29 @@ nav a {
 .aboutMainBlurbDiv {
   display: flex;
   flex-direction: column;
-  height: 550px;
-  background: url(images/mountains-pink.jpg) no-repeat center center;
-  background-size: cover;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
   padding: 1em;
 }
 .aboutMainBlurbTitle {
   font-family: 'raleway';
+  color: #000;
   font-size: 30px;
   margin-bottom: 1em;
 }
 .aboutMainBlurbText {
   font-family: 'raleway';
+  color: #000;
   font-size: 16px;
 }
 .aboutBlurbDiv {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+}
+.aboutBlurbDiv2 {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
 }
 .aboutSubBlurbDiv {
   display: flex;
@@ -771,9 +775,8 @@ nav a {
 .getInvolvedAngelInvestorDiv {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  background: url(images/mountains-black.jpg) no-repeat center center;
-  background-size: cover;
+  color: #000;
+  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
   padding: 1em;
 }
 .getInvolvedAngelInvestorTitle {
@@ -783,7 +786,8 @@ nav a {
 }
 .getInvolvedAngelInvestorBody {
   font-family: 'raleway';
-  font-size: 14px;
+  font-size: 20px;
+  margin-bottom: 1.5em;
 }
 .getInvolvedWhiteLink {
   display: flex;
@@ -852,30 +856,30 @@ nav a {
 .getInvolvedProposeDiv {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  background: url(images/mountains-navy.jpg) no-repeat center center;
-  background-size: cover;
   padding: 1em;
 }
 .getInvolvedProposeTitle {
   font-family: 'raleway';
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 1em;
 }
 .getInvolvedProposeBody {
   font-family: 'raleway';
   font-size: 20px;
+  margin-bottom: 1.5em;
 }
 .getInvolvedClosingDiv {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+  height: 400px;
   padding: 1em;
 }
 .getInvolvedClosingQuote {
   font-family: 'ebgaramond';
   font-size: 20px;
+  color: #000;
   text-align: center;
 }
 
@@ -915,6 +919,15 @@ nav a {
   margin-bottom: 34px;
 }
 
+.donorWebHeader {
+  display: none;
+}
+.donorWebHeaderTitle {
+  display: none;
+}
+.donorWebHeaderSubTitle {
+  display: none;
+}
 .stripeForm {
   background-color: rgba(255, 255, 255, 1);
   padding: 1em;
@@ -1466,7 +1479,6 @@ input[type="radio"]:checked + label span {
     text-align: center;
   }
   .aboutMainBlurbDiv {
-    height: 550px;
     padding: 40px;
   }
   .aboutMainBlurbTitle {
@@ -1478,6 +1490,10 @@ input[type="radio"]:checked + label span {
   }
   .aboutBlurbDiv {
     flex-direction: row;
+  }
+  .aboutBlurbDiv2 {
+    flex-direction: row;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
   }
 
   .screenshot {
@@ -1558,9 +1574,8 @@ input[type="radio"]:checked + label span {
   .getInvolvedAngelInvestorDiv {
     display: flex;
     flex-direction: row;
-    height: 550px;
-    background: url(images/mountains-black.jpg) no-repeat center center;
-    background-size: cover;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+    height: 450px;
     padding: 40px;
   }
   .getInvolvedAngelInvestorTitle {
@@ -1621,9 +1636,7 @@ input[type="radio"]:checked + label span {
   .getInvolvedProposeDiv {
     display: flex;
     flex-direction: row;
-    height: 550px;
-    background: url(images/mountains-navy.jpg) no-repeat center center;
-    background-size: cover;
+    height: 450px;
     padding: 40px;
   }
   .getInvolvedProposeTitle {
@@ -1639,12 +1652,14 @@ input[type="radio"]:checked + label span {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
     height: 550px;
     padding: 1em;
   }
   .getInvolvedClosingQuote {
     font-family: 'ebgaramond';
     font-size: 20px;
+    color: #000;
     text-align: center;
     max-width: 50%;
   }
@@ -1659,6 +1674,29 @@ input[type="radio"]:checked + label span {
     max-width: 40%;
   }
 
+  .donorWebHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+    height: 400px;
+  }
+  .donorWebHeaderTitle {
+    display: flex;
+    font-family: 'raleway';
+    font-size: 45px;
+    text-align: center;
+  }
+  .donorWebHeaderSubTitle {
+    display: flex;
+    font-family: 'raleway';
+    font-size: 20px;
+    text-align: center;
+    margin-top: 1em;
+    width: 50%;
+  }
   .stripeForm {
     max-width: 40vw;
     margin-top: 2em;

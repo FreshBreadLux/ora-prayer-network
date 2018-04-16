@@ -12,7 +12,7 @@ const GetInvolvedPresenter = () => (
     <div className="getInvolvedAngelInvestorDiv" id="angel-investor">
       <div className="displayFlex flexColumn flex3">
         <p className="getInvolvedAngelInvestorTitle">ANGEL INVESTORS</p>
-        <p className="getInvolvedAngelInvestorBody">There are many ways to help, but our greatest need is donations. We rely on a highly-valued team of Angel Investors to support Ora's mission to help people cultivate lives of devotion. Angel Investors donate on a recurring monthly basis, and form the first line of support for direction and decision making within the organization.</p>
+        <p className="getInvolvedAngelInvestorBody">We rely on a highly-valued team of Angel Investors to support Ora's mission to help people cultivate lives of devotion. Angel Investors donate on a recurring monthly basis, and form the first line of support for direction and decision making within the organization.</p>
       </div>
       <div className="displayFlex flexColumn flex1 flexJustifyEnd">
         <p className="raleway font14 bottomMarginHalfem">Join our support team</p>

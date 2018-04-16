@@ -29,7 +29,7 @@ const AboutPresenter = () => (
         When you submit an anonymous prayer, you are surrendering your intention to God and to the Church. You can find peace being reminded that you have the support of your brothers and sisters, and that God's love is always at work in your life.</p>
       </div>
     </div>
-    <div className="aboutBlurbDiv">
+    <div className="aboutBlurbDiv2">
       <div className="aboutSubBlurbDiv">
         <p className="aboutSubBlurbHeader">PRAY FOR THE INTENTIONS OF OTHERS</p>
         <p className="aboutSubBlurbText">We are brothers and sisters in Christ.
@@ -47,7 +47,7 @@ const AboutPresenter = () => (
         After you accept a prayer, you'll have the option to follow it. Following a prayer allows you to revisit the intention and continue praying for it. It also allows you to receive updates about the prayer request, if the author chooses to share them.</p>
       </div>
     </div>
-    <div className="aboutBlurbDiv">
+    <div className="aboutBlurbDiv2">
       <div className="aboutSubBlurbDiv">
         <p className="aboutSubBlurbHeader">SET DAILY REMINDERS TO HELP YOU CULTIVATE A LIFE OF PRAYER</p>
         <p className="aboutSubBlurbText">We persevere in prayer.
