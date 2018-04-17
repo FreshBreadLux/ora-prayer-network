@@ -94,13 +94,14 @@ class StripeFormContainer extends React.Component {
 
   subscribeOrCharge(verifiedResult) {
     const { userId, jwToken } = verifiedResult.userIdAndJwt
-    const { monthlyDonation, singleDonation } = this.state
+    const { monthlyDonation, singleDonation, email, firstName } = this.state
     if (singleDonation.length) {
       axios.post(`${ROOT_URL}/api/donations/charges`, {
         userId, amount: +singleDonation * 100
       }, {
         headers: {token: jwToken}
       })
+      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`), { email, firstName })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
@@ -109,6 +110,7 @@ class StripeFormContainer extends React.Component {
       }, {
         headers: {token: jwToken}
       })
+      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`), { email, firstName })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
