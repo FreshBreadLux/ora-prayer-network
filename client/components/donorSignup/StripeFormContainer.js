@@ -101,7 +101,7 @@ class StripeFormContainer extends React.Component {
       }, {
         headers: {token: jwToken}
       })
-      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`), { email, firstName })
+      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`, { email, firstName }))
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
@@ -110,7 +110,7 @@ class StripeFormContainer extends React.Component {
       }, {
         headers: {token: jwToken}
       })
-      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`), { email, firstName })
+      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`, { email, firstName }))
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
