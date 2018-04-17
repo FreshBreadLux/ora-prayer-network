@@ -1489,6 +1489,7 @@ input[type="radio"]:checked + label span {
   }
   .aboutMainBlurbDiv {
     padding: 80px;
+    background-color: transparent;
     background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
   }
   .aboutMainBlurbTitle {
