@@ -9,9 +9,9 @@ const CupOfJoePresenter = ({ buyCoffee, coffeeStatus }) => (
     </div>
     <div className="cupOfJoeDiv">
       <div className="displayFlex flexJustifyStart">
-        <p className="font16 bottomMarginHalfem">We love coffee</p>
+        <p className="font16 bottomMarginHalfem">We love coffee.</p>
       </div>
-      <p className="font14 bottomMargin1em">We're probably working in a coffee shop right now...</p>
+      <p className="font16 bottomMargin1em">We're probably working in a coffee shop right now...</p>
       <div className="displayFlex widthPercent65 alignSelfCenter">
         <button
           onClick={buyCoffee}
