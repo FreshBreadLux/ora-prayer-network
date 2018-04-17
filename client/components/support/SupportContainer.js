@@ -22,7 +22,7 @@ class SupportContainer extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     this.setState({ isLoading: true })
-    axios.post(`${ROOT_URL}/api/formEmails?form=support`, {
+    axios.post(`${ROOT_URL}/api/emails/forms?form=support`, {
       name: this.state.name,
       email: this.state.email,
       subject: this.state.subject,
