@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { injectStripe } from 'react-stripe-elements'
 import StripeFormPresenter from './StripeFormPresenter'
-import { ROOT_URL } from '../../config'
+import { ROOT_URL, SENDINBLUE_API_KEY_V3 } from '../../config'
 
 class StripeFormContainer extends React.Component {
   constructor(props) {
@@ -101,7 +101,14 @@ class StripeFormContainer extends React.Component {
       }, {
         headers: {token: jwToken}
       })
-      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`, { email, firstName }))
+      .then(() => {
+        return axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
+          emailTo: [email],
+          attributes: { FIRSTNAME: firstName }
+        }, {
+          headers: {'api-key': SENDINBLUE_API_KEY_V3 }
+        })
+      })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
@@ -110,7 +117,14 @@ class StripeFormContainer extends React.Component {
       }, {
         headers: {token: jwToken}
       })
-      .then(() => axios.post(`${ROOT_URL}/api/emails/donorSignup`, { email, firstName }))
+      .then(() => {
+        return axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
+          emailTo: [email],
+          attributes: { FIRSTNAME: firstName }
+        }, {
+          headers: {'api-key': SENDINBLUE_API_KEY_V3 }
+        })
+      })
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
