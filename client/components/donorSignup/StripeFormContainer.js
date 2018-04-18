@@ -96,7 +96,7 @@ class StripeFormContainer extends React.Component {
     const { userId, jwToken } = verifiedResult.userIdAndJwt
     const { monthlyDonation, singleDonation, email, firstName, lastName } = this.state
     if (singleDonation.length) {
-      Promise.all([
+      return Promise.all([
         axios.post(`${ROOT_URL}/api/donations/charges`, {
           userId, amount: +singleDonation * 100
         }, {
@@ -119,7 +119,7 @@ class StripeFormContainer extends React.Component {
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
-      Promise.all([
+      return Promise.all([
         axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
           userId, amount: +monthlyDonation * 100
         }, {
