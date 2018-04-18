@@ -94,37 +94,51 @@ class StripeFormContainer extends React.Component {
 
   subscribeOrCharge(verifiedResult) {
     const { userId, jwToken } = verifiedResult.userIdAndJwt
-    const { monthlyDonation, singleDonation, email, firstName } = this.state
+    const { monthlyDonation, singleDonation, email, firstName, lastName } = this.state
     if (singleDonation.length) {
-      axios.post(`${ROOT_URL}/api/donations/charges`, {
-        userId, amount: +singleDonation * 100
-      }, {
-        headers: {token: jwToken}
-      })
-      .then(() => {
-        return axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
+      Promise.all([
+        axios.post(`${ROOT_URL}/api/donations/charges`, {
+          userId, amount: +singleDonation * 100
+        }, {
+          headers: {token: jwToken}
+        }),
+        axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
           emailTo: [email],
           attributes: { FIRSTNAME: firstName }
         }, {
           headers: {'api-key': SENDINBLUE_API_KEY_V3 }
+        }),
+        axios.post('https://api.sendinblue.com/v3/contacts', {
+          email: email,
+          attributes: { FIRSTNAME: firstName, LASTNAME: lastName },
+          updateEnabled: true
+        }, {
+          headers: {'api-key': SENDINBLUE_API_KEY_V3 }
         })
-      })
+      ])
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     } else {
-      axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
-        userId, amount: +monthlyDonation * 100
-      }, {
-        headers: {token: jwToken}
-      })
-      .then(() => {
-        return axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
+      Promise.all([
+        axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
+          userId, amount: +monthlyDonation * 100
+        }, {
+          headers: {token: jwToken}
+        }),
+        axios.post('https://api.sendinblue.com/v3/smtp/templates/3/send', {
           emailTo: [email],
           attributes: { FIRSTNAME: firstName }
         }, {
           headers: {'api-key': SENDINBLUE_API_KEY_V3 }
+        }),
+        axios.post('https://api.sendinblue.com/v3/contacts', {
+          email: email,
+          attributes: { FIRSTNAME: firstName, LASTNAME: lastName },
+          updateEnabled: true
+        }, {
+          headers: {'api-key': SENDINBLUE_API_KEY_V3 }
         })
-      })
+      ])
       .then(() => this.props.history.push('/thank-you'))
       .catch(console.error)
     }
