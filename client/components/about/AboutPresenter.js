@@ -8,7 +8,9 @@ const AboutPresenter = () => (
     <div className="aboutHeaderDiv">
       <img src="images/screenshot-home-screen.png" className="screenshot" />
       <p className="aboutSubHeader">CULTIVATE A LIFE OF DEVOTION</p>
-      <img src="images/download-on-the-app-store.svg" className="bottomMargin1em" />
+      <a href="https://itunes.apple.com/us/app/ora-prayer-network/id1354049056?mt=8">
+        <img src="images/download-on-the-app-store.svg" className="bottomMargin1em" />
+      </a>
     </div>
     <div className="aboutMainBlurbDiv">
       <p className="aboutMainBlurbTitle">THE ORA PRAYER NETWORK</p>
