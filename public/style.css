@@ -1705,6 +1705,7 @@ input[type="radio"]:checked + label span {
   }
   .getInvolvedClosingDiv {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     color: #000;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));

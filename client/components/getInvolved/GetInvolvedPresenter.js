@@ -25,7 +25,7 @@ const GetInvolvedPresenter = () => (
     <div className="getInvolvedReviewDiv" id="review">
       <div className="displayFlex flexColumn flex3">
         <p className="getInvolvedReviewTitle">RATE & REVIEW US IN THE APP STORE</p>
-        <p className="getInvolvedReviewBody">If you like the app, giving us a positive rating and review in the App Store is a great way to help out. Your feedback helps spread the word and get more people involved.</p>
+        <p className="getInvolvedReviewBody">If you like the app, please consider rating it and writing a review in the App Store. Your feedback helps spread the word and get more people involved.</p>
       </div>
       <div className="displayFlex flexColumn flex1 flexJustifyEnd">
         <a href="https://itunes.apple.com/us/app/ora-prayer-network/id1354049056?mt=8" className="getInvolvedWhiteLink">
