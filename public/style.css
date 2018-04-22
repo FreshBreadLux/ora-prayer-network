@@ -855,11 +855,26 @@ nav a {
   font-family: 'raleway';
   font-size: 14px;
 }
-.getInvolvedProposeDiv {
+.getInvolvedReviewDiv {
   display: flex;
   flex-direction: column;
   color: #000;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+  padding: 1em;
+}
+.getInvolvedReviewTitle {
+  font-family: 'raleway';
+  font-size: 30px;
+  margin-bottom: 1em;
+}
+.getInvolvedReviewBody {
+  font-family: 'raleway';
+  font-size: 20px;
+  margin-bottom: 1.5em;
+}
+.getInvolvedProposeDiv {
+  display: flex;
+  flex-direction: column;
   padding: 1em;
 }
 .getInvolvedProposeTitle {
@@ -874,8 +889,9 @@ nav a {
 }
 .getInvolvedClosingDiv {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  color: #000;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
   height: 400px;
   padding: 1em;
 }
@@ -1655,11 +1671,26 @@ input[type="radio"]:checked + label span {
     font-family: 'raleway';
     font-size: 20px;
   }
-  .getInvolvedProposeDiv {
+  .getInvolvedReviewDiv {
     display: flex;
     flex-direction: row;
     color: #000;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    height: 450px;
+    padding: 40px;
+  }
+  .getInvolvedReviewTitle {
+    font-family: 'raleway';
+    font-size: 40px;
+    margin-bottom: 1em;
+  }
+  .getInvolvedReviewBody {
+    font-family: 'raleway';
+    font-size: 20px;
+  }
+  .getInvolvedProposeDiv {
+    display: flex;
+    flex-direction: row;
     height: 450px;
     padding: 40px;
   }
@@ -1674,10 +1705,11 @@ input[type="radio"]:checked + label span {
   }
   .getInvolvedClosingDiv {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    color: #000;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
     height: 550px;
-    padding: 1em;
+    padding: 40px;
   }
   .getInvolvedClosingQuote {
     font-family: 'ebgaramond';
