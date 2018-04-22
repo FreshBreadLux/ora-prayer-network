@@ -288,6 +288,7 @@ nav a {
 .privacyPolicyDiv {
   display: flex;
   flex-direction: column;
+  color: #000;
   padding: 1em;
   max-width: 95vw;
 }
