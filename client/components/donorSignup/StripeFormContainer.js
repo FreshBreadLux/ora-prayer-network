@@ -26,12 +26,12 @@ class StripeFormContainer extends React.Component {
     }
     this.verifyUser = this.verifyUser.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
+    this.setInputRef = this.setInputRef.bind(this)
     this.handleError = this.handleError.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleZipCode = this.handleZipCode.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
-    this.setFirstNameRef = this.setFirstNameRef.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
     this.handleDonationAmount = this.handleDonationAmount.bind(this)
@@ -204,18 +204,16 @@ class StripeFormContainer extends React.Component {
     }
   }
 
-  setFirstNameRef(ref) {
-    console.log('Did setFirstNameRef get called?...', ref)
-    this.firstName = ref
+  setInputRef(ref, name) {
+    console.log('Did setInputRef get called?...', ref)
+    this[name] = ref
   }
 
   handleKeyDown(event, name) {
-    console.log('event: ', event)
-    console.log('name: ', name)
     if (event.keyCode === 13) {
       console.log('this: ', this)
-      console.log('this.firstName: ', this.firstName)
-      this.firstName.focus()
+      console.log('this[name]: ', this[name])
+      this[name].focus()
     }
   }
 
@@ -246,7 +244,6 @@ class StripeFormContainer extends React.Component {
         userExists={this.state.userExists}
         handleZipCode={this.handleZipCode}
         handleKeyDown={this.handleKeyDown}
-        setFirstNameRef={this.setFirstNameRef}
         handleInputChange={this.handleInputChange}
         singleDonation={this.state.singleDonation}
         monthlyDonation={this.state.monthlyDonation}
