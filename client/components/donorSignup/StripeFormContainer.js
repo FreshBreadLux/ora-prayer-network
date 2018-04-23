@@ -24,15 +24,14 @@ class StripeFormContainer extends React.Component {
       isLoading: false,
       failed: false,
     }
-    this.firstNameRef = React.createRef()
     this.verifyUser = this.verifyUser.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
     this.handleError = this.handleError.bind(this)
-    this.setInputRef = this.setInputRef.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleZipCode = this.handleZipCode.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
+    this.setFirstNameRef = this.setFirstNameRef.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.subscribeOrCharge = this.subscribeOrCharge.bind(this)
     this.handleDonationAmount = this.handleDonationAmount.bind(this)
@@ -205,8 +204,8 @@ class StripeFormContainer extends React.Component {
     }
   }
 
-  setInputRef(name, ref) {
-    this[name] = ref
+  setFirstNameRef(ref) {
+    this.firstName = ref
   }
 
   handleKeyDown(event, name) {
@@ -234,7 +233,6 @@ class StripeFormContainer extends React.Component {
         city={this.state.city}
         state={this.state.state}
         email={this.state.email}
-        firstNameRef={this.firstNameRef}
         failed={this.state.failed}
         checkEmail={this.checkEmail}
         address={this.state.address}
@@ -247,6 +245,7 @@ class StripeFormContainer extends React.Component {
         userExists={this.state.userExists}
         handleZipCode={this.handleZipCode}
         handleKeyDown={this.handleKeyDown}
+        setFirstNameRef={this.setFirstNameRef}
         handleInputChange={this.handleInputChange}
         singleDonation={this.state.singleDonation}
         monthlyDonation={this.state.monthlyDonation}
