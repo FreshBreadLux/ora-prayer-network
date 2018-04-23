@@ -7,7 +7,7 @@ const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, onK
   <div className={notEmpty ? 'formGroup notEmpty' : 'formGroup'}>
     <input
       id={name}
-      inputRef={inputRef}
+      ref={inputRef}
       step={step}
       type={type}
       name={name}
