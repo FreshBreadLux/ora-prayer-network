@@ -205,6 +205,7 @@ class StripeFormContainer extends React.Component {
   }
 
   setFirstNameRef(ref) {
+    console.log('Did setFirstNameRef get called?...', ref)
     this.firstName = ref
   }
 
