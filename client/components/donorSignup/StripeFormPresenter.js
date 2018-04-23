@@ -2,7 +2,7 @@ import React from 'react'
 import { CardElement } from 'react-stripe-elements'
 import { FormReviewPresenter, FormPaymentPresenter, FormSupportPresenter } from '../'
 
-const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail, handleZipCode }) => (
+const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail, handleZipCode, zip }) => (
   <div className="displayFlex flexJustifyCenter">
     <form onSubmit={handleSubmit} className="stripeForm">
       <FormSupportPresenter
@@ -14,10 +14,10 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
         state={state}
         email={email}
         address={address}
-        checkEmail={checkEmail}
-        lastName={lastName}
         password={password}
+        lastName={lastName}
         firstName={firstName}
+        checkEmail={checkEmail}
         userExists={userExists}
         handleInputChange={handleInputChange}
         checkEmailReturned={checkEmailReturned}
@@ -35,7 +35,14 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
           className="stripeCardElement" />
       </div>
       <FormReviewPresenter
+        zip={zip}
         email={email}
+        city={city}
+        state={state}
+        address={address}
+        password={password}
+        lastName={lastName}
+        firstName={firstName}
         isLoading={isLoading}
         singleDonation={singleDonation}
         monthlyDonation={monthlyDonation} />

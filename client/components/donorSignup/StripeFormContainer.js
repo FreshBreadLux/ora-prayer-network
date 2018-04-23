@@ -188,6 +188,7 @@ class StripeFormContainer extends React.Component {
   render() {
     return (
       <StripeFormPresenter
+        zip={this.state.zip}
         city={this.state.city}
         state={this.state.state}
         email={this.state.email}

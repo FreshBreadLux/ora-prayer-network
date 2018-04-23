@@ -970,6 +970,18 @@ nav a {
   padding: 10px;
   cursor: pointer;
 }
+.stripeFormButtonDisabled {
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-family: 'raleway';
+  font-size: 16px;
+  padding: 10px;
+}
 .stripeFormSubText {
   font-family: 'raleway';
   color: #555;
@@ -1706,6 +1718,7 @@ input[type="radio"]:checked + label span {
   .getInvolvedClosingDiv {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     color: #000;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
