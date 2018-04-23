@@ -2,7 +2,7 @@ import React from 'react'
 import { CardElement } from 'react-stripe-elements'
 import { FormReviewPresenter, FormPaymentPresenter, FormSupportPresenter } from '../'
 
-const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail, handleZipCode, zip, failed }) => (
+const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail, handleZipCode, zip, failed, setInputRef }) => (
   <div className="displayFlex flexJustifyCenter">
     <form onSubmit={handleSubmit} className="stripeForm">
       <FormSupportPresenter
@@ -19,6 +19,7 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
         firstName={firstName}
         checkEmail={checkEmail}
         userExists={userExists}
+        setInputRef={setInputRef}
         handleInputChange={handleInputChange}
         checkEmailReturned={checkEmailReturned}
         stripeCustomerExists={stripeCustomerExists} />
