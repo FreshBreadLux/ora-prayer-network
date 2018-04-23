@@ -22,9 +22,11 @@ class StripeFormContainer extends React.Component {
       state: '',
       zip: '',
       isLoading: false,
+      failed: false,
     }
     this.verifyUser = this.verifyUser.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
+    this.handleError = this.handleError.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleZipCode = this.handleZipCode.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
@@ -39,14 +41,18 @@ class StripeFormContainer extends React.Component {
     this.setState({ isLoading: true })
     const { token, error } = await this.props.stripe.createToken()
     if (error) {
-      console.error('Error: ', error.message)
+      console.log('Error: ', error.message)
+      this.handleError()
     } else {
       const { userExists, stripeCustomerExists } = this.state
       if (!userExists) {
         this.createCustomer(token)
         .then(customer => this.createUserWithCustomerId(customer.data))
         .then(verifiedResult => this.subscribeOrCharge(verifiedResult))
-        .catch(console.error)
+        .catch(err => {
+          console.log('Error: ', err)
+          this.handleError()
+        })
       } else if (userExists && !stripeCustomerExists) {
         this.createCustomer(token)
         .then(customer => this.verifyUser(customer.data))
@@ -54,7 +60,10 @@ class StripeFormContainer extends React.Component {
           this.updateUserWithCustomerId(verifiedResult)
           return this.subscribeOrCharge(verifiedResult)
         })
-        .catch(console.error)
+        .catch(err => {
+          console.log('Error: ', err)
+          this.handleError()
+        })
       }
     }
   }
@@ -89,7 +98,9 @@ class StripeFormContainer extends React.Component {
       stripeCustomerId: customer.id,
       firstName, lastName, address, city, state, zip
     })
-    .catch(console.error)
+    .catch(err => {
+      console.log('Error: ', err)
+    })
   }
 
   subscribeOrCharge(verifiedResult) {
@@ -117,7 +128,10 @@ class StripeFormContainer extends React.Component {
         })
       ])
       .then(() => this.props.history.push('/thank-you'))
-      .catch(console.error)
+      .catch(err => {
+        console.log('Error: ', err)
+        this.handleError()
+      })
     } else {
       return Promise.all([
         axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
@@ -140,7 +154,10 @@ class StripeFormContainer extends React.Component {
         })
       ])
       .then(() => this.props.history.push('/thank-you'))
-      .catch(console.error)
+      .catch(err => {
+        console.log('Error: ', err)
+        this.handleError()
+      })
     }
   }
 
@@ -185,6 +202,14 @@ class StripeFormContainer extends React.Component {
     }
   }
 
+  handleError() {
+    this.setState({
+      failed: true,
+      isLoading: false,
+    })
+    setTimeout(() => this.setState({failed: false}), 10000)
+  }
+
   render() {
     return (
       <StripeFormPresenter
@@ -192,6 +217,7 @@ class StripeFormContainer extends React.Component {
         city={this.state.city}
         state={this.state.state}
         email={this.state.email}
+        failed={this.state.failed}
         checkEmail={this.checkEmail}
         address={this.state.address}
         password={this.state.password}

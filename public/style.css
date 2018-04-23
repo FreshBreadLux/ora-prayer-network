@@ -660,6 +660,10 @@ nav a {
   color: #555;
 }
 
+.lightGreyText {
+  color: #ccc;
+}
+
 .greenText {
   color: green;
 }

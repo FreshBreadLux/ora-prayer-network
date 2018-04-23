@@ -43,7 +43,7 @@ class FormReviewPresenter extends React.Component {
   }
 
   render() {
-    const { email, monthlyDonation, isLoading } = this.props
+    const { email, monthlyDonation, isLoading, failed } = this.props
     return (
       <div>
         <p className="stripeFormSectionHeader">REVIEW</p>
@@ -64,13 +64,18 @@ class FormReviewPresenter extends React.Component {
             className={this.buttonDisabled()
             ? 'stripeFormButtonDisabled'
             : 'stripeFormButton'}>
-            {isLoading
-            ? <Loader type="Bars" height={20} width={20} color="#000" />
-            : <div className="displayFlex flexAllCenter">
-                <Io.IoIosHeart className={this.buttonDisabled()
-                ? 'iconMarginRight font20 greyText'
-                : 'iconMarginRight font20 pinkText'} />
-                DONATE
+            {failed
+            ? <p>SIGNUP FAILED</p>
+            : <div>
+              {isLoading
+              ? <Loader type="Bars" height={20} width={20} color="#000" />
+              : <div className="displayFlex flexAllCenter">
+                  <Io.IoIosHeart className={this.buttonDisabled()
+                  ? 'iconMarginRight font20 lightGreyText'
+                  : 'iconMarginRight font20 pinkText'} />
+                  DONATE
+                </div>
+              }
               </div>
             }
           </button>
