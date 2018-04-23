@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormInputPresenter } from '../'
 
-const FormSupportPresenter = ({ handleDonationAmount, singleDonation, monthlyDonation }) => (
+const FormSupportPresenter = ({ handleDonationAmount, singleDonation, monthlyDonation, handleKeyDown }) => (
   <div>
     <p className="stripeFormSectionHeader">SUPPORT INFORMATION</p>
     <div className="selectAmountDiv">
@@ -12,6 +12,7 @@ const FormSupportPresenter = ({ handleDonationAmount, singleDonation, monthlyDon
         name="monthlyDonation"
         value={monthlyDonation}
         label="Monthly Donation"
+        onKeyDown={event => handleKeyDown(event, 'firstName')}
         onChange={handleDonationAmount}
         notEmpty={!!monthlyDonation.length} />
       <p className="stripeFormSubText">Your first donation will occur immediately and recur on this date each month. You can edit your donation date and amount after signup.</p>
@@ -22,6 +23,7 @@ const FormSupportPresenter = ({ handleDonationAmount, singleDonation, monthlyDon
         name="singleDonation"
         value={singleDonation}
         label="Single Donation"
+        onKeyDown={event => handleKeyDown(event, 'firstName')}
         onChange={handleDonationAmount}
         notEmpty={!!singleDonation.length} />
     </div>

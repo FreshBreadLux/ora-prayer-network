@@ -29,6 +29,7 @@ class StripeFormContainer extends React.Component {
     this.handleError = this.handleError.bind(this)
     this.setInputRef = this.setInputRef.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleZipCode = this.handleZipCode.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -207,6 +208,12 @@ class StripeFormContainer extends React.Component {
     this[name] = ref
   }
 
+  handleKeyDown(event, name) {
+    if (event.keyCode === 13) {
+      this[name].focus()
+    }
+  }
+
   handleError() {
     this.setState({
       failed: true,
@@ -233,6 +240,7 @@ class StripeFormContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         userExists={this.state.userExists}
         handleZipCode={this.handleZipCode}
+        handleKeyDown={this.handleKeyDown}
         handleInputChange={this.handleInputChange}
         singleDonation={this.state.singleDonation}
         monthlyDonation={this.state.monthlyDonation}
