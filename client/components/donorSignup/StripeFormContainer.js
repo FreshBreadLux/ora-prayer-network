@@ -24,6 +24,7 @@ class StripeFormContainer extends React.Component {
       isLoading: false,
       failed: false,
     }
+    this.firstNameRef = React.createRef()
     this.verifyUser = this.verifyUser.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
     this.handleError = this.handleError.bind(this)
@@ -233,6 +234,7 @@ class StripeFormContainer extends React.Component {
         city={this.state.city}
         state={this.state.state}
         email={this.state.email}
+        firstNameRef={this.firstNameRef}
         failed={this.state.failed}
         checkEmail={this.checkEmail}
         address={this.state.address}
