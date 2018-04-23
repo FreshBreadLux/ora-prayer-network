@@ -14,7 +14,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="firstName"
             value={firstName}
-            ref={ref => {
+            inputRef={ref => {
               console.log('ref: ', ref)
               setFirstNameRef(ref)
             }}

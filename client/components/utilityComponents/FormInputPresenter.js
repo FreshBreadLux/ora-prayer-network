@@ -1,12 +1,13 @@
 import React from 'react'
 
-const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, onKeyDown, inputMode, value, step, ref }) => {
-  console.log('in FormInputPresenter, ref: ', ref)
+const FormInputPresenter = ({ type, label, name, notEmpty, onBlur, onChange, onKeyDown, inputMode, value, step, inputRef }) => {
+  console.log('in FormInputPresenter, inputRef: ', inputRef)
+  console.log('in FormInputPresenter, label: ', label)
   return (
   <div className={notEmpty ? 'formGroup notEmpty' : 'formGroup'}>
     <input
       id={name}
-      ref={ref}
+      inputRef={inputRef}
       step={step}
       type={type}
       name={name}
