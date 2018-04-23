@@ -1,7 +1,9 @@
 import React from 'react'
 import { FormInputPresenter } from '../'
 
-const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef, setFirstNameRef }) => (
+const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef, setFirstNameRef }) => {
+  console.log('in FormPaymentPresenter, setFirstNameRef: ', setFirstNameRef)
+  return (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -97,6 +99,6 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
       </div>
     </div>
   </div>
-)
+)}
 
 export default FormPaymentPresenter
