@@ -213,8 +213,8 @@ class StripeFormContainer extends React.Component {
     console.log('name: ', name)
     if (event.keyCode === 13) {
       console.log('this: ', this)
-      console.log('this[name]: ', this[name])
-      this[name].focus()
+      console.log('this.firstName: ', this.firstName)
+      this.firstName.focus()
     }
   }
 
