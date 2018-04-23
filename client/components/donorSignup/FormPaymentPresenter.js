@@ -12,7 +12,10 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="firstName"
             value={firstName}
-            ref={setFirstNameRef}
+            ref={ref => {
+              console.log('ref: ', ref)
+              setFirstNameRef(ref)
+            }}
             label="First Name"
             onChange={handleInputChange}
             notEmpty={!!firstName.length} />
