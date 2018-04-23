@@ -9,16 +9,16 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            "I am the good shepherd,
+            "If you remain in me and my word remains in you,
             <br />
-            and I know mine and mine know me,
+            ask for whatever you want and it will be done for you.
             <br />
-            just as the Father knows me and I know the Father;
+            By this is my Father glorified,
             <br />
-            and I will lay down my life for the sheep."
+            that you bear much fruit and become my disciples."
             <br /><br />
           </p>
-          <p className="rightText">- John 10:14-15</p>
+          <p className="rightText">- John 15:7-8</p>
         </div>
       </div>
     </div>
