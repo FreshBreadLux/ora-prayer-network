@@ -12,6 +12,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="firstName"
             value={firstName}
+            ref={ref => setInputRef('firstName', ref)}
             label="First Name"
             onChange={handleInputChange}
             notEmpty={!!firstName.length} />
@@ -22,6 +23,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="lastName"
             value={lastName}
+            ref={ref => setInputRef('lastName', ref)}
             label="Last Name"
             onChange={handleInputChange}
             notEmpty={!!lastName.length} />
@@ -32,6 +34,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
         inputMode="email"
         name="email"
         value={email}
+        ref={ref => setInputRef('email', ref)}
         label="Email"
         onBlur={checkEmail}
         onChange={handleInputChange}
@@ -51,6 +54,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
           inputMode="password"
           name="password"
           value={password}
+          ref={ref => setInputRef('password', ref)}
           label="Password"
           onChange={handleInputChange}
           notEmpty={!!password.length} />
@@ -60,6 +64,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
         inputMode="text"
         name="address"
         value={address}
+        ref={ref => setInputRef('address', ref)}
         label="Address"
         onChange={handleInputChange}
         notEmpty={!!address.length} />
@@ -70,6 +75,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="city"
             value={city}
+            ref={ref => setInputRef('city', ref)}
             label="City"
             onChange={handleInputChange}
             notEmpty={!!city.length} />
@@ -80,6 +86,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="state"
             value={state}
+            ref={ref => setInputRef('state', ref)}
             label="State"
             onChange={handleInputChange}
             notEmpty={!!state.length} />
