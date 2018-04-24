@@ -205,17 +205,11 @@ class StripeFormContainer extends React.Component {
   }
 
   setInputRef(ref, name) {
-    if (name === 'stripeCard') {
-      this[name] = ref._element
-    } else {
-      this[name] = ref
-    }
+    this[name] = ref
   }
 
   handleKeyDown(event, name) {
-    if (event.keyCode === 13) {
-      this[name].focus()
-    }
+    if (event.keyCode === 13) this[name].focus()
   }
 
   handleError() {
