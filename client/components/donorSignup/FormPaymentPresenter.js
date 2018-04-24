@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormInputPresenter } from '../'
 
-const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef }) => (
+const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef, handleKeyDown }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -14,6 +14,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             value={firstName}
             inputRef={ref => setInputRef(ref, 'firstName')}
             label="First Name"
+            onKeyDown={event => handleKeyDown(event, 'lastName')}
             onChange={handleInputChange}
             notEmpty={!!firstName.length} />
         </div>
@@ -25,6 +26,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             value={lastName}
             inputRef={ref => setInputRef(ref, 'lastName')}
             label="Last Name"
+            onKeyDown={event => handleKeyDown(event, 'email')}
             onChange={handleInputChange}
             notEmpty={!!lastName.length} />
         </div>
@@ -36,6 +38,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
         value={email}
         inputRef={ref => setInputRef(ref, 'email')}
         label="Email"
+        onKeyDown={event => handleKeyDown(event, 'password')}
         onBlur={checkEmail}
         onChange={handleInputChange}
         notEmpty={!!email.length} />
@@ -56,6 +59,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
           value={password}
           inputRef={ref => setInputRef(ref, 'password')}
           label="Password"
+          onKeyDown={event => handleKeyDown(event, 'address')}
           onChange={handleInputChange}
           notEmpty={!!password.length} />
       </div>
@@ -66,6 +70,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
         value={address}
         inputRef={ref => setInputRef(ref, 'address')}
         label="Address"
+        onKeyDown={event => handleKeyDown(event, 'city')}
         onChange={handleInputChange}
         notEmpty={!!address.length} />
       <div className="displayFlex">
@@ -77,6 +82,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             value={city}
             inputRef={ref => setInputRef(ref, 'city')}
             label="City"
+            onKeyDown={event => handleKeyDown(event, 'state')}
             onChange={handleInputChange}
             notEmpty={!!city.length} />
         </div>
@@ -86,7 +92,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="state"
             value={state}
-            inputRef={ref => setInputRef(ref, 'state')}
+            inputRef={ref => setInputRef(ref, 'stripeCard')}
             label="State"
             onChange={handleInputChange}
             notEmpty={!!state.length} />

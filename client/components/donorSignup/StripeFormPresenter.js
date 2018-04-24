@@ -21,6 +21,7 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
         checkEmail={checkEmail}
         userExists={userExists}
         setInputRef={setInputRef}
+        handleKeyDown={handleKeyDown}
         handleInputChange={handleInputChange}
         checkEmailReturned={checkEmailReturned}
         stripeCustomerExists={stripeCustomerExists} />
@@ -33,6 +34,7 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
               color: 'rgba(85, 85, 85, 0.5)'
             }
           }}}
+          ref={ref => setInputRef(ref, 'stripeCard')}
           onChange={handleZipCode}
           className="stripeCardElement" />
       </div>

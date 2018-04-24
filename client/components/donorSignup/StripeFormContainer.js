@@ -205,14 +205,11 @@ class StripeFormContainer extends React.Component {
   }
 
   setInputRef(ref, name) {
-    console.log('Did setInputRef get called?...', ref)
     this[name] = ref
   }
 
   handleKeyDown(event, name) {
     if (event.keyCode === 13) {
-      console.log('this: ', this)
-      console.log('this[name]: ', this[name])
       this[name].focus()
     }
   }
