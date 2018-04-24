@@ -2,7 +2,7 @@ import React from 'react'
 import { FormInputPresenter } from '../'
 const Io = require('react-icons/lib/io')
 
-const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange, checkEmailReturned, stripeCustomerExists, email, password, setInputRef }) => (
+const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange, checkEmailReturned, stripeCustomerExists, email, password, setInputRef, handleKeyDown }) => (
   <div className="loginPageBackgroundImage">
     <div className="displayFlex flexColumn flex1 flexAllCenter padding1em">
       <p className="raleway font16">{error}</p>
@@ -14,6 +14,7 @@ const LoginPagePresenter = ({ error, handleSubmit, checkEmail, handleInputChange
           value={email}
           inputMode="email"
           onBlur={checkEmail}
+          onKeyDown={handleKeyDown}
           notEmpty={!!email.length}
           onChange={handleInputChange} />
         <FormInputPresenter

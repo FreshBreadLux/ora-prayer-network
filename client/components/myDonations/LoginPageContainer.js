@@ -17,6 +17,7 @@ class LoginPageContainer extends React.Component {
     this.checkEmail = this.checkEmail.bind(this)
     this.setInputRef = this.setInputRef.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
@@ -63,6 +64,10 @@ class LoginPageContainer extends React.Component {
     this[name] = ref
   }
 
+  handleKeyDown(event) {
+    if (event.keyCode === 13) this.password.focus()
+  }
+
   render() {
     return (
       <LoginPagePresenter
@@ -72,6 +77,7 @@ class LoginPageContainer extends React.Component {
         setInputRef={this.setInputRef}
         password={this.state.password}
         handleSubmit={this.handleSubmit}
+        handleKeyDown={this.handleKeyDown}
         handleInputChange={this.handleInputChange}
         checkEmailReturned={this.state.checkEmailReturned}
         stripeCustomerExists={this.state.stripeCustomerExists} />
