@@ -15,7 +15,6 @@ class LoginPageContainer extends React.Component {
       stripeCustomerExists: false,
     }
     this.checkEmail = this.checkEmail.bind(this)
-    this.focusInput = this.focusInput.bind(this)
     this.setInputRef = this.setInputRef.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
