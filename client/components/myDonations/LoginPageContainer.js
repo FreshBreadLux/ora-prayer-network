@@ -14,9 +14,11 @@ class LoginPageContainer extends React.Component {
       userExists: false,
       stripeCustomerExists: false,
     }
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
+    this.focusInput = this.focusInput.bind(this)
+    this.setInputRef = this.setInputRef.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   handleInputChange(event) {
@@ -32,8 +34,10 @@ class LoginPageContainer extends React.Component {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: true })
         } else if (response.data.id) {
           this.setState({ checkEmailReturned: true, userExists: true, stripeCustomerExists: false })
+          this.password.focus()
         } else {
           this.setState({ checkEmailReturned: true, userExists: false, stripeCustomerExists: false })
+          this.password.focus()
         }
       })
       .catch(console.error)
@@ -56,12 +60,17 @@ class LoginPageContainer extends React.Component {
     }
   }
 
+  setInputRef(ref, name) {
+    this[name] = ref
+  }
+
   render() {
     return (
       <LoginPagePresenter
         email={this.state.email}
         error={this.state.error}
         checkEmail={this.checkEmail}
+        setInputRef={this.setInputRef}
         password={this.state.password}
         handleSubmit={this.handleSubmit}
         handleInputChange={this.handleInputChange}
