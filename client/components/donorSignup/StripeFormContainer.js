@@ -206,7 +206,7 @@ class StripeFormContainer extends React.Component {
 
   setInputRef(ref, name) {
     if (name === 'stripeCard') {
-      console.log('stripeCard ref: ', ref)
+      this[name] = ref._element
     } else {
       this[name] = ref
     }
