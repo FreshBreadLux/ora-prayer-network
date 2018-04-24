@@ -92,8 +92,9 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="state"
             value={state}
-            inputRef={ref => setInputRef(ref, 'stripeCard')}
+            inputRef={ref => setInputRef(ref, 'state')}
             label="State"
+            onKeyDown={event => handleKeyDown(event, 'stripeCard')}
             onChange={handleInputChange}
             notEmpty={!!state.length} />
         </div>
