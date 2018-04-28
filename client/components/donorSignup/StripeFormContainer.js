@@ -4,6 +4,8 @@ import { injectStripe } from 'react-stripe-elements'
 import StripeFormPresenter from './StripeFormPresenter'
 import { ROOT_URL, SENDINBLUE_API_KEY_V3 } from '../../config'
 
+const STATES = ['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY']
+
 class StripeFormContainer extends React.Component {
   constructor(props) {
     super(props)
@@ -23,9 +25,11 @@ class StripeFormContainer extends React.Component {
       zip: '',
       isLoading: false,
       failed: false,
+      stateError: false,
     }
     this.verifyUser = this.verifyUser.bind(this)
     this.checkEmail = this.checkEmail.bind(this)
+    this.verifyState = this.verifyState.bind(this)
     this.setInputRef = this.setInputRef.bind(this)
     this.handleError = this.handleError.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -220,6 +224,15 @@ class StripeFormContainer extends React.Component {
     setTimeout(() => this.setState({failed: false}), 10000)
   }
 
+  verifyState() {
+    if (STATES.indexOf(this.state.state.toUpperCase()) === -1) {
+      this.setState({ stateError: true })
+      this.stateRef.select()
+    } else {
+      this.setState({ stateError: false })
+    }
+  }
+
   render() {
     return (
       <StripeFormPresenter
@@ -230,12 +243,14 @@ class StripeFormContainer extends React.Component {
         failed={this.state.failed}
         checkEmail={this.checkEmail}
         address={this.state.address}
+        verifyState={this.verifyState}
         password={this.state.password}
         lastName={this.state.lastName}
         setInputRef={this.setInputRef}
         firstName={this.state.firstName}
         isLoading={this.state.isLoading}
         handleSubmit={this.handleSubmit}
+        stateError={this.state.stateError}
         userExists={this.state.userExists}
         handleZipCode={this.handleZipCode}
         handleKeyDown={this.handleKeyDown}

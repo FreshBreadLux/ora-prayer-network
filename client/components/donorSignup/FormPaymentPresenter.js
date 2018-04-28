@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormInputPresenter } from '../'
 
-const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef, handleKeyDown }) => (
+const FormPaymentPresenter = ({ firstName, lastName, email, password, address, city, state, handleInputChange, checkEmail, checkEmailReturned, userExists, stripeCustomerExists, setInputRef, handleKeyDown, stateError, verifyState }) => (
   <div>
     <p className="stripeFormSectionHeader">PAYMENT INFORMATION</p>
     <div className="paymentInfoDiv">
@@ -82,7 +82,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             value={city}
             inputRef={ref => setInputRef(ref, 'city')}
             label="City"
-            onKeyDown={event => handleKeyDown(event, 'state')}
+            onKeyDown={event => handleKeyDown(event, 'stateRef')}
             onChange={handleInputChange}
             notEmpty={!!city.length} />
         </div>
@@ -92,10 +92,12 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             inputMode="text"
             name="state"
             value={state}
-            inputRef={ref => setInputRef(ref, 'state')}
+            inputRef={ref => setInputRef(ref, 'stateRef')}
             label="State"
             onChange={handleInputChange}
+            onBlur={verifyState}
             notEmpty={!!state.length} />
+          <p className={stateError ? 'stripeFormSubText redText' : 'stripeFormSubText'}>Use two-letter state abbreviation</p>
         </div>
       </div>
     </div>
