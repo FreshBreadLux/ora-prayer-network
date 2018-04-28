@@ -97,7 +97,7 @@ const FormPaymentPresenter = ({ firstName, lastName, email, password, address, c
             onChange={handleInputChange}
             onBlur={verifyState}
             notEmpty={!!state.length} />
-          <p className={stateError ? 'stripeFormSubText redText' : 'stripeFormSubText'}>Use two-letter state abbreviation</p>
+          <p className={stateError ? 'stripeFormSubTextError' : 'stripeFormSubText'}>Use two-letter state abbreviation</p>
         </div>
       </div>
     </div>

@@ -993,6 +993,13 @@ nav a {
   opacity: 0.5;
   margin-top: -1em;
 }
+.stripeFormSubTextError {
+  font-family: 'raleway';
+  color: red;
+  font-size: 11px;
+  opacity: 0.5;
+  margin-top: -1em;
+}
 
 .radioButtonDiv {
   display: flex;
