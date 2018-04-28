@@ -227,8 +227,8 @@ class StripeFormContainer extends React.Component {
   verifyState() {
     if (STATES.indexOf(this.state.state.toUpperCase()) === -1) {
       this.setState({ stateError: true })
-      this.stateRef.focus()
       this.stateRef.select()
+      this.stateRef.focus()
     } else {
       this.setState({ stateError: false })
     }
