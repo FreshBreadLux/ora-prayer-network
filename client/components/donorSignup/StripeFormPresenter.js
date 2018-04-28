@@ -38,6 +38,7 @@ const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, ema
           }}}
           onChange={handleZipCode}
           className="stripeCardElement" />
+        <p className="stripeFormSubText">Card information secured by Stripe</p>
       </div>
       <FormReviewPresenter
         zip={zip}
