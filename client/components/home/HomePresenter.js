@@ -9,16 +9,20 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            "It was not you who chose me, but I who chose you
+            So then the Lord Jesus, after he spoke to them,
             <br />
-            and appointed you to go and bear fruit that will remain,
+            was taken up into heaven
             <br />
-            so that whatever you ask the Father in my name He may give you.
+            and took his seat at the right hand of God.
             <br />
-            This I command you: love one another."
+            But they went forth and preached everywhere,
+            <br />
+            while the Lord worked with them
+            <br />
+            and confirmed the word through accompanying signs.
             <br /><br />
           </p>
-          <p className="rightText">- John 15:16-17</p>
+          <p className="rightText">- Mark 16:19-20</p>
         </div>
       </div>
     </div>
