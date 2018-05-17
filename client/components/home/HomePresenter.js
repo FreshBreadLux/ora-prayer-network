@@ -9,20 +9,20 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            So then the Lord Jesus, after he spoke to them,
+            Jesus said to them again, "Peace be with you.
             <br />
-            was taken up into heaven
+            As the Father has sent me, so I send you."
             <br />
-            and took his seat at the right hand of God.
+            And when he had said this, he breathed on them and said to them,
             <br />
-            But they went forth and preached everywhere,
+            "Receive the Holy Spirit.
             <br />
-            while the Lord worked with them
+            Whose sins you forgive are forgiven them,
             <br />
-            and confirmed the word through accompanying signs.
+            and whose sins you retain are retained."
             <br /><br />
           </p>
-          <p className="rightText">- Mark 16:19-20</p>
+          <p className="rightText">- John 20:21-23</p>
         </div>
       </div>
     </div>
