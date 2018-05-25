@@ -28,6 +28,12 @@ const NavbarPresenter = ({ revealedNavbar, toggleNavbar, manageNavigation }) => 
           <p className="navLinkText">ABOUT</p>
         </NavbarLinkPresenter>
         <NavbarLinkPresenter
+          path="/our-story"
+          manageNavigation={manageNavigation}>
+          <Io.IoIosBook className="navIcon" />
+          <p className="navLinkText">OUR STORY</p>
+        </NavbarLinkPresenter>
+        <NavbarLinkPresenter
           path="/support"
           manageNavigation={manageNavigation}>
           <Io.IoIosMedical className="navIcon" />
