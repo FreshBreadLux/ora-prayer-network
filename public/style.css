@@ -214,6 +214,13 @@ nav a {
   background: url(images/mountains-purple.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+.ourStoryBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: url(images/mountains-white.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
 .helpBackgroundImage {
   display: flex;
   flex-direction: column;
@@ -695,6 +702,30 @@ nav a {
   width: 100%;
   max-width: 100%;
   order: -1;
+}
+
+.ourStoryFirstContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ourStoryContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ourStoryHeader {
+  font-family: 'raleway';
+  font-size: 50px;
+  text-align: center;
+  padding: 0.25em;
+}
+.ourStoryBody {
+  font-family: 'raleway';
+  font-size: 18px;
+  padding: 0.25em;
 }
 
 .supportForm {
@@ -1567,6 +1598,33 @@ input[type="radio"]:checked + label span {
     height: 60vh;
     width: auto;
     order: 2;
+  }
+
+  .ourStoryFirstContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+  }
+  .ourStoryContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ourStoryHeader {
+    font-family: 'raleway';
+    font-size: 50px;
+    text-align: center;
+    padding: 0.25em;
+  }
+  .ourStoryBody {
+    font-family: 'raleway';
+    font-size: 20px;
+    /* text-shadow: 1px 1px 1px #555; */
+    padding: 0.25em;
+    max-width: 50vw;
   }
 
   .supportForm {

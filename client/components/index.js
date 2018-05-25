@@ -3,9 +3,10 @@ export { default as NavbarContainer } from './navbar/NavbarContainer'
 export { default as NavbarPresenter } from './navbar/NavbarPresenter'
 export { default as NavbarLinkPresenter } from './navbar/NavbarLinkPresenter'
 export { default as FooterPresenter } from './footer/FooterPresenter'
-/** HOME, ABOUT, GET INVOLVED, SUPPORT **/
+/** HOME, ABOUT, OUR STORY, GET INVOLVED, SUPPORT **/
 export { default as HomePresenter } from './home/HomePresenter'
 export { default as AboutPresenter } from './about/AboutPresenter'
+export { default as OurStoryPresenter } from './ourStory/OurStoryPresenter'
 export { default as GetInvolvedPresenter } from './getInvolved/GetInvolvedPresenter'
 export { default as ProjectProposalContainer } from './getInvolved/ProjectProposalContainer'
 export { default as ProjectProposalPresenter } from './getInvolved/ProjectProposalPresenter'

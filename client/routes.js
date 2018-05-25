@@ -1,12 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { HomePresenter, AboutPresenter, GetInvolvedPresenter, SupportContainer, DonorSignupPresenter, ThankYouPresenter, PrivacyPolicyPresenter, CheckLoggedInContainer, ProjectProposalContainer } from './components'
+import { HomePresenter, AboutPresenter, OurStoryPresenter, GetInvolvedPresenter, SupportContainer, DonorSignupPresenter, ThankYouPresenter, PrivacyPolicyPresenter, CheckLoggedInContainer, ProjectProposalContainer } from './components'
 
 const Routes = () => (
   <Switch>
     <Route path="/home" component={HomePresenter} />
     <Route path="/about" component={AboutPresenter} />
+    <Route path="/our-story" component={OurStoryPresenter} />
     <Route path="/support" component={SupportContainer} />
     <Route path="/get-involved" component={GetInvolvedPresenter} />
     <Route path="/donor-signup" render={props => <DonorSignupPresenter {...props} />} />
