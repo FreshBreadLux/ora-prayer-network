@@ -9,22 +9,16 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            Then Jesus approached and said to them,
+            While they were eating,
             <br />
-            "All power in heaven and on earth has been given to me.
+            he took bread, said the blessing,
             <br />
-            Go, therefore, and make disciples of all nations,
+            broke it, gave it to them, and said,
             <br />
-            baptizing them in the name of the Father,
-            <br />
-            and of the Son, and of the Holy Spirit,
-            <br />
-            teaching them to observe all that I have commanded you.
-            <br />
-            And behold, I am with you always, until the end of the age."
+            "Take it; this is my body."
             <br /><br />
           </p>
-          <p className="rightText">- Matthew 28:18-20</p>
+          <p className="rightText">- Mark 14:22</p>
         </div>
       </div>
     </div>
