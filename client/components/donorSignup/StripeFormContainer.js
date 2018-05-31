@@ -52,6 +52,7 @@ class StripeFormContainer extends React.Component {
     } else {
       const { userExists, stripeCustomerExists } = this.state
       if (!userExists) {
+        console.log('A donor without an app profile is signing up!')
         this.createCustomer(token)
         .then(customer => this.createUserWithCustomerId(customer.data))
         .then(verifiedResult => this.subscribeOrCharge(verifiedResult))
@@ -60,6 +61,7 @@ class StripeFormContainer extends React.Component {
           this.handleError()
         })
       } else if (userExists && !stripeCustomerExists) {
+        console.log('An app user is signing up as a donor!')
         this.createCustomer(token)
         .then(customer => {
           console.log('Verifying Customer...', customer.data)
