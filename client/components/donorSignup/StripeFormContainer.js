@@ -61,8 +61,12 @@ class StripeFormContainer extends React.Component {
         })
       } else if (userExists && !stripeCustomerExists) {
         this.createCustomer(token)
-        .then(customer => this.verifyUser(customer.data))
+        .then(customer => {
+          console.log('Verifying Customer...', customer.data)
+          this.verifyUser(customer.data)
+        })
         .then(verifiedResult => {
+          console.log('Verified Result:', verifiedResult)
           this.updateUserWithCustomerId(verifiedResult)
           return this.subscribeOrCharge(verifiedResult)
         })
@@ -91,8 +95,11 @@ class StripeFormContainer extends React.Component {
 
   verifyUser(customer) {
     const { email, password } = this.state
+    console.log('Posting to sessions with email:', email)
+    console.log('Password boolean:', !!password)
     return axios.post(`${ROOT_URL}/api/users/sessions`, { email, password })
     .then(userIdAndJwt => {
+      console.log('Returning userId and JWT:', userIdAndJwt.data)
       return { userIdAndJwt: userIdAndJwt.data, customer }
     })
   }
