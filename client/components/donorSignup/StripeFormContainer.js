@@ -109,7 +109,7 @@ class StripeFormContainer extends React.Component {
   updateUserWithCustomerId(verifiedResult) {
     const { userIdAndJwt, customer } = verifiedResult
     const { firstName, lastName, address, city, state, zip } = this.state
-    axios.put(`${ROOT_URL}/api/users/${userIdAndJwt.userId}`, {
+    return axios.put(`${ROOT_URL}/api/users/${userIdAndJwt.userId}`, {
       stripeCustomerId: customer.id,
       firstName, lastName, address, city, state, zip
     })
