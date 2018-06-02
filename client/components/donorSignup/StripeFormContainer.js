@@ -54,7 +54,10 @@ class StripeFormContainer extends React.Component {
       if (!userExists) {
         console.log('A donor without an app profile is signing up!')
         this.createCustomer(token)
-        .then(customer => this.createUserWithCustomerId(customer.data))
+        .then(customer => {
+          console.log('customer.data:', customer.data)
+          return this.createUserWithCustomerId(customer.data)
+        })
         .then(verifiedResult => this.subscribeOrCharge(verifiedResult))
         .catch(err => {
           console.log('Error: ', err)
@@ -86,6 +89,7 @@ class StripeFormContainer extends React.Component {
   }
 
   createUserWithCustomerId(customer) {
+    console.log('customer argument in createUserWithCustomerId:', customer)
     const { firstName, lastName, email, password, address, city, state, zip } = this.state
     return axios.post(`${ROOT_URL}/api/users`, {
       stripeCustomerId: customer.id,
