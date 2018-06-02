@@ -65,11 +65,11 @@ class StripeFormContainer extends React.Component {
         this.createCustomer(token)
         .then(customer => {
           console.log('Verifying Customer...', customer.data)
-          this.verifyUser(customer.data)
+          return this.verifyUser(customer.data)
         })
-        .then(verifiedResult => {
+        .then(async (verifiedResult) => {
           console.log('Verified Result:', verifiedResult)
-          this.updateUserWithCustomerId(verifiedResult)
+          await this.updateUserWithCustomerId(verifiedResult)
           return this.subscribeOrCharge(verifiedResult)
         })
         .catch(err => {
