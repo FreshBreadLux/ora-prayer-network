@@ -73,6 +73,7 @@ class StripeFormContainer extends React.Component {
         .then(async (verifiedResult) => {
           console.log('Verified Result:', verifiedResult)
           await this.updateUserWithCustomerId(verifiedResult)
+          console.log('User has been updated; subscribing or charging...')
           return this.subscribeOrCharge(verifiedResult)
         })
         .catch(err => {
@@ -126,6 +127,7 @@ class StripeFormContainer extends React.Component {
     const { userId, jwToken } = verifiedResult.userIdAndJwt
     const { monthlyDonation, singleDonation, email, firstName, lastName } = this.state
     if (singleDonation.length) {
+      console.log('Charging...')
       return Promise.all([
         axios.post(`${ROOT_URL}/api/donations/charges`, {
           userId, amount: +singleDonation * 100
@@ -152,6 +154,7 @@ class StripeFormContainer extends React.Component {
         this.handleError()
       })
     } else {
+      console.log('Subscribing...')
       return Promise.all([
         axios.post(`${ROOT_URL}/api/donations/subscriptions`, {
           userId, amount: +monthlyDonation * 100
