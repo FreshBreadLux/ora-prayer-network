@@ -9,16 +9,16 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            While they were eating,
+            "If a kingdom is divided against itself,
             <br />
-            he took bread, said the blessing,
+            that kingdom cannot stand.
             <br />
-            broke it, gave it to them, and said,
+            And if a house is divided against itself,
             <br />
-            "Take it; this is my body."
+            that house will not be able to stand."
             <br /><br />
           </p>
-          <p className="rightText">- Mark 14:22</p>
+          <p className="rightText">- Mark 3:24-25</p>
         </div>
       </div>
     </div>
