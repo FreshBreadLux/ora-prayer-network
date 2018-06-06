@@ -72,8 +72,8 @@ class StripeFormContainer extends React.Component {
         })
         .then(async (verifiedResult) => {
           console.log('Verified Result:', verifiedResult)
-          const updatedUser = await this.updateUserWithCustomerId(verifiedResult)
-          console.log('User has been updated:', updatedUser)
+          const verifiedReturnValue = await this.updateUserWithCustomerId(verifiedResult)
+          console.log('User has been updated and verified result returned:', verifiedReturnValue)
           console.log('subscribing or charging...')
           return this.subscribeOrCharge(verifiedResult)
         })
