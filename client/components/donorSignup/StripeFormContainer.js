@@ -72,8 +72,9 @@ class StripeFormContainer extends React.Component {
         })
         .then(async (verifiedResult) => {
           console.log('Verified Result:', verifiedResult)
-          await this.updateUserWithCustomerId(verifiedResult)
-          console.log('User has been updated; subscribing or charging...')
+          const updatedUser = await this.updateUserWithCustomerId(verifiedResult)
+          console.log('User has been updated:', updatedUser)
+          console.log('subscribing or charging...')
           return this.subscribeOrCharge(verifiedResult)
         })
         .catch(err => {
@@ -117,6 +118,11 @@ class StripeFormContainer extends React.Component {
     return axios.put(`${ROOT_URL}/api/users/${userIdAndJwt.userId}`, {
       stripeCustomerId: customer.id,
       firstName, lastName, address, city, state, zip
+    })
+    .then(updatedUser => {
+      console.log('updated user:', updatedUser)
+      console.log('returning verified result:', verifiedResult)
+      return verifiedResult
     })
     .catch(err => {
       console.log('Error: ', err)
