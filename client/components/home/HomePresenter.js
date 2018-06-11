@@ -9,16 +9,18 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            "If a kingdom is divided against itself,
+            He said, “To what shall we compare the kingdom of God,
             <br />
-            that kingdom cannot stand.
+            or what parable can we use for it?
             <br />
-            And if a house is divided against itself,
+            It is like a mustard seed that, when it is sown in the ground,
             <br />
-            that house will not be able to stand."
+            is the smallest of all the seeds on the earth.
+            <br />
+            But once it is sown, it springs up and becomes the largest of plants"
             <br /><br />
           </p>
-          <p className="rightText">- Mark 3:24-25</p>
+          <p className="rightText">- Mark 4:30-32</p>
         </div>
       </div>
     </div>
