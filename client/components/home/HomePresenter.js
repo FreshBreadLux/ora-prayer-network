@@ -9,18 +9,22 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            He said, “To what shall we compare the kingdom of God,
+            But they answered her,
             <br />
-            or what parable can we use for it?
+            "There is no one among your relatives who has this name."
             <br />
-            It is like a mustard seed that, when it is sown in the ground,
+            So they made signs, asking his father what he wished him to be called.
             <br />
-            is the smallest of all the seeds on the earth.
+            He asked for a tablet and wrote, "John is his name,"
             <br />
-            But once it is sown, it springs up and becomes the largest of plants"
+            and all were amazed.
+            <br />
+            Immediately his mouth was opened, his tongue freed,
+            <br />
+            and he spoke blessing God.
             <br /><br />
           </p>
-          <p className="rightText">- Mark 4:30-32</p>
+          <p className="rightText">- Luke 1:61-64</p>
         </div>
       </div>
     </div>
