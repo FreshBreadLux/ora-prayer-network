@@ -4,7 +4,7 @@ import { FormReviewPresenter, FormPaymentPresenter, FormSupportPresenter } from 
 
 const StripeFormPresenter = ({ singleDonation, monthlyDonation, city, state, email, address, lastName, password, firstName, userExists, checkEmailReturned, stripeCustomerExists, isLoading, handleSubmit, handleDonationAmount, handleInputChange, checkEmail, handleZipCode, zip, failed, setInputRef, handleKeyDown, stateError, verifyState }) => (
   <div className="displayFlex flexJustifyCenter">
-    <form onSubmit={handleSubmit} className="stripeForm">
+    <form onSubmit={handleSubmit} className="stripeForm" autoComplete="nope">
       <FormSupportPresenter
         handleKeyDown={handleKeyDown}
         singleDonation={singleDonation}
