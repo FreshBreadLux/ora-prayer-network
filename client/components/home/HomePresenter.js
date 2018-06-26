@@ -9,22 +9,18 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            But they answered her,
+            The woman, realizing what had happened to her,
             <br />
-            "There is no one among your relatives who has this name."
+            approached in fear and trembling.
             <br />
-            So they made signs, asking his father what he wished him to be called.
+            She fell down before Jesus and told him the whole truth.
             <br />
-            He asked for a tablet and wrote, "John is his name,"
+            He said to her, "Daughter, your faith has saved you.
             <br />
-            and all were amazed.
-            <br />
-            Immediately his mouth was opened, his tongue freed,
-            <br />
-            and he spoke blessing God.
+            Go in peace and be cured of your affliction."
             <br /><br />
           </p>
-          <p className="rightText">- Luke 1:61-64</p>
+          <p className="rightText">- Mark 5:33-34</p>
         </div>
       </div>
     </div>
