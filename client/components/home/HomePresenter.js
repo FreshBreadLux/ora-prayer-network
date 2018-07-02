@@ -9,18 +9,18 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            The woman, realizing what had happened to her,
+            When the sabbath came he began to teach in the synagogue,
             <br />
-            approached in fear and trembling.
+            and many who heard him were astonished.
             <br />
-            She fell down before Jesus and told him the whole truth.
+            They said, “Where did this man get all this?
             <br />
-            He said to her, "Daughter, your faith has saved you.
+            What kind of wisdom has been given him?
             <br />
-            Go in peace and be cured of your affliction."
+            What mighty deeds are wrought by his hands!"
             <br /><br />
           </p>
-          <p className="rightText">- Mark 5:33-34</p>
+          <p className="rightText">- Mark 5:2</p>
         </div>
       </div>
     </div>
