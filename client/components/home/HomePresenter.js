@@ -20,7 +20,7 @@ const HomePresenter = () => (
             What mighty deeds are wrought by his hands!"
             <br /><br />
           </p>
-          <p className="rightText">- Mark 5:2</p>
+          <p className="rightText">- Mark 6:2</p>
         </div>
       </div>
     </div>
