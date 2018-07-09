@@ -9,18 +9,16 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            When the sabbath came he began to teach in the synagogue,
+            In love He destined us for adoption to Himself through Jesus Christ,
             <br />
-            and many who heard him were astonished.
+            in accord with the favor of His will,
             <br />
-            They said, “Where did this man get all this?
+            for the praise of the glory of His grace
             <br />
-            What kind of wisdom has been given him?
-            <br />
-            What mighty deeds are wrought by his hands!"
+            that He granted us in the beloved.
             <br /><br />
           </p>
-          <p className="rightText">- Mark 6:2</p>
+          <p className="rightText">- Eph 1:5-6</p>
         </div>
       </div>
     </div>
