@@ -9,16 +9,16 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            In love He destined us for adoption to Himself through Jesus Christ,
+            When he disembarked and saw the vast crowd,
             <br />
-            in accord with the favor of His will,
+            his heart was moved with pity for them,
             <br />
-            for the praise of the glory of His grace
+            for they were like sheep without a shepherd;
             <br />
-            that He granted us in the beloved.
+            and he began to teach them many things.
             <br /><br />
           </p>
-          <p className="rightText">- Eph 1:5-6</p>
+          <p className="rightText">- Mark 6:34</p>
         </div>
       </div>
     </div>
