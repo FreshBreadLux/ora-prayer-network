@@ -9,16 +9,22 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            When he disembarked and saw the vast crowd,
+            When they had had their fill, he said to his disciples,
             <br />
-            his heart was moved with pity for them,
+            "Gather the fragments left over,
             <br />
-            for they were like sheep without a shepherd;
+            so that nothing will be wasted."
             <br />
-            and he began to teach them many things.
+            So they collected them,
+            <br />
+            and filled twelve wicker baskets with fragments
+            <br />
+            from the five barley loaves
+            <br />
+            that had been more than they could eat.
             <br /><br />
           </p>
-          <p className="rightText">- Mark 6:34</p>
+          <p className="rightText">- John 6:12-13</p>
         </div>
       </div>
     </div>
