@@ -9,22 +9,20 @@ const HomePresenter = () => (
       <div className="homeScriptureDiv">
         <div className="homeScriptureQuote">
           <p>
-            When they had had their fill, he said to his disciples,
+            "Your ancestors ate the manna in the desert, but they died;
             <br />
-            "Gather the fragments left over,
+            this is the bread that comes down from heaven
             <br />
-            so that nothing will be wasted."
+            so that one may eat it and not die.
             <br />
-            So they collected them,
+            I am the living bread that came down from heaven;
             <br />
-            and filled twelve wicker baskets with fragments
+            whoever eats this bread will live forever;
             <br />
-            from the five barley loaves
-            <br />
-            that had been more than they could eat.
+            and the bread that I will give is my flesh for the life of the world."
             <br /><br />
           </p>
-          <p className="rightText">- John 6:12-13</p>
+          <p className="rightText">- John 6:49-51</p>
         </div>
       </div>
     </div>
